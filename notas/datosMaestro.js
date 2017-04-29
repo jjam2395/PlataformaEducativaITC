@@ -1,0 +1,6 @@
+maestro:{
+	idMaestro,
+	nombreMaestro,
+	biografia,
+	
+}
