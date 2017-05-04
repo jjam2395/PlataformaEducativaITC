@@ -1,4 +1,3 @@
-var $=null;
-$(document).ready(function(){
+jQuery(document).ready(function($){
     $('.collapsible').collapsible();
   });
