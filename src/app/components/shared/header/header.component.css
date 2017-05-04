@@ -4,9 +4,13 @@
 }
 
 .titulo-container{
-  margin-top: 10vh;
+  margin-top: 4vh;
 }
 
 .login-container{
   margin-top: 1vh;
+}
+
+.titulo-encabezado{
+  font-size: 2rem;
 }
