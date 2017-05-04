@@ -1,0 +1,16 @@
+.login-container{
+  height: 12vh;
+}
+
+.help-container{
+  position: absolute;
+  top:9vh;
+}
+
+.help-1{
+  margin-left: 1vw;
+}
+
+.help-2{
+  margin-left: 8vw;
+}
