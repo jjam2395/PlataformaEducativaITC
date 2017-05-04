@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { InicioAlumnoComponent } from './components/inicio-alumno/inicio-alumno.component';
 import { LoginComponent } from './components/shared/login/login.component';
 import { SideNavComponent } from './components/shared/side-nav/side-nav.component';
+import { NavbarHomeComponent } from './components/shared/navbar-home/navbar-home.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SideNavComponent } from './components/shared/side-nav/side-nav.componen
     HeaderComponent,
     InicioAlumnoComponent,
     LoginComponent,
-    SideNavComponent
+    SideNavComponent,
+    NavbarHomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

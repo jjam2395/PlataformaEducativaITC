@@ -1,6 +1,6 @@
 .header-main{
   background-color: #eee;
-  height: 15vh;
+  height: 25vh;
   width: 100%;
 }
 
@@ -30,7 +30,8 @@
 @media (min-width: 768px) {
 
   .header-main{
-    height: 20vh;
+    height: 25vh;
+    margin-bottom: 7vh;
   }
 
   .titulo-container{
@@ -47,6 +48,10 @@
     text-align: left;
   }
 
+  .header-main{
+    height: 25vh;
+    margin-bottom: 0em;
+  }
  }
 
 /* Extra large devices (large desktops, 1200px and up)*/
@@ -55,6 +60,10 @@
   .titulo-encabezado{
     font-size: 2rem;
     text-align: left;
+  }
+
+  .header-main{
+    height: 25vh;
   }
 
 
