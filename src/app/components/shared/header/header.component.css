@@ -1,16 +1,20 @@
 .header-main{
-  background-color: #999;
-  height: 25vh;
+  background-color: #eee;
+  height: 28vh;
 }
 
-.titulo-container{
-  margin-top: 4vh;
-}
 
 .login-container{
   margin-top: 1vh;
+  height: 12vh;
 }
 
 .titulo-encabezado{
   font-size: 2rem;
+  margin:0 0 .3em 0;
+  padding: 0;
+}
+
+.it-titulo{
+  margin-left: 30em;
 }
