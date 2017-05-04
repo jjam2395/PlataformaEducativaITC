@@ -1,4 +1,8 @@
 jQuery(document).ready(function($){
     $('.collapsible').collapsible();
-    $(".button-collapse").sideNav();
+    //SIDENAV 
+    $(".button-collapse").sideNav({
+      menuWidth: 250,
+      closeOnClick: true 
+    });
   });

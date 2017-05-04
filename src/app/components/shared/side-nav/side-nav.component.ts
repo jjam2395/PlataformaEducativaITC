@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
-
-  constructor() { }
+	nameUser: String;
+	materias: Array<String>;
+  constructor() { 
+  	this.nameUser="Rodrigo Reyes Cazares";
+  	this.materias=["Base de datos","Dispositivos Moviles","Inteligencia Artificial"];
+  }
 
   ngOnInit() {
   }
