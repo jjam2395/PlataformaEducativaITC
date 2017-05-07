@@ -18,6 +18,7 @@ import { NavbarHomeComponent } from './components/shared/navbar-home/navbar-home
 import { HomeComponent } from './components/home/home.component';
 import { DudasComponent } from './components/shared/dudas/dudas.component';
 import { ConocenosComponent } from './components/conocenos/conocenos.component';
+import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ConocenosComponent } from './components/conocenos/conocenos.component';
     NavbarHomeComponent,
     HomeComponent,
     DudasComponent,
-    ConocenosComponent
+    ConocenosComponent,
+    OfertaEducativaComponent
   ],
   imports: [
     BrowserModule,
