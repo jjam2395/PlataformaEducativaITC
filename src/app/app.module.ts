@@ -16,6 +16,9 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { SideNavComponent } from './components/shared/side-nav/side-nav.component';
 import { NavbarHomeComponent } from './components/shared/navbar-home/navbar-home.component';
 import { HomeComponent } from './components/home/home.component';
+import { DudasComponent } from './components/shared/dudas/dudas.component';
+import { ConocenosComponent } from './components/conocenos/conocenos.component';
+import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     SideNavComponent,
     NavbarHomeComponent,
-    HomeComponent
+    HomeComponent,
+    DudasComponent,
+    ConocenosComponent,
+    OfertaEducativaComponent
   ],
   imports: [
     BrowserModule,
