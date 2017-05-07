@@ -19,6 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DudasComponent } from './components/shared/dudas/dudas.component';
 import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
+import { MateriaComponent } from './components/materia/materia.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-e
     HomeComponent,
     DudasComponent,
     ConocenosComponent,
-    OfertaEducativaComponent
+    OfertaEducativaComponent,
+    MateriaComponent
   ],
   imports: [
     BrowserModule,
