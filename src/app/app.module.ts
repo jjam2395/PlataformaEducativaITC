@@ -17,6 +17,7 @@ import { SideNavComponent } from './components/shared/side-nav/side-nav.componen
 import { NavbarHomeComponent } from './components/shared/navbar-home/navbar-home.component';
 import { HomeComponent } from './components/home/home.component';
 import { DudasComponent } from './components/shared/dudas/dudas.component';
+import { ConocenosComponent } from './components/conocenos/conocenos.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DudasComponent } from './components/shared/dudas/dudas.component';
     SideNavComponent,
     NavbarHomeComponent,
     HomeComponent,
-    DudasComponent
+    DudasComponent,
+    ConocenosComponent
   ],
   imports: [
     BrowserModule,

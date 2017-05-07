@@ -1,3 +1,9 @@
-.dudas-container{
+.dudas-content{
+  background-color:#888;
+  color:#fff;
+  padding: .2em;
+}
 
+.dudas-container{
+    margin-bottom:0px;
 }
