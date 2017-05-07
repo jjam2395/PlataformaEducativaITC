@@ -1,0 +1,36 @@
+.titulos{
+	margin: 0;
+	font-size: 1.3em;
+}
+
+app-side-nav{
+	height: 100vh;
+}
+.collapsible-header a:hover{
+	color:#FFDA00;
+}
+
+.collapsible-body{
+	padding:1vh;
+}
+
+.datos-materia{
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.datos-materia p{
+	margin-right: 1em;
+	margin-left: 1em;
+}
+.collapsible-body{
+	display: flex;
+	flex-direction: column;
+}
+
+.progress{
+	width: 70vw;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}

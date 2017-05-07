@@ -1,25 +1,89 @@
-<div>
-	
-</div>
-	<div class="row">
-		<!-- Barra de navegacion -->
-		<app-side-nav class="col s1"></app-side-nav>
-
+<div class="micontainer">
+	<div class=row>
+		<div class="col s1">
+			<app-side-nav class="col s1"></app-side-nav>
+		</div>
 		<div class="col s11">
-			<ul class="collapsible" data-collapsible="accordion">
-			<li>
-			  <div class="collapsible-header">	
-				<i class="material-icons">filter_drama</i>
-				materias
-				<i class="material-icons">keyboard_arrow_down</i>
-			  </div>
-			  <div class="collapsible-body">
-			  	<span>Lorem ipsum dolor sit amet.</span>
-			  </div>
-			</li>
-			</ul>
-		</div>	
+			<div class="row">
+				<!-- Barra de navegacion -->
+				<ul class="collapsible" data-collapsible="accordion">
+				<li>
+				  <div class="collapsible-header">	
+				  	<div class="row titulos">
+				  		<div class="col s2 left-align"> Mis Materias</div>
+						<i class="material-icons col s1 left-align">keyboard_arrow_down</i>
+				  	</div>
+				  </div>
+				  <div class="collapsible-body">
+				  	<ul class="collapsible popout" data-collapsible="accordion">
+					    <li *ngFor="let materia of materias">
+					      <div class="collapsible-header">
+					      	
+					      	<a class="waves-effect waves-light ">{{materia.nombreMateria}}</a>
+					      	<span class="new badge">{{materia.nuevos}}</span>
+					      </div>
+					      <div class="collapsible-body">
+					      	<div class="datos-materia">
+					      		<p>Progreso</p>
+								<div class="progress">
+									<div class="determinate" [style.width]=materia.progreso></div>
+								</div>
+								<p>{{materia.progreso}}</p>
+					        </div>
+					      	<div class="datos-materia">
+					      		<p>Calificación</p>
+								<div class="progress">
+									<div class="determinate" [style.width]=materia.calificacion></div>
+								</div>
+								<p>{{materia.calificacion}}</p>
+					      	</div>
+					      </div>
+					    </li>
+				  	</ul>
+				  </div>
+				</li>
+				</ul>		
+			</div>
+
+			<div class="row">
+
+					<ul class="collapsible" data-collapsible="accordion">
+					<li>
+					  <div class="collapsible-header">	
+					  	<div class="row titulos">
+					  		<div class="col s2 left-align">Mis Articulos</div>
+							<i class="material-icons col s1 left-align">keyboard_arrow_down</i>
+					  	</div>
+						
+					  </div>
+					  <div class="collapsible-body">
+					  	<span>Lorem ipsum dolor sit amet.</span>
+					  </div>
+					</li>
+					</ul>
+			</div>
+
+			<div class="row">
+
+					<ul class="collapsible" data-collapsible="accordion">
+					<li>
+					  <div class="collapsible-header">	
+					  	<div class="row titulos">
+					  		<div class="col s2 left-align">Mis Proyectos</div>
+							<i class="material-icons col s1 left-align">keyboard_arrow_down</i>
+					  	</div>
+						
+					  </div>
+					  <div class="collapsible-body">
+					  	<span>Lorem ipsum dolor sit amet.</span>
+					  </div>
+					</li>
+					</ul>	
+			</div>
+		</div>
 	</div>
+</div>
+	
 
 	
 
