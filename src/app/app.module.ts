@@ -16,6 +16,7 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { SideNavComponent } from './components/shared/side-nav/side-nav.component';
 import { NavbarHomeComponent } from './components/shared/navbar-home/navbar-home.component';
 import { HomeComponent } from './components/home/home.component';
+import { DudasComponent } from './components/shared/dudas/dudas.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     SideNavComponent,
     NavbarHomeComponent,
-    HomeComponent
+    HomeComponent,
+    DudasComponent
   ],
   imports: [
     BrowserModule,
