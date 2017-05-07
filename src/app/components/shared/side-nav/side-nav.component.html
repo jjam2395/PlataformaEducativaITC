@@ -4,7 +4,7 @@
         <!-- <img id="" src=""> -->
       </div>
       <a href="#!user"><img class="circle" src="assets/img/fotoPerfil.jpg"></a>
-      <a [routerLink]="['inicio-alumno']">{{nameUser}}</a> 
+      <a [routerLink]="['/inicio-alumno']">{{nameUser}}</a> 
      </div></li>
       <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
@@ -14,7 +14,7 @@
               <ul>
                 <li *ngFor="let materia of materias" class="right-align">
                 	<a href="#!">{{materia}}</a>
-                </li>
+          		</li>
               </ul>
             </div>
           </li>
@@ -29,4 +29,4 @@
 
     </ul>
 
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    <a href="#" data-activates="slide-out" class="button-collapse-sideNav"><i class="material-icons">menu</i></a>
