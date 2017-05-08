@@ -5,6 +5,8 @@ import {ConocenosComponent} from './components/conocenos/conocenos.component';
 import {OfertaEducativaComponent} from './components/oferta-educativa/oferta-educativa.component';
 import {MateriaComponent} from './components/materia/materia.component';
 import {ArticuloComponent} from './components/articulo/articulo.component';
+import {CrearCursoComponent} from './components/crear-curso/crear-curso.component';
+
 
 const APP_ROUTES: Routes = [
 	{path:'inicio-alumno',component: InicioAlumnoComponent},
@@ -13,7 +15,8 @@ const APP_ROUTES: Routes = [
 	{path:'oferta-educativa',component: OfertaEducativaComponent},
 	{path:'materia',component: MateriaComponent},
 	{path:'articulo',component: ArticuloComponent},
-	{path:'**', pathMatch: 'full', redirectTo:'inicio-alumno'}
+	{path:'crear-curso', component: CrearCursoComponent},
+	{path:'**', pathMatch: 'full', redirectTo:'home'}
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

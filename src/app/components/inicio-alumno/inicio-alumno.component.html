@@ -5,62 +5,84 @@
 		</div>
 		<div class="col s11">
 			<div class="row">
-				<!-- Barra de navegacion -->
+				
 				<ul class="collapsible" data-collapsible="accordion">
-				<li>
-				  <div class="collapsible-header">	
-				  	<div class="row titulos">
-				  		<div class="col s2 left-align"> Mis Materias</div>
-						<i class="material-icons col s1 left-align">keyboard_arrow_down</i>
-				  	</div>
-				  </div>
-				  <div class="collapsible-body">
-				  	<ul class="collapsible popout" data-collapsible="accordion">
-					    <li *ngFor="let materia of materias">
-					      <div class="collapsible-header">
-					      	
-					      	<a class="waves-effect waves-light ">{{materia.nombreMateria}}</a>
-					      	<span class="new badge">{{materia.nuevos}}</span>
-					      </div>
-					      <div class="collapsible-body">
-					      	<div class="datos-materia">
-					      		<p>Progreso</p>
-								<div class="progress">
-									<div class="determinate" [style.width]=materia.progreso></div>
-								</div>
-								<p>{{materia.progreso}}</p>
-					        </div>
-					      	<div class="datos-materia">
-					      		<p>Calificación</p>
-								<div class="progress">
-									<div class="determinate" [style.width]=materia.calificacion></div>
-								</div>
-								<p>{{materia.calificacion}}</p>
-					      	</div>
-					      </div>
-					    </li>
-				  	</ul>
-				  </div>
-				</li>
+					<li>
+					  <div class="collapsible-header">	
+					  	<div class="datos"></div>
+					  	<div class="titulos">Mis Materias</div>
+					  	<i class="material-icons">keyboard_arrow_down</i>
+					  </div>
+					  <div class="collapsible-body">
+					  	<ul class="collapsible popout" data-collapsible="accordion">
+						    <li *ngFor="let materia of materias">
+						      <div class="collapsible-header">
+						      	<div></div>
+						      	<i class="material-icons">subdirectory_arrow_right</i>
+						      	<a class="waves-effect waves-light ">{{materia.nombreMateria}}</a>
+						      	<span class="new badge">{{materia.nuevos}}</span>
+						      </div>
+						      <div class="collapsible-body">
+						      	<div class="datos-materia">
+						      		<p>Progreso</p>
+									<div class="progress">
+										<div class="determinate" [style.width]=materia.progreso></div>
+									</div>
+									<p>{{materia.progreso}}</p>
+						        </div>
+						      	<div class="datos-materia">
+						      		<p>Calificación</p>
+									<div class="progress">
+										<div class="determinate" [style.width]=materia.calificacion></div>
+									</div>
+									<p>{{materia.calificacion}}</p>
+						      	</div>
+						      </div>
+						    </li>
+					  	</ul>
+					  </div>
+					</li>
 				</ul>		
 			</div>
 
 			<div class="row">
-
-					<ul class="collapsible" data-collapsible="accordion">
+				<ul class="collapsible" data-collapsible="accordion">
 					<li>
 					  <div class="collapsible-header">	
-					  	<div class="row titulos">
-					  		<div class="col s2 left-align">Mis Articulos</div>
-							<i class="material-icons col s1 left-align">keyboard_arrow_down</i>
-					  	</div>
-						
+					  	<div class="titulos">Mis Articulos</div>
+					  	<i class="material-icons">keyboard_arrow_down</i>
+					  	<a [routerLink]="['/home']"><i class="material-icons nuevo">add</i></a>
 					  </div>
 					  <div class="collapsible-body">
-					  	<span>Lorem ipsum dolor sit amet.</span>
+					  	<ul class="collapsible popout" data-collapsible="accordion">
+						    <li *ngFor="let articulo of articulos">
+								<div class="collapsible-header header-elementos">
+									<div class="datos">
+										<i class="material-icons">subdirectory_arrow_right</i>
+										<a class="waves-effect waves-light ">{{articulo.nombreArticulo}}</a>
+									</div>
+									<div class="informacion">
+										<a href="">{{articulo.comentarios}} Comentarios</a>
+										<i class="material-icons">comment</i>
+										<a href="">{{articulo.estrellas}} Estrellas</a>
+										<i class="material-icons">star_rate</i>
+									</div>									
+								</div>
+								<div class="collapsible-body">
+									<div class="datos-articulo">
+										<i class="material-icons">mode_edit</i>
+										<a href="">Editar</a>
+									</div>
+									<div class="datos-articulo">
+										<i class="material-icons">share</i>
+										<a href="">Compartir</a>
+									</div>
+								</div>
+						    </li>
+					  	</ul>
 					  </div>
 					</li>
-					</ul>
+				</ul>
 			</div>
 
 			<div class="row">
@@ -68,17 +90,41 @@
 					<ul class="collapsible" data-collapsible="accordion">
 					<li>
 					  <div class="collapsible-header">	
-					  	<div class="row titulos">
-					  		<div class="col s2 left-align">Mis Proyectos</div>
-							<i class="material-icons col s1 left-align">keyboard_arrow_down</i>
-					  	</div>
-						
+					  	<div class="titulos">Mis Proyectos</div>
+					  	<i class="material-icons">keyboard_arrow_down</i>
+					  	<a [routerLink]="['/home']"><i class="material-icons nuevo">add</i></a>
+
 					  </div>
 					  <div class="collapsible-body">
-					  	<span>Lorem ipsum dolor sit amet.</span>
+					  	<ul class="collapsible popout" data-collapsible="accordion">
+						    <li *ngFor="let proyecto of proyectos">
+								<div class="collapsible-header header-elementos">
+									<div class="datos">
+										<i class="material-icons">subdirectory_arrow_right</i>
+										<a class="waves-effect waves-light ">{{proyecto.nombreProyecto}}</a>
+									</div>
+									<div class="informacion">
+										<a href="">{{proyecto.comentarios}} Comentarios</a>
+										<i class="material-icons">comment</i>
+										<a href="">{{proyecto.estrellas}} Estrellas</a>
+										<i class="material-icons">star_rate</i>
+									</div>									
+								</div>
+								<div class="collapsible-body">
+									<div class="datos-articulo">
+										<i class="material-icons">mode_edit</i>
+										<a href="">Editar</a>
+									</div>
+									<div class="datos-articulo">
+										<i class="material-icons">share</i>
+										<a href="">Compartir</a>
+									</div>
+								</div>
+						    </li>
+					  	</ul>
 					  </div>
 					</li>
-					</ul>	
+				</ul>	
 			</div>
 		</div>
 	</div>
