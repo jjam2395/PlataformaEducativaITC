@@ -3,21 +3,18 @@
     <div class="col s12 menu-materia-container center  purple lighten-4">
       <h3>Titulo de la materia</h3>
     </div>
-
-    <div class="nav-content col s12 center">
-      <ul class="tabs ">
-        <li class="tab "><a href="#test1">Descripción</a></li>
-        <li class="tab"><a href="#test2">Objetivo</a></li>
-        <li class="tab"><a class="active" href="#test3">Modulos</a></li>
-        <li class="tab"><a href="#test4">Instructor</a></li>
-        <li class="tab"><a href="#test4">Calificaciones</a></li>
+    <div class="nav-content col s12 center tabs-materia-container">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#descripcion">Descripción</a></li>
+        <li class="tab"><a href="#objetivo">Objetivo</a></li>
+        <li class="tab"><a class="active" href="#modulos">Modulos</a></li>
+        <li class="tab"><a href="#instructor">Instructor</a></li>
+        <li class="tab"><a href="#calificacion">Calificaciones</a></li>
       </ul>
     </div>
-
   </div>
-<div class="container">
 
-  <div id="test1" class="col s12">
+  <div id="descripcion" class="col s12">
     Aqui va la descripcion  de la materia
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -26,7 +23,7 @@
     fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
      qui officia deserunt mollit anim id est laborum.
   </div>
-  <div id="test2" class="col s12">
+  <div id="objetivo" class="col s12">
     Objetivo de la materia
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -35,43 +32,34 @@
     fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
     qui officia deserunt mollit anim id est laborum.
   </div>
-  <div id="test3" class="col s12">
-
-    <ul class="collapsible" data-collapsible="accordion">
-  <li>
-    <div class="collapsible-header"><span class="badge">2 Lecciones</span>1.- Nombre del Modulo</div>
-    <div class="collapsible-body"><p>Objetivo: el objetivo del modulo sera escrito en esta parte</p></div>
-  </li>
-  <li>
-    <div class="collapsible-header"><i class="material-icons">subdirectory_arrow_right</i>1.1- Nombre del subtema</div>
-    <div class="collapsible-body">
-
-      <!--
-      <video src="/assets/video/restaurant.mp4" controls ></video>
-    -->
-
-    <video  class="container-video" controls>
-      <source src="/assets/video/restaurant.mp4" type="video/mp4">
-      <!--<source src="movie.ogg" type="video/ogg">-->
-      Your browser does not support the video tag.
-    </video>
-
-    </div>
-  </li>
-  <li>
-    <div class="collapsible-header"><i class="material-icons">subdirectory_arrow_right</i>1.2- Nombre del subtema</div>
-    <div class="collapsible-body">Lectura</div>
-  </li>
-  <li>
-    <div class="collapsible-header"><span class="badge">6 Lecciones</span>2.- Nombre del Modulo</div>
-    <div class="collapsible-body"><p>Objetivo: el objetivo del modulo sera escrito en esta parte</p></div>
-  </li>
-</ul>
-
+  <div id="modulos" class="col s12">
+    <app-modulo></app-modulo>
   </div>
-  <div id="test4" class="col s12">Test 4</div>
+  <div id="instructor" class="col s12">
+    <div class="row">
+      <div class="col s2">
+        <img class=" responsive-img circle" src="/assets/img/fotoPerfil1.PNG" alt="foto del instructor">
+      </div>
+      <div class="col s10 row">
+          <h4 class="col s12">Nombre del Instructor</h4>
+          <h5 class="col s12">Titulo/Carrera del instructor</h5>
+          <h5 class="col s12 center-align">Biografia</h5>
+          <h5 class="col s12 center left-align">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </h5>
+      </div>
+    </div>
+  </div>
+  <div id="calificacion" class="col s12">
+   <app-modulo></app-modulo>
+  </div>
 
-</div>
 
 
 </div>

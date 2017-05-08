@@ -20,6 +20,7 @@ import { DudasComponent } from './components/shared/dudas/dudas.component';
 import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
 import { MateriaComponent } from './components/materia/materia.component';
+import { ModuloComponent } from './components/shared/modulo/modulo.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MateriaComponent } from './components/materia/materia.component';
     DudasComponent,
     ConocenosComponent,
     OfertaEducativaComponent,
-    MateriaComponent
+    MateriaComponent,
+    ModuloComponent
   ],
   imports: [
     BrowserModule,
