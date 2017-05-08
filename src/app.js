@@ -10,4 +10,10 @@ jQuery(document).ready(function($){
       menuWidth: 250,
       closeOnClick: true 
     });
+    
+    $('.chips').material_chip();
+
+    $('.chips').on('chip.add', function(e, chip){
+    // you have the added chip here
+  });
   });
