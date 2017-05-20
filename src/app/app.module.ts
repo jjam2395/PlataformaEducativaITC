@@ -26,7 +26,9 @@ import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
 import { MateriaComponent } from './components/materia/materia.component';
 import { ModuloComponent } from './components/shared/modulo/modulo.component';
+import { ArticuloComponent } from './components/articulo/articulo.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
     OfertaEducativaComponent,
     MateriaComponent,
     ModuloComponent,
+    ArticuloComponent,
     CrearCursoComponent
+
   ],
   imports: [
     BrowserModule,
