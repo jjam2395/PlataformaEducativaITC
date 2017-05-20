@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $:any;
 
 @Component({
   selector: 'app-inicio-alumno',
@@ -11,10 +12,11 @@ export class InicioAlumnoComponent implements OnInit {
 	proyectos:Array<object>;
 
 	constructor() {
+
 		this.materias=[
 			{
 				nombreMateria: "Bases de datos",
-				progreso: "45%",
+				progreso: "90%",
 				calificacion: "40%",
 				nuevos: "4"
 			},
@@ -64,9 +66,20 @@ export class InicioAlumnoComponent implements OnInit {
 				estrellas: "19",
 				comentarios: "21"
 			}];
+
+			
 	}
 
 	ngOnInit() {
+		$('.collapsible').collapsible();
+		$(".button-collapse-sideNav").sideNav({
+	      menuWidth: 250,
+	      closeOnClick: true,
+	      hover:true
+	    });
+	// 	function($){
+	// 		$('.collapsible').collapsible();
+	// }
 	}
 
 }

@@ -1,9 +1,15 @@
-.titulos{
-	font-size: 1.3em;
+.micontainer{
+	padding-left: 250px;
 }
 
-app-side-nav{
-	height: 100vh;
+
+app-header{
+	margin-left: 440px;
+	border:2px solid red;
+}
+
+.titulos{
+	font-size: 1.3em;
 }
 
 .collapsible-header{

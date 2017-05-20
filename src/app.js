@@ -1,9 +1,12 @@
+
 jQuery(document).ready(function($){
     $('.collapsible').collapsible();
-    //SIDENAV 
+
+    //SIDENAV (barra de navegacion izquierda del usuario)
     $(".button-collapse-sideNav").sideNav({
       menuWidth: 250,
-      closeOnClick: true 
+      closeOnClick: true,
+      hover:true
     });
 
     $(".button-collapse").sideNav({
@@ -15,5 +18,5 @@ jQuery(document).ready(function($){
 
     $('.chips').on('chip.add', function(e, chip){
     // you have the added chip here
-  });
-  });
+    });
+});
