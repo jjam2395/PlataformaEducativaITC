@@ -11,6 +11,7 @@ export class InicioAlumnoComponent implements OnInit {
 	articulos:Array<object>;
 	proyectos:Array<object>;
 
+
 	constructor() {
 
 		this.materias=[
@@ -77,9 +78,6 @@ export class InicioAlumnoComponent implements OnInit {
 	      closeOnClick: true,
 	      hover:true
 	    });
-	// 	function($){
-	// 		$('.collapsible').collapsible();
-	// }
 	}
 
 }

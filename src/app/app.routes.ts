@@ -7,7 +7,6 @@ import {MateriaComponent} from './components/materia/materia.component';
 import {ArticuloComponent} from './components/articulo/articulo.component';
 import {CrearCursoComponent} from './components/crear-curso/crear-curso.component';
 
-
 const APP_ROUTES: Routes = [
 	{path:'inicio-alumno',component: InicioAlumnoComponent},
 	{path:'home',component: HomeComponent},

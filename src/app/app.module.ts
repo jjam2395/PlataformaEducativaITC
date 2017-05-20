@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -30,7 +30,6 @@ import { ArticuloComponent } from './components/articulo/articulo.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,13 +45,13 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
     MateriaComponent,
     ModuloComponent,
     ArticuloComponent,
-    CrearCursoComponent
-
+    CrearCursoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     APP_ROUTING,
     AngularFireModule.initializeApp(firebaseConf),
     AngularFireDatabaseModule,
