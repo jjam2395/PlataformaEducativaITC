@@ -18,3 +18,10 @@ main {
 .micontainer{
   margin: 0 3vw;
 }
+
+.icon-link{
+  color: #222;
+}
+.icon-link:hover{
+  color:#ddb219;
+}

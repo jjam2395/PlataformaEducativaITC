@@ -11,12 +11,14 @@ jQuery(document).ready(function($){
 
     $(".button-collapse").sideNav({
       menuWidth: 250,
-      closeOnClick: true 
+      closeOnClick: true
     });
-    
+
     $('.chips').material_chip();
 
     $('.chips').on('chip.add', function(e, chip){
     // you have the added chip here
     });
+
+      $('.modal').modal();
 });
