@@ -4,24 +4,41 @@
 
       <div class="input-field col s5">
         <i class="material-icons prefix">account_circle</i>
-        <input id="email" type="email" class="validate" formControlName="email">
-        <label for="email" data-error="error" data-success="valido">Correo institucional</label>
+        <input id="email" type="email"  formControlName="email">
+        <label for="email">Correo institucional</label>
       </div>
 
+
       <div class="input-field col s4">
-        <input id="password" type="password" class="validate" formControlName="password">
+        <input id="password" type="password" formControlName="password">
         <label for="password">Contraseña</label>
       </div>
 
       <div class="input-field col s3">
           <button class="waves-effect waves-light btn" type="submit"><i class="material-icons right">send</i>Ok</button>
       </div>
-
     </form>
   </div>
+<!--   <div class="row">
+    <div class="col s5">holsfsfsdfa</div>
+  </div> -->
   <div class="row">
     <div class="col s12 help valign-wrapper help-container hide-on-med-and-down">
+        <i class="tiny material-icons left">help</i>
+        <p class="help-1">¿No tienes cuenta? <a href="#modal1">Registrate</a></p>
         <p class="help-2">¿Olvidaste tu contraseña? <a href="#">ayuda</a></p>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Modal Header</h4>
+              <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
     </div>
   </div>
 </div>
+
+<!-- MODAL DE REGISTRO -->
+

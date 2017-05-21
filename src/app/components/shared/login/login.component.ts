@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'
 import { Router } from '@angular/router';
+declare var $:any;
 
 
 @Component({
@@ -17,6 +18,8 @@ export class LoginComponent implements OnInit {
         'email': new FormControl('',Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")),
         'password': new FormControl('',[Validators.required])
       });
+
+       $('#modal1').modal('open');
    }
    // [0-9]{8}+@itcuautla.edu.mx
   
@@ -27,6 +30,8 @@ export class LoginComponent implements OnInit {
   login(){
     console.log(this.forma);
     console.log(this.forma.value);
+
+    // if(this.forma)
 
     //SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
    /*this._ls.login();
@@ -39,6 +44,10 @@ export class LoginComponent implements OnInit {
      console.log("no redirigiendo");
    }*/
    
+  }
+
+  registrar(){
+
   }
 
   logout(){
