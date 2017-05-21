@@ -11,9 +11,11 @@ declare var $:any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  forma:FormGroup;
+  forma:FormGroup; //login
+  formaRegistro:FormGroup;
 
   constructor(private _ls: LoginService, private router:Router) {
+    //FORMULARIO PARA EL LOGIN
       this.forma = new FormGroup({
         'email': new FormControl('',Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")),
         'password': new FormControl('',[Validators.required])
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   registrar(){
-
+    console.log(this.forma);
   }
 
   logout(){

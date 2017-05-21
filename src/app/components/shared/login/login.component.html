@@ -29,12 +29,30 @@
         <p class="help-2">¿Olvidaste tu contraseña? <a href="#">ayuda</a></p>
         <div id="modal1" class="modal">
             <div class="modal-content">
-              <h4>Modal Header</h4>
-              <p>A bunch of text</p>
+              <h4>Registrate</h4>
+              <form [formGroup]="forma" (ngSubmit)="registrar()" novalidate="novalidate">
+
+                <div class="input-field col s5">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="emailRegistro" type="email" placeholder="NoControl@itcuautla.edu.mx" formControlName="email">
+                  <label for="emailRegistro">Correo institucional</label>
+                </div>
+
+
+                <div class="input-field col s4">
+                  <input id="passwordRegistro" type="password" formControlName="password">
+                  <label for="passwordRegistro">Contraseña</label>
+                </div>
+
+                <div class="input-field col s3">
+                    <button class="modal-action modal-close waves-effect waves-light btn" type="submit"><i class="material-icons right">send</i>Ok</button>
+                </div>
+
+              </form>
             </div>
-            <div class="modal-footer">
-              <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+<!--             <div class="modal-footer">
+             
+            </div> -->
         </div>
     </div>
   </div>
