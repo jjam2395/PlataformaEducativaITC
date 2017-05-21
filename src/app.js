@@ -20,5 +20,5 @@ jQuery(document).ready(function($){
     // you have the added chip here
     });
 
-      $('.modal').modal();
+    $('.modal').modal();
 });
