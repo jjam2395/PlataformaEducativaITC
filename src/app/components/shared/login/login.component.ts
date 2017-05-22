@@ -35,6 +35,17 @@ export class LoginComponent implements OnInit {
    if(this.forma.valid){
      console.log("se logueara al usuario")
      this._ls.login(this.forma.value.email,this.forma.value.password);
+     this._ls.user.subscribe((res)=>{
+       if(res){
+         if(res.emailVerified==false){
+         console.log("el usuario no ah verificado su email");
+         this._ls.sendVerificationEmail();
+         }else{
+           console.log("el email a sido verificado");
+           this.router.navigate(['/inicio-alumno']);
+         }
+       }
+     })
    }else{
      console.error("Los datos no son correctos");
    }
@@ -47,11 +58,11 @@ export class LoginComponent implements OnInit {
    // console.log(this._ls.user);
 
    // CHECAR SI EL USUARIO ESTA LOGUEADO CORRECTAMENTE PARA REDIRIGIRLO A SU INICIO
-   if(this._ls.user){
-     this.router.navigate(['/inicio-alumno'])
-   }else{
-     console.log("no redirigiendo");
-   }
+   // if(this._ls.user){
+   //   this.router.navigate(['/inicio-alumno'])
+   // }else{
+   //   console.log("no redirigiendo");
+   // }
    
   }
 
