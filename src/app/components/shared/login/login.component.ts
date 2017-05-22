@@ -18,10 +18,11 @@ export class LoginComponent implements OnInit {
     //FORMULARIO PARA EL LOGIN
       this.forma = new FormGroup({
         'email': new FormControl('',Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")),
-        'password': new FormControl('',[Validators.required])
+        'password': new FormControl('',[Validators.required, Validators.minLength(8)])
       });
 
        $('#modal1').modal('open');
+       $('#modal2').modal('open');
    }
    // [0-9]{8}+@itcuautla.edu.mx
   
@@ -30,13 +31,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.forma);
-    console.log(this.forma.value);
+    // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
+   if(this.forma.valid){
+     console.log("se logueara al usuario")
+     this._ls.login(this.forma.value.email,this.forma.value.password);
+   }else{
+     console.error("Los datos no son correctos");
+   }
 
-    // if(this.forma)
+   // setTimeout(function(){
+   //   console.log(this._ls.user); 
+   // },5000);
+   //CHECAR SI EL USUARIO YA VERIFICO SU CORREO
 
-    //SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
-   /*this._ls.login();
    // console.log(this._ls.user);
 
    // CHECAR SI EL USUARIO ESTA LOGUEADO CORRECTAMENTE PARA REDIRIGIRLO A SU INICIO
@@ -44,16 +51,22 @@ export class LoginComponent implements OnInit {
      this.router.navigate(['/inicio-alumno'])
    }else{
      console.log("no redirigiendo");
-   }*/
+   }
    
   }
 
   registrar(){
-    console.log(this.forma);
+    console.log(this.forma.value);
+    this._ls.registrar(this.forma.value.email, this.forma.value.password);
   }
 
   logout(){
   	this._ls.logout();
+  }
+
+  getstate(){
+    // console.log("uid del usuario: "+this._ls.getStateUser());
+    console.log(this._ls.user);
   }
 
 }

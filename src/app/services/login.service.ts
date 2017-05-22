@@ -6,34 +6,57 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class LoginService {
-	user:{}=null;
+	user=null;
 
   constructor(private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth) {
+    public afAuth: AngularFireAuth) {
+      //CHECAR SI EXISTE USUARIO EN LOCALSTORAGE
       if(localStorage.getItem('user')){
         this.user=localStorage.getItem('user');
       }else{
         this.user=null;
       }
+
+  }
+
+  registrar(email,password){
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    let errorMessage = error.message;
+    console.log(errorMessage);
+    });
+
+    let user = firebase .auth().currentUser;
+    console.log(user);
   }
   
-  // AUTENTICACION CON GOOGLE
-  login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    	.then(result =>{
-      // ALMACENAMOS LOS DAOTS DEL USUAIRO LOGEGADO EN LOCALSTORAGE
+  // AUTENTICACION CON CORREO Y CONTRASEÑA
+  login(email,password) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(error=>{
+      var errorMessage = error.message;
+      console.error(errorMessage);
+    }).then(result=>{
+      console.log("resultado del login",result);
       localStorage.setItem('user',JSON.stringify(result));
-      // TAMBIEN EN LA VARIABLE LOCAL
-      this.user=JSON.stringify(result);
-    	}); 
+      this.user=result;
+      console.log("uid del usuario",JSON.stringify(this.user.uid));
+    });
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(function(){
-      localStorage.removeItem('user');
-      this.user=null;
-    	console.log("sign-out successful")
+    localStorage.removeItem('user');
+    this.user=null;
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      console.log("Sign-out successful.");
+    }).catch(function(error) {
+      console.log(" An error happened.");
+      console.log(error);
+      // An error happened.
     });
+  }
+
+  getStateUser(){
+    
   }
 }
 
