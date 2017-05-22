@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $:any;
 
 @Component({
   selector: 'app-crear-curso',
@@ -10,6 +11,11 @@ export class CrearCursoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $('.chips').material_chip();
+
+    $('.chips').on('chip.add', function(e, chip){
+    // you have the added chip here
+    });
   }
 
 }
