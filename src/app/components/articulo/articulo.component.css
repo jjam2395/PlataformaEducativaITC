@@ -20,4 +20,13 @@
 
 .relacionados-container{
   border: 1px solid black;
+  height: 20vh;
+}
+
+aside{
+  padding: 0;
+}
+
+p{
+  margin:0;
 }
