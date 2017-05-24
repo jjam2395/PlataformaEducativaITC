@@ -41,17 +41,17 @@
   </div> -->
 
   <div class="contenedor-formulario">
-    <form>
+    <form (ngSubmit)="guardar()" #forma="ngForm">
       <div class="input-field">
-          <input id="nombreCurso" type="text" class="validate">
+          <input [(ngModel)]="curso.nombre" name="nombre" id="nombreCurso" type="text" class="validate">
           <label for="nombreCurso">Nombre del curso:</label>
         </div>
         <div class="input-field">
-          <textarea id="objCurso" class="materialize-textarea"></textarea>
-          <label for="objCurso">Objetico del curso</label>
+          <textarea [(ngModel)]="curso.objetivo" name="objetivo" id="objCurso" class="materialize-textarea"></textarea>
+          <label for="objCurso">Objetivo del curso</label>
         </div>
         <div class="input-field">
-          <textarea id="dscCurso" class="materialize-textarea"></textarea>
+          <textarea [(ngModel)]="curso.descripcion" name="descripcion" id="dscCurso" class="materialize-textarea"></textarea>
           <label for="dscCurso">Descripcion del curso</label>
         </div>
         <div class="input-field">
@@ -67,6 +67,9 @@
               <i class="close material-icons">close</i>
             </div>
             <label>Agrega modulos</label>
+        </div>
+        <div class="input-field">
+          <button type="submit" class="btn waves-effect pulse"> Guardar</button>
         </div>
     </form>
   </div>
