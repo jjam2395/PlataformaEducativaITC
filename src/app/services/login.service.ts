@@ -12,6 +12,7 @@ export class LoginService {
   constructor(private db: AngularFireDatabase,
     public afAuth: AngularFireAuth) {
       this.user = afAuth.authState;
+
   }
 
   registrar(email,password){
