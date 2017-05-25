@@ -19,11 +19,11 @@ export class CrearCursoComponent implements OnInit {
   hola:any;
   ngOnInit() {
 
-    $('.chips').material_chip();
+    //$('.chips').material_chip();
 
     $('.chips').on('chip.add', function(e, chip){
       console.log("chip",chip);
-      this.hola=chip;
+
     // you have the added chip here
       console.log(this.hola);
     });
