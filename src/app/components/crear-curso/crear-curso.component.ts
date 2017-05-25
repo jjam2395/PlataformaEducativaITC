@@ -23,7 +23,7 @@ export class CrearCursoComponent implements OnInit {
 
     $('.chips').on('chip.add', function(e, chip){
       console.log("chip",chip);
-      this.hola=chip;
+      this.hola=JSON.stringify(chip.tag);
     // you have the added chip here
       console.log(this.hola);
     });
