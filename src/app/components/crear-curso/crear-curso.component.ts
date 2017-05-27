@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 declare var $:any;
-
 @Component({
   selector: 'app-crear-curso',
   templateUrl: './crear-curso.component.html',
