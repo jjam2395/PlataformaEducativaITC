@@ -14,11 +14,7 @@ jQuery(document).ready(function($){
       closeOnClick: true
     });
 
-    $('.chips').material_chip();
 
-    $('.chips').on('chip.add', function(e, chip){
-    // you have the added chip here
-    });
 
     $('.modal').modal();
 });

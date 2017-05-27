@@ -5,13 +5,14 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { firebaseConf } from '../environments/firebase.conf'; 
+import { firebaseConf } from '../environments/firebase.conf';
 
 //RUTAS
 import { APP_ROUTING } from './app.routes';
 
 //SERVICIOS
 import { LoginService } from './services/login.service';
+import { CursosService } from './services/cursos.service';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -57,7 +58,9 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [LoginService], //AQUI SE DECLARAN LOS SERVICIOS
+  providers: [
+              LoginService,
+              CursosService], //AQUI SE DECLARAN LOS SERVICIOS
   bootstrap: [AppComponent]
 })
 export class AppModule { }
