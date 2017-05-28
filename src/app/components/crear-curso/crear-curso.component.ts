@@ -11,31 +11,30 @@ declare var $:any;
 })
 export class CrearCursoComponent implements OnInit {
 
-  curso:Curso={
-    nombre:"",
-    objetivo:"",
-    descripcion:"",
-    instructores:[]
-  }
-  constructor(private _cursosServices: CursosService) { }
-  hola:any;
+  nombre;
+  objetivo;
+  descripcion;
+  instructores:string[]=[];
+
+
+  constructor(private _cursosServices: CursosService) {
+   }
+
   ngOnInit() {
     $('.chips').material_chip();
 
-    $('.chips').on('chip.add', function(e, chip){
-      console.log("chip",chip);
-      this.hola=JSON.stringify(chip.tag);
-    // you have the added chip here
-      console.log(this.hola);
+    $('.chips.instructores').on('chip.add', function(e, chip){
+      this.instructor=JSON.stringify(chip.tag);
+      this.instructores.push(this.instructor);
     });
   }
 
   guardar(){
-    console.log(this.curso);
-    this._cursosServices.nuevoCurso(this.curso)
-      .subscribe(data=>{
+    console.log(this.nombre, this.objetivo, this.descripcion, this.instructores );
+    // this._cursosServices.nuevoCurso()
+    //   .subscribe(data=>{
         
-      })
+    //   })
   }
 
 }

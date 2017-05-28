@@ -71,6 +71,7 @@ export class LoginService {
       // this.resultado=null; //PARA ALTERNAR ENTRE LOGIN Y LOGOUT
       localStorage.removeItem('user');
       this.preloader=false;
+      this.router.navigate(['/home']);
     }).catch(function(error) {
       console.log( `An error happened. ${error}`);
       this.preloader=false;
