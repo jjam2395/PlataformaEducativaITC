@@ -22,11 +22,9 @@ export class CrearCursoComponent implements OnInit {
   ngOnInit() {
     $('.chips').material_chip();
 
-    $('.chips').on('chip.add', function(e, chip){
-      console.log("chip",chip);
-      this.hola=JSON.stringify(chip.tag);
-    // you have the added chip here
-      console.log(this.hola);
+    $('.chips.instructores').on('chip.add', function(e, chip){
+      this.instructor=JSON.stringify(chip.tag);
+      this.curso.instructores.push(this.instructor);
     });
   }
 
@@ -34,7 +32,6 @@ export class CrearCursoComponent implements OnInit {
     console.log(this.curso);
     this._cursosServices.nuevoCurso(this.curso)
       .subscribe(data=>{
-        
       })
   }
 
