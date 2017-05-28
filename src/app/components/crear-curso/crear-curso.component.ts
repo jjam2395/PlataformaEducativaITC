@@ -4,6 +4,7 @@ import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
 
 declare var $:any;
+
 @Component({
   selector: 'app-crear-curso',
   templateUrl: './crear-curso.component.html',
@@ -14,18 +15,16 @@ export class CrearCursoComponent implements OnInit {
   nombre;
   objetivo;
   descripcion;
-  instructores:string[]=[];
+  instructores:Array<any>;
 
 
-  constructor(private _cursosServices: CursosService) {
+constructor(private _cursosServices: CursosService) {
    }
 
   ngOnInit() {
     $('.chips').material_chip();
-
     $('.chips.instructores').on('chip.add', function(e, chip){
-      this.instructor=JSON.stringify(chip.tag);
-      this.instructores.push(this.instructor);
+      $.myFunction();
     });
   }
 
@@ -35,6 +34,14 @@ export class CrearCursoComponent implements OnInit {
     //   .subscribe(data=>{
         
     //   })
+  }
+  $.myFunction = function() {
+    alert('hi');
+  }
+
+  agregarElemento(){
+    // this.instructores.push(elemento);
+    console.log("hola");
   }
 
 }
