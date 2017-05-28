@@ -8,8 +8,10 @@ import {ArticuloComponent} from './components/articulo/articulo.component';
 import {CrearCursoComponent} from './components/crear-curso/crear-curso.component';
 import { RegistroComponent } from "./components/registro/registro.component";
 
+import { AuthGuardService } from "./services/auth-guard.service";
+
 const APP_ROUTES: Routes = [
-	{path:'inicio-alumno',component: InicioAlumnoComponent},
+	{path:'inicio-alumno',component: InicioAlumnoComponent, canActivate: [AuthGuardService] },
 	{path:'home',component: HomeComponent},
 	{path:'conocenos',component: ConocenosComponent},
 	{path:'oferta-educativa',component: OfertaEducativaComponent},

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Router } from "@angular/router";
 import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -9,15 +10,16 @@ export class LoginService {
 	 user: Observable<firebase.User>;
    banderaEmail:boolean=false;
    error:string;
-   resultado:string;
+   resultado:any; 
    preloader:boolean;
 
   constructor(private db: AngularFireDatabase,
-    public afAuth: AngularFireAuth) {
+    public afAuth: AngularFireAuth,
+    public router:Router) {
       this.user = afAuth.authState;
-      this.error=null;
-      this.resultado=null;
-      this.preloader=false;
+      this.error=null; //MOSTRAR MENSAJES DE ERROR
+      this.resultado=null; //MOSTRAR MENSAJES EXITOSOS
+      this.preloader=false; //INDICAR SI SE DEBE MOSTRAR EL PRELOADER O NO
   }
 
   registrar(email,password){
@@ -39,28 +41,40 @@ export class LoginService {
   
   // AUTENTICACION CON CORREO Y CONTRASEÑA
   login(email,password):any{
-    let resultado;
+    this.preloader=true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=>{
-      console.log("resultado desde el servicio",result);
-      resultado=result;
-      return result;
+      if(result.emailVerified==true){ //SOLO CUANDO EL CORREO HAYA SIDO VERIFICADO
+        // this.resultado=result; //PARA SE COMPROBADO POR LA VISTA Y ALTERNAR ENTRE EL BOTON LOGIN Y LOGOUT
+        console.log("Logeo exitoso",result);
+        localStorage.setItem('user',JSON.stringify(result)); //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
+      }else{
+        this.error="Necesitas validar tu correo electrónico"
+      }
+      this.preloader=false;
     }).catch(error=>{
-      var errorMessage = error.message;
-      console.error("error desde el servicio",errorMessage);
-      resultado=errorMessage;
-      return errorMessage;
+      console.error(`Error al iniciar sesión ${error.message}`);
+      if(error.message=="There is no user record corresponding to this identifier. The user may have been deleted."){
+        this.error="Esta cuenta no se encuentra registrada";
+      }else if(error.message=="The password is invalid or the user does not have a password."){
+        this.error="Contraseña invalida";
+      }else{
+        this.error=error.message;
+      }
+      this.preloader=false;
     });
-    // return resultado;
   }
 
   logout() {
+    this.preloader=true;
     this.afAuth.auth.signOut().then(function() {
-      // Sign-out successful.
       console.log("Sign-out successful.");
+      // this.resultado=null; //PARA ALTERNAR ENTRE LOGIN Y LOGOUT
+      localStorage.removeItem('user');
+      this.preloader=false;
+      this.router.navigate(['/home']);
     }).catch(function(error) {
-      console.log(" An error happened.");
-      console.log(error);
-      // An error happened.
+      console.log( `An error happened. ${error}`);
+      this.preloader=false;
     });
   }
 

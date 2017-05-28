@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="card-action right-align">
-        <button class="modal-action modal-close waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
+        <button class="waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
           type="submit"><i class="material-icons right">send</i>Ok</button>
         <label class="wrong left-align" *ngIf="!forma.controls['email'].valid && forma.value.email!=''"><p>Correo invalido</p></label>
         <label class="wrong left-align" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty && forma.value.password!=''"><p>La contraseña debe tener al menos 8 caracteres</p></label>

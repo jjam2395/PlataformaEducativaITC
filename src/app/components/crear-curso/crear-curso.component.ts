@@ -11,14 +11,18 @@ declare var $:any;
 })
 export class CrearCursoComponent implements OnInit {
 
-  curso:Curso={
-    nombre:"",
-    objetivo:"",
-    descripcion:"",
-    instructores:[]
-  }
-  constructor(private _cursosServices: CursosService) { }
-  hola:any;
+  curso;
+  instructor:string;
+
+  constructor(private _cursosServices: CursosService) {
+    this.curso={
+      nombre:"",
+      objetivo:"",
+      descripcion:"",
+      instructores:[]
+    }
+   }
+
   ngOnInit() {
     $('.chips').material_chip();
 
