@@ -13,6 +13,7 @@ import { APP_ROUTING } from './app.routes';
 //SERVICIOS
 import { LoginService } from './services/login.service';
 import { CursosService } from './services/cursos.service';
+import { AuthGuardService } from "./services/auth-guard.service";
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -60,9 +61,10 @@ import { RegistroComponent } from './components/registro/registro.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [
+  providers: [ //AQUI SE DECLARAN LOS SERVICIOS
               LoginService,
-              CursosService], //AQUI SE DECLARAN LOS SERVICIOS
+              CursosService,
+              AuthGuardService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
