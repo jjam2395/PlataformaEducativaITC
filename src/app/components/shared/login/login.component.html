@@ -1,9 +1,7 @@
 <div class="col m12  l6   login-container">
   <div class="row">
-  <button (click)="getstate()">getState</button>
-  <button (click)="logout()">logout</button>
-    <div id="modal2" class="modal">
-        <div class="modal-content">
+  <!--<button (click)="getstate()">getState</button>
+  <button (click)="logout()">logout</button>-->
             <form [formGroup]="forma" (ngSubmit)="login()" novalidate="novalidate">
 
               <div class="input-field col s5">
@@ -18,57 +16,16 @@
               </div>
 
               <div class="input-field col s3">
-                  <button class="modal-action modal-close waves-effect waves-light btn" type="submit"><i class="material-icons right">send</i>Login</button>
+                  <button class="waves-effect waves-light btn" type="submit"><i class="material-icons right">send</i>Login</button>
               </div>
             </form>
-        </div>
-        <div class="modal-footer">
-              
-        </div>
-    </div>
-    <a class="waves-effect waves-light btn" href="#modal2"><i class="material-icons right">send</i>Login</a>
   </div>
-<!--   <div class="row">
-    <div class="col s5">holsfsfsdfa</div>
-  </div> -->
+
   <div class="row">
     <div class="col s12 help valign-wrapper help-container hide-on-med-and-down">
         <i class="tiny material-icons left">help</i>
-        <p class="help-1">¿No tienes cuenta? <a href="#modal1">Registrate</a></p>
+        <p class="help-1">¿No tienes cuenta? <a routerLink='/registro'>Registrate</a></p>
         <p class="help-2">¿Olvidaste tu contraseña? <a href="#">ayuda</a></p>
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>Registrate</h4>
-             
-                <label class="wrong" *ngIf="!forma.controls['email'].valid"><p>Correo invalido</p></label>
-
-                <label class="wrong" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty"><p>La contraseña debe tener al menos 8 caracteres</p></label>
-              
-              <form [formGroup]="forma" (ngSubmit)="registrar()" novalidate="novalidate">
-
-                <div class="input-field col s5">
-                  <i class="material-icons prefix">account_circle</i>
-                  <input id="emailRegistro" type="email" placeholder="NoControl@itcuautla.edu.mx" formControlName="email">
-                  <label for="emailRegistro">Correo institucional</label>
-                </div>
-
-
-                <div class="input-field col s4">
-                  <input id="passwordRegistro" type="password" formControlName="password">
-                  <label for="passwordRegistro">Contraseña</label>
-                </div>
-
-                <div class="input-field col s3">
-                    <button class="modal-action modal-close waves-effect waves-light btn"   [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}" type="submit"><i class="material-icons right">send</i>Ok</button>
-                </div>
-
-              </form>
-            </div>
-            <div class="modal-footer">
-              
-                
-            </div>
-        </div>
     </div>
   </div>
 </div>

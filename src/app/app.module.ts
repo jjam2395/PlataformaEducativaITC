@@ -29,6 +29,7 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { ModuloComponent } from './components/shared/modulo/modulo.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
     ModuloComponent,
     ArticuloComponent,
     CrearCursoComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

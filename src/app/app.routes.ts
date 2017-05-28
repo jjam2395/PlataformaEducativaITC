@@ -6,6 +6,7 @@ import {OfertaEducativaComponent} from './components/oferta-educativa/oferta-edu
 import {MateriaComponent} from './components/materia/materia.component';
 import {ArticuloComponent} from './components/articulo/articulo.component';
 import {CrearCursoComponent} from './components/crear-curso/crear-curso.component';
+import { RegistroComponent } from "./components/registro/registro.component";
 
 const APP_ROUTES: Routes = [
 	{path:'inicio-alumno',component: InicioAlumnoComponent},
@@ -15,6 +16,7 @@ const APP_ROUTES: Routes = [
 	{path:'materia',component: MateriaComponent},
 	{path:'articulo',component: ArticuloComponent},
 	{path:'crear-curso', component: CrearCursoComponent},
+	{path:'registro', component: RegistroComponent},
 	{path:'**', pathMatch: 'full', redirectTo:'home'}
 ];
 
