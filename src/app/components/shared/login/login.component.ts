@@ -62,6 +62,5 @@ export class LoginComponent implements OnInit {
 
   logout(){
   	this._ls.logout();
-    this.router.navigate(['/home']);
   }
 }
