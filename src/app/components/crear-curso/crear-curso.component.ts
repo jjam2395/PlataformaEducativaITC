@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
+import { CursosService} from '../../services/cursos.service';
+
 declare var $:any;
 @Component({
   selector: 'app-crear-curso',
@@ -15,7 +17,7 @@ export class CrearCursoComponent implements OnInit {
     descripcion:"",
     instructores:[]
   }
-  constructor() { }
+  constructor(private _cursosServices: CursosService) { }
   hola:any;
   ngOnInit() {
     $('.chips').material_chip();
@@ -30,6 +32,10 @@ export class CrearCursoComponent implements OnInit {
 
   guardar(){
     console.log(this.curso);
+    this._cursosServices.nuevoCurso(this.curso)
+      .subscribe(data=>{
+        
+      })
   }
 
 }
