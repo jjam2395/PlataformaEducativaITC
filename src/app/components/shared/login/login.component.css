@@ -14,3 +14,24 @@
 .wrong{
     color: red;
 }
+
+#email, #password{
+  border-bottom: 1px #CFD8DC solid;
+  height: 5vh;
+}
+
+
+#email:focus{
+ border-bottom: 1px #009688 solid;
+ margin-top: 1em;
+}
+
+.material-icons{
+  color: #009688;
+}
+
+input.ng-valid{
+  background: #607D8B;
+  margin-top: 1vh;
+  height: 4vh;
+}

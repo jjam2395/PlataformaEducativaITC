@@ -1,17 +1,17 @@
 
-  <nav>
-    <div class="nav-wrapper ">
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <div class="row valign-wrapper">
-        <ul class="hide-on-med-and-down row col s12 center-align  ">
-          <li class="col s4 "><a class="list-menu"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
-          <li class="col s4"><a class="list-menu" href="badges.html">Inscribete</a></li>
-          <li class="col s4"><a class="list-menu" [routerLink]="['/conocenos']">Conocenos</a></li>
-        </ul>
-      </div>
-      <ul class="side-nav" id="mobile-demo">
-        <li> <a [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
-        <li> <a [routerLink]="['/conocenos']">Conocenos</a></li>
-      </ul>
-    </div>
+  <nav class="z-depth-2 blue-grey lighten-1">
+    <div class="">
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <div class="nav-content hide-on-med-and-down ">
+          <ul class="tabs blue-grey lighten-1">
+            <li class="tab"><a class="white-text blue-grey lighten-1"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
+            <li class="tab"><a class="white-text blue-grey lighten-1" [routerLink]="['/registro']">Inscribete</a></li>
+            <li class="tab"><a class="white-text blue-grey lighten-1" [routerLink]="['/conocenos']">Conocenos</a></li>
+          </ul>
+        </div>
+    <ul class="side-nav" id="mobile-demo">
+      <li> <a [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
+      <li> <a [routerLink]="['/conocenos']">Conocenos</a></li>
+    </ul>
+        </div>
 </nav>

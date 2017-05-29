@@ -12,10 +12,10 @@ export class CrudFirebaseService {
    }
 
   //GUARDAR DATOS BASICOS DEL USUARIO
-  saveUser(result){
+  saveUser(result, nombre){
     let refUser=this.db.list('/usuarios/');
     let data={
-      displayName: result.displayName==null ? '' : result.displayName,
+      displayName: nombre,
       email: result.email==null ? '' : result.email,
       photoURL: result.photoURL==null ? '' : result.photoURL 
     }

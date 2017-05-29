@@ -1,9 +1,13 @@
+<app-navbar-home></app-navbar-home>
+
 <!--mientras no exista un mensaje con el resultado-->
-<div class="container-center" *ngIf="this._ls.resultado==null && !this._ls.preloader"> 
+<div class="container-center" *ngIf="this._ls.resultado==null && !this._ls.preloader">
   <div class="card">
     <form [formGroup]="forma" (ngSubmit)="registrar()" novalidate="novalidate">
       <div class="card-content black-text">
+
         <span class="card-title center-align">Registrate</span>
+
         <div class="input-field">
           <i class="material-icons prefix">account_circle</i>
           <input id="emailRegistro" type="email" placeholder="NoControl@itcuautla.edu.mx" formControlName="email">
@@ -11,23 +15,31 @@
         </div>
 
         <div class="input-field">
+          <input id="nombreRegistro" type="text" placeholder="Tu nombre" formControlName="nombre">
+          <label for="nombreRegistro">Nombre completo</label>
+        </div>
+
+        <div class="input-field">
           <input id="passwordRegistro" type="password" formControlName="password">
           <label for="passwordRegistro">Contraseña</label>
         </div>
+
       </div>
+
       <div class="card-action right-align">
-        <button class="waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
+        <button class="waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid || !forma.controls['nombre'].valid}"
           type="submit"><i class="material-icons right">send</i>Ok</button>
         <label class="wrong left-align" *ngIf="!forma.controls['email'].valid && forma.value.email!=''"><p>Correo invalido</p></label>
         <label class="wrong left-align" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty && forma.value.password!=''"><p>La contraseña debe tener al menos 8 caracteres</p></label>
         <label class="wrong left-align" *ngIf="this._ls.error"> <p>{{this._ls.error}}</p></label>
       </div>
+      
     </form>
   </div>
 </div>
 
 
-<ng-container  *ngIf="this._ls.resultado && !this._ls.preloader"> 
+<ng-container  *ngIf="this._ls.resultado && !this._ls.preloader">
   <div class="correcto container-center center-align">
     <div>
       <p > ¡{{this._ls.resultado}}!</p>
