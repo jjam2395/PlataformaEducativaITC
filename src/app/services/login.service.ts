@@ -5,6 +5,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
+import { CrudFirebaseService } from "./crud-firebase.service";
+
 @Injectable()
 export class LoginService {
   user: Observable<firebase.User>;
@@ -15,22 +17,27 @@ export class LoginService {
 
   constructor(private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
-    public router: Router) {
+    public router: Router,
+    public _cf:CrudFirebaseService) {
     this.user = afAuth.authState;
     this.error = null; //MOSTRAR MENSAJES DE ERROR
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = false; //INDICAR SI SE DEBE MOSTRAR EL PRELOADER O NO
   }
 
+  //CREAR USUARIO CON CORREO Y CONTRASEÑA
   registrar(email, password) {
     this.preloader = true;
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((result) => {
+      //SI TODO SE EJECUTA CORRECTAMENTE LOS MENSAJES DE ERROR SE PONENE EN FALSE Y SE MANDA EMAIL DE CONFIRMACION
       console.log(`Registro exitoso ${JSON.stringify(result)}`);
       this.error = null;
       this.resultado = "Registro exitoso"
       this.preloader = false;
       this.sendVerificationEmail();
+      this._cf.saveUser(result);
     }).catch((error) => {
+      //SI OCURRE ALGUN ERROR SE GUARDA EL MENSAJE DE ERROR Y RESULTADO A NULL
       if (error.message == "The email address is already in use by another account.") {
         this.error = "La dirección de email ya se encuentra en uso."
         this.resultado = null
@@ -43,17 +50,19 @@ export class LoginService {
   login(email, password): any {
     this.preloader = true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
-      if (result.emailVerified == true) { //SOLO CUANDO EL CORREO HAYA SIDO VERIFICADO
-        // this.resultado=result; //PARA SE COMPROBADO POR LA VISTA Y ALTERNAR ENTRE EL BOTON LOGIN Y LOGOUT
+      //SI EL CORREO AH SIDO VERIFICADO
+      if (result.emailVerified == true) { 
         console.log("Logeo exitoso", result);
-        localStorage.setItem('user', JSON.stringify(result)); //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
-         this.router.navigate(['/inicio-alumno']);
+        //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
+        localStorage.setItem('user', JSON.stringify(result)); 
+        //REDIRECCIONAR AL INICIO DEL ALUMNO
+        this.router.navigate(['/inicio-alumno']);
     } else {
         this.error = "Necesitas validar tu correo electrónico"
       }
       this.preloader = false;
     }).catch((error) => {
-      console.error(`Error al iniciar sesión ${error.message}`);
+      console.error(`Error al iniciar sesion ${error.message}`);
       if (error.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
         this.error = "Esta cuenta no se encuentra registrada";
       } else if (error.message == "The password is invalid or the user does not have a password.") {
