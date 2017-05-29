@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         if(result.emailVerified==true){
           console.log(result)
           console.log("redirigiendo a al inicio del alumno");
-          this.router.navigate(['/inicio-alumno']);
+         
         }else{
           console.log("primero verifica tu email");
         }
@@ -62,5 +62,6 @@ export class LoginComponent implements OnInit {
 
   logout(){
   	this._ls.logout();
+    this.router.navigate(['/home']);
   }
 }
