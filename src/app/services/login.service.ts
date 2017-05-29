@@ -26,7 +26,9 @@ export class LoginService {
   }
 
   //CREAR USUARIO CON CORREO Y CONTRASEÑA
-  registrar(email, password) {
+  registrar(email, password, nombre) {
+    this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
+    this.preloader = false;
     this.preloader = true;
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((result) => {
       //SI TODO SE EJECUTA CORRECTAMENTE LOS MENSAJES DE ERROR SE PONENE EN FALSE Y SE MANDA EMAIL DE CONFIRMACION
@@ -34,8 +36,9 @@ export class LoginService {
       this.error = null;
       this.resultado = "Registro exitoso"
       this.preloader = false;
+      //SE ENVIA UN CORREO DE VERIFICACION A LA CUENTA Y SE GURDAN LOS DATOS BASICOS DEL USUARIO
       this.sendVerificationEmail();
-      this._cf.saveUser(result);
+      this._cf.saveUser(result, nombre);
     }).catch((error) => {
       //SI OCURRE ALGUN ERROR SE GUARDA EL MENSAJE DE ERROR Y RESULTADO A NULL
       if (error.message == "The email address is already in use by another account.") {
@@ -48,6 +51,8 @@ export class LoginService {
 
   // AUTENTICACION CON CORREO Y CONTRASEÑA
   login(email, password): any {
+    this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
+    this.preloader = false;
     this.preloader = true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
       //SI EL CORREO AH SIDO VERIFICADO

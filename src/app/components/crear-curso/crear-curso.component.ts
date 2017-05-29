@@ -27,7 +27,6 @@ export class CrearCursoComponent implements OnInit {
     $('.chips').material_chip();
   }
 
-
   guardar(){
     var data = $('.chips.instructores').material_chip('data');
     for(var i = 0;i<data.length;i++) {
@@ -44,5 +43,4 @@ export class CrearCursoComponent implements OnInit {
       .subscribe(data=>{
       })
   }
-
 }

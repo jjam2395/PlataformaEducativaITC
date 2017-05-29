@@ -15,6 +15,7 @@ export class RegistroComponent implements OnInit {
   constructor(private _ls: LoginService, private router:Router) {
      this.forma = new FormGroup({
         'email': new FormControl('',[Validators.required, Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")]),
+        'nombre': new FormControl('',Validators.required),
         'password': new FormControl('',[Validators.required, Validators.minLength(8)])
       });
    }
@@ -26,7 +27,7 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar(){
-    this._ls.registrar(this.forma.value.email,this.forma.value.password);
+    this._ls.registrar(this.forma.value.email, this.forma.value.password, this.forma.value.nombre);
   }
 
 }

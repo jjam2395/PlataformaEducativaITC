@@ -1,26 +1,46 @@
-<div class="col m12  l6   login-container" *ngIf="!this._ls.preloader">
+<div class="col m12 l6 login-container" *ngIf="!this._ls.preloader">
   <div class="row">
     <!--APARECERA CUANDO EL USUARIO ESTE LOGEADO-->
     <button class="waves-effect waves-light btn right-align" (click)="logout()" *ngIf="this.logeado==true">logout</button>
   </div>
   <!--APARECERA CUANDO EL USUARIO NO ESTE LOGEADO-->
-  <ng-container *ngIf="this.logeado==false">
-    <div class="row">
-              <form [formGroup]="forma" (ngSubmit)="login()" novalidate="novalidate">
+  <ng-container  *ngIf="this.logeado==false"> 
+    <a class="waves-effect waves-light btn" href="#modalLogin" (click)="limpiar()">login</a>
+  </ng-container>
+</div>
 
+<!--MODAL DE LOGIN-->
+<div id="modalLogin" class="modal">
+  <!--PRELOAD-->
+    <div *ngIf="this._ls.preloader" class="container-center">
+      <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!---->
+    <div class="row" *ngIf="!this._ls.preloader">
+              <form [formGroup]="forma" (ngSubmit)="login()" novalidate="novalidate">
                 <div class="input-field col s5">
-                  <i class="material-icons prefix">account_circle</i>
-                  <input id="email" type="email"  formControlName="email">
-                  <label for="email">Correo institucional</label>
+                  <i class="material-icons prefix blue-grey-text text-lighten-5">account_circle</i>
+                  <input class="blue-grey-text text-lighten-5" id="email" type="email"  formControlName="email">
+                  <label class="blue-grey-text text-lighten-5" for="email">Correo institucional</label>
                 </div>
 
                 <div class="input-field col s4">
-                  <input id="password" type="password" formControlName="password">
-                  <label for="password">Contraseña</label>
+                  <input class="teal-text " id="password" type="password" formControlName="password">
+                  <label class="blue-grey-text text-lighten-5"  for="password">Contraseña</label>
                 </div>
 
                 <div class="input-field col s3">
-                    <button class="waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
+                    <button class=" modal-close waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
             type="submit"><i class="material-icons right">send</i>Ok</button>
                 </div>
               </form>
@@ -33,25 +53,9 @@
       <label class="wrong left-align" *ngIf="this._ls.error"> <p>{{this._ls.error}}</p></label>
 
       <div class="col s12 help valign-wrapper help-container hide-on-med-and-down">
-          <i class="tiny material-icons left">help</i>
-          <p class="help-1">¿No tienes cuenta? <a routerLink='/registro'>Registrate</a></p>
-          <p class="help-2">¿Olvidaste tu contraseña? <a href="#">ayuda</a></p>
+          <i class="tiny material-icons left blue-grey-text text-lighten-5">help</i>
+          <p class="help-1 white-text">¿No tienes cuenta? <a routerLink='/registro' class=" modal-close">Registrate</a></p>
+          <p class="help-2 white-text">¿Olvidaste tu contraseña? <a href="#">ayuda</a></p>
       </div>
     </div>
-  </ng-container>
-</div>
-
-<div *ngIf="this._ls.preloader" class="container-center"> 
-  <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
   </div>
-</div>
-
