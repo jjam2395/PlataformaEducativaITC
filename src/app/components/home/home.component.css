@@ -9,3 +9,15 @@
 .article-container{
   margin-top: 10vh;
 }
+
+.imagen-home-container{
+height: 100%;
+}
+
+.contenido-home{
+  margin:0;
+}
+
+.destacados-home{
+  margin-top: 10vh;
+}
