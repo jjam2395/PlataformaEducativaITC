@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class CursosService {
 
-  cursosURL:string ="https://plataformaeducativaitc.firebaseio.com/cursos.json"
+  cursosURL:string ="https://plataformaeducativaitc-50026.firebaseio.com/cursos.json"
 
   constructor( private http:Http) { }
 
