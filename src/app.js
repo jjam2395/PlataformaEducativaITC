@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
       closeOnClick: true
     });
 
-
+    $('select').material_select();
 
     $('.modal').modal();
 });
