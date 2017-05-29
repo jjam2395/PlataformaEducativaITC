@@ -1,0 +1,22 @@
+.container-center{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.card{
+    width: 30vw;
+}
+
+.card-title{
+    padding-bottom: 3vh;
+}
+
+.wrong{
+    color: red;
+}
+
+.correcto{
+    color: green;
+    font-size: 3em;
+}

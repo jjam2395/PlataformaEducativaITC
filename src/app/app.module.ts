@@ -13,6 +13,7 @@ import { APP_ROUTING } from './app.routes';
 //SERVICIOS
 import { LoginService } from './services/login.service';
 import { CursosService } from './services/cursos.service';
+import { AuthGuardService } from "./services/auth-guard.service";
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { ModuloComponent } from './components/shared/modulo/modulo.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -47,6 +49,7 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
     ModuloComponent,
     ArticuloComponent,
     CrearCursoComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +61,10 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [
+  providers: [ //AQUI SE DECLARAN LOS SERVICIOS
               LoginService,
-              CursosService], //AQUI SE DECLARAN LOS SERVICIOS
+              CursosService,
+              AuthGuardService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

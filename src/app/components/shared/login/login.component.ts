@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'
 import { Router } from '@angular/router';
-declare var $:any;
-
 
 @Component({
   selector: 'app-login',
@@ -12,72 +10,58 @@ declare var $:any;
 })
 export class LoginComponent implements OnInit {
   forma:FormGroup; //login
-  formaRegistro:FormGroup;
+  logeado:boolean;
 
   constructor(private _ls: LoginService, private router:Router) {
-    //FORMULARIO PARA EL LOGIN
+    if(localStorage.getItem('user')){
+      this.logeado=true;
+    }else{
+      this.logeado=false;
+    }
+    //REGLAS DE VALIDACION PARA EL FORMULARIO DE LOGIN
       this.forma = new FormGroup({
-        'email': new FormControl('',Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")),
+        'email': new FormControl('',[Validators.required, Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")]),
         'password': new FormControl('',[Validators.required, Validators.minLength(8)])
       });
 
-       $('#modal1').modal('open');
-       $('#modal2').modal('open');
+      this._ls.user.subscribe(result=>{
+        if(localStorage.getItem('user')){
+          this.logeado=true;
+        }else{
+          this.logeado=false;
+        }
+      })
    }
-   // [0-9]{8}+@itcuautla.edu.mx
   
   ngOnInit() {
-    // console.log(this._ls.user);
   }
+
 
   login(){
     // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
-   if(this.forma.valid){
-     console.log("se logueara al usuario")
-     this._ls.login(this.forma.value.email,this.forma.value.password);
-     this._ls.user.subscribe((res)=>{
-       if(res){
-         if(res.emailVerified==false){
-         console.log("el usuario no ah verificado su email");
-         this._ls.sendVerificationEmail();
-         }else{
-           console.log("el email a sido verificado");
-           this.router.navigate(['/inicio-alumno']);
-         }
-       }
-     })
-   }else{
-     console.error("Los datos no son correctos");
-   }
-
-   // setTimeout(function(){
-   //   console.log(this._ls.user); 
-   // },5000);
-   //CHECAR SI EL USUARIO YA VERIFICO SU CORREO
-
-   // console.log(this._ls.user);
-
-   // CHECAR SI EL USUARIO ESTA LOGUEADO CORRECTAMENTE PARA REDIRIGIRLO A SU INICIO
-   // if(this._ls.user){
-   //   this.router.navigate(['/inicio-alumno'])
-   // }else{
-   //   console.log("no redirigiendo");
-   // }
-   
+  if(this.forma.valid){
+    this._ls.login(this.forma.value.email,this.forma.value.password);  
+    //SUSCRIBIRSE AL BOSERVABLE DE USER 
+    this._ls.user.subscribe((result)=>{
+      if(result){
+        if(result.emailVerified==true){
+          console.log(result)
+          console.log("redirigiendo a al inicio del alumno");
+         
+        }else{
+          console.log("primero verifica tu email");
+        }
+      }else{
+        console.log("redirigiendo al home")
+      }   
+    });  
+  }else{
+    console.error("el formato de los datos no es correcto");
   }
-
-  registrar(){
-    console.log(this.forma.value);
-    this._ls.registrar(this.forma.value.email, this.forma.value.password);
   }
 
   logout(){
   	this._ls.logout();
+    this.router.navigate(['/home']);
   }
-
-  getstate(){
-    // console.log("uid del usuario: "+this._ls.getStateUser());
-    console.log(this._ls.user);
-  }
-
 }
