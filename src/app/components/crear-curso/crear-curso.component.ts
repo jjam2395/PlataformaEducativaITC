@@ -13,20 +13,20 @@ export class CrearCursoComponent implements OnInit {
     nombre:"",
     objetivo:"",
     descripcion:"",
-    instructores:[]
+    instructores:["hola"]
   }
   constructor() { }
   hola:any;
   ngOnInit() {
 
-    //$('.chips').material_chip();
+    $('.chips').material_chip();
 
     $('.chips').on('chip.add', function(e, chip){
       console.log("chip",chip);
 
       this.hola=JSON.stringify(chip.tag);
     // you have the added chip here
-      console.log(this.hola);
+      console.log(this.curso.instructores);
     });
   }
 
