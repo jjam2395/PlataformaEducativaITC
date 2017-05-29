@@ -64,4 +64,9 @@ export class LoginComponent implements OnInit {
   	this._ls.logout();
     this.router.navigate(['/home']);
   }
+
+  limpiar(){
+    this._ls.error=null;
+    this._ls.resultado=null;
+  }
 }

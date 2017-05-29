@@ -14,6 +14,7 @@ import { APP_ROUTING } from './app.routes';
 import { LoginService } from './services/login.service';
 import { CursosService } from './services/cursos.service';
 import { AuthGuardService } from "./services/auth-guard.service";
+import { CrudFirebaseService } from "./services/crud-firebase.service";
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -64,7 +65,8 @@ import { RegistroComponent } from './components/registro/registro.component';
   providers: [ //AQUI SE DECLARAN LOS SERVICIOS
               LoginService,
               CursosService,
-              AuthGuardService], 
+              AuthGuardService,
+              CrudFirebaseService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
