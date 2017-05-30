@@ -18,6 +18,7 @@ export class CrearCursoComponent implements OnInit {
       nombre:"",
       objetivo:"",
       descripcion:"",
+      carrera:"",
       instructores:[],
       modulos:[],
     }

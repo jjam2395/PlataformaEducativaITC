@@ -1,3 +1,4 @@
+import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -60,7 +61,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     APP_ROUTING,
     AngularFireModule.initializeApp(firebaseConf),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MaterializeModule
   ],
   providers: [ //AQUI SE DECLARAN LOS SERVICIOS
               LoginService,

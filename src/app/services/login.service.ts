@@ -26,7 +26,7 @@ export class LoginService {
   }
 
   //CREAR USUARIO CON CORREO Y CONTRASEÑA
-  registrar(email, password, nombre) {
+  registrar(email, password, nombre, carrera) {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = false;
     this.preloader = true;
@@ -38,7 +38,7 @@ export class LoginService {
       this.preloader = false;
       //SE ENVIA UN CORREO DE VERIFICACION A LA CUENTA Y SE GURDAN LOS DATOS BASICOS DEL USUARIO
       this.sendVerificationEmail();
-      this._cf.saveUser(result, nombre);
+      this._cf.saveUser(result, nombre, carrera);
     }).catch((error) => {
       //SI OCURRE ALGUN ERROR SE GUARDA EL MENSAJE DE ERROR Y RESULTADO A NULL
       if (error.message == "The email address is already in use by another account.") {
