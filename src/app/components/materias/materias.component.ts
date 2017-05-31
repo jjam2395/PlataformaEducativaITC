@@ -10,6 +10,11 @@ export class MateriasComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.getCursos();
+  }
+
+  getCursos(){
+    
   }
 
 }

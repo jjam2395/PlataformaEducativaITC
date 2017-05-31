@@ -33,4 +33,8 @@ export class CursosService {
     //     return res.json();
     //   })
   }
+
+  cargarCursos(){
+    let refCursos=this.db.list('/cursos/');
+  }
 }

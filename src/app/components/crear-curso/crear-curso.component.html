@@ -41,7 +41,7 @@
   </div> -->
 
   <div class="contenedor-formulario">
-    <form (ngSubmit)="guardar()" #forma="ngForm">
+    <form (ngSubmit)="guardar(); forma.resetForm()" #forma="ngForm" >
       <div class="input-field">
           <input [(ngModel)]="curso.nombre" name="nombre" id="nombreCurso" type="text" class="validate">
           <label for="nombreCurso">Nombre del curso:</label>

@@ -35,6 +35,8 @@ import { CrearCursoComponent } from './components/crear-curso/crear-curso.compon
 import { RegistroComponent } from './components/registro/registro.component';
 import { MateriaDetalleComponent } from './components/materia-detalle/materia-detalle.component';
 
+import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { MateriaDetalleComponent } from './components/materia-detalle/materia-de
     CrearCursoComponent,
     RegistroComponent,
     MateriaDetalleComponent,
+    NameCarreraPipe,
   ],
   imports: [
     BrowserModule,
