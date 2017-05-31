@@ -40,8 +40,6 @@ export class CrearCursoComponent implements OnInit {
     }
 
     console.log(this.curso);
-    this._cursosServices.nuevoCurso(this.curso)
-      .subscribe(data=>{
-      })
+    this._cursosServices.nuevoCurso(this.curso);
   }
 }

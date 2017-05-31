@@ -28,11 +28,12 @@ import { HomeComponent } from './components/home/home.component';
 import { DudasComponent } from './components/shared/dudas/dudas.component';
 import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
-import { MateriaComponent } from './components/materia/materia.component';
+import { MateriasComponent } from './components/materias/materias.component';
 import { ModuloComponent } from './components/shared/modulo/modulo.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { MateriaDetalleComponent } from './components/materia-detalle/materia-detalle.component';
 
 
 @NgModule({
@@ -47,11 +48,12 @@ import { RegistroComponent } from './components/registro/registro.component';
     DudasComponent,
     ConocenosComponent,
     OfertaEducativaComponent,
-    MateriaComponent,
+    MateriasComponent,
     ModuloComponent,
     ArticuloComponent,
     CrearCursoComponent,
     RegistroComponent,
+    MateriaDetalleComponent,
   ],
   imports: [
     BrowserModule,

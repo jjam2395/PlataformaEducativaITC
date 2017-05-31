@@ -31,7 +31,8 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar(){
-    this._ls.registrar(this.forma.value.email, this.forma.value.password, this.forma.value.nombre, this.forma.value.carrera );
+    //ENVIAMOS TODA LA INGORMACION CONTENIDA EN EL FORMULARIO AL SERIVCIO DE LOGIN
+    this._ls.registrar(this.forma.value);
   }
 
 }

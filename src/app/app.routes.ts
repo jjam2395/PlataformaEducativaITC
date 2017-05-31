@@ -3,7 +3,7 @@ import {InicioAlumnoComponent} from './components/inicio-alumno/inicio-alumno.co
 import {HomeComponent} from './components/home/home.component';
 import {ConocenosComponent} from './components/conocenos/conocenos.component';
 import {OfertaEducativaComponent} from './components/oferta-educativa/oferta-educativa.component';
-import {MateriaComponent} from './components/materia/materia.component';
+import {MateriasComponent} from './components/materias/materias.component';
 import {ArticuloComponent} from './components/articulo/articulo.component';
 import {CrearCursoComponent} from './components/crear-curso/crear-curso.component';
 import { RegistroComponent } from "./components/registro/registro.component";
@@ -15,7 +15,7 @@ const APP_ROUTES: Routes = [
 	{path:'home',component: HomeComponent},
 	{path:'conocenos',component: ConocenosComponent},
 	{path:'oferta-educativa',component: OfertaEducativaComponent},
-	{path:'materia',component: MateriaComponent, canActivate: [AuthGuardService]},
+	{path:'materias',component: MateriasComponent, canActivate: [AuthGuardService]},
 	{path:'articulo',component: ArticuloComponent},
 	{path:'crear-curso', component: CrearCursoComponent},
 	{path:'registro', component: RegistroComponent},
