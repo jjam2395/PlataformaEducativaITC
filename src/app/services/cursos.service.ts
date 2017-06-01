@@ -8,7 +8,7 @@ import {Curso} from '../interfaces/curso.interface';
 
 @Injectable()
 export class CursosService {
-
+  // refCursos: FirebaseListObservable<any[]>
   constructor( private db:AngularFireDatabase) { }
 
   nuevoCurso(curso){
@@ -34,7 +34,19 @@ export class CursosService {
     //   })
   }
 
-  cargarCursos(){
-    let refCursos=this.db.list('/cursos/');
+  cargarCursos(carrera){
+    //REFERENCIA A LA BD CON LA CARRERA CORRESPONDIENTE
+    let  refCursos=firebase.database().ref(`/cursos/${carrera}`);
+    let keys:string[];
+    refCursos.on('value', function(snapshot) {
+
+        // console.log(snapshot.key);
+        // cursos=snapshot.val();
+        // console.log(cursos);
+        //DEVUELVE EL NOMBRE DE LAS PROPIEDADES DEL OBJETO
+      // keys=Object.getOwnPropertyNames(snapshot.val()).sort()
+        // console.log(snapshot.val()[keys[0]]);
+
+    });
   }
 }

@@ -5,7 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
-import { CrudFirebaseService } from "./crud-firebase.service";
+import { UsuarioAlumnoService } from "./usuarioAlumno.service";
 
 @Injectable()
 export class LoginService {
@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public _cf:CrudFirebaseService) {
+    public _cf:UsuarioAlumnoService) {
     this.user = afAuth.authState;
     this.error = null; //MOSTRAR MENSAJES DE ERROR
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
