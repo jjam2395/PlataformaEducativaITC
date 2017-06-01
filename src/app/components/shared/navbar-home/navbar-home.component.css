@@ -1,10 +1,35 @@
+.list-items{
+  font-size: 150%;
 
-.list-menu{
-  font-size: 1.5rem;
-  padding: 0 2em;
+}
+
+a.border-tabs{
+  color:#CFD8DC;
+  padding-bottom: .2em;
+}
+
+a.border-tabs:hover{
+  color:#fff;
+}
+
+a.border-tabs.active{
+  color:#fff;
+}
+
+.list-item.active{
+    border-bottom: 5px #fff solid;
+}
+
+.border-tabs{
+}
+
+
+.fade{
+  animation:1s fade 1;
+}
+
+@keyframes fade{
+  0%{
+    opacity: 0;
   }
-
-.container-menu{
-  width: 55%;
-  margin: 0 auto;
 }

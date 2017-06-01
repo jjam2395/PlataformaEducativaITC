@@ -1,19 +1,21 @@
 
   <nav class="z-depth-2 blue-grey">
-    <div class="">
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    <div class="nav-content hide-on-med-and-down">
-        <div class="container-menu">
-          <ul class="tabs blue-grey">
-            <li class="tab list-menu"><a class="white-text blue-grey"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
-            <li class="tab list-menu"><a class="white-text blue-grey" [routerLink]="['/registro']">Inscribete</a></li>
-            <li class="tab list-menu"><a class="white-text blue-grey" [routerLink]="['/conocenos']">Conocenos</a></li>
-          </ul>
-        </div>
-    </div>
     <ul class="side-nav" id="mobile-demo">
       <li> <a [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
       <li> <a [routerLink]="['/conocenos']">Conocenos</a></li>
     </ul>
+    <div class="nav-content hide-on-med-and-down ">
+        <div class="row list-items center-align">
+          <div class="col l4 list-item active">
+            <a class=" border-tabs active"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a>
+          </div>
+          <div class="col l4 list-item">
+            <a class=" border-tabs" [routerLink]="['/registro']">Inscribete</a>
+          </div>
+          <div class="col l4 list-item">
+            <a class="border-tabs" [routerLink]="['/conocenos']">Conocenos</a>
+          </div>
         </div>
+    </div>
 </nav>
