@@ -35,3 +35,42 @@ input.ng-valid{
   margin-top: 1vh;
   height: 4vh;
 }
+
+.log-link{
+  color:#CFD8DC;
+  font-size: 150%;
+}
+
+.log-link::before {
+    content: "Entrar";
+}
+
+.log-link:hover{
+  cursor: pointer;
+}
+
+.log-link1{
+  color:#CFD8DC;
+  font-size: 150%;
+}
+
+.log-link1::before {
+    content: "Salir";
+}
+
+.log-link1:hover{
+  cursor: pointer;
+}
+
+.log-content:hover{
+  color:#fff;
+}
+
+.log-icon{
+  color:#CFD8DC;
+  margin-left: .5em;
+}
+
+.log-icon:hover{
+  cursor:pointer;
+}

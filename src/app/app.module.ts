@@ -73,7 +73,7 @@ import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
               LoginService,
               CursosService,
               AuthGuardService,
-              UsuarioAlumnoService], 
+              UsuarioAlumnoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
