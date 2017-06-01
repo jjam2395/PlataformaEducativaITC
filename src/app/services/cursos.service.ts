@@ -22,23 +22,12 @@ export class CursosService {
       modulos:curso.modulos,
     }
     refCurso.push(data);
-    // let cursosURL:string ="https://plataformaeducativaitc.firebaseio.com/cursos/curso.carrera.json/curso.json";
-
-    // let body = JSON.stringify(curso);
-    // let headers = new Headers({
-    //   'content-Type':'aplicacttion/json'
-    // });
-    // return this.http.post(cursosURL, body, {headers})
-    //   .map(res=>{
-    //     console.log(res.json());
-    //     return res.json();
-    //   })
   }
 
   cargarCursos(carrera){
 
     //REFERENCIA A LA BD CON LA CARRERA CORRESPONDIENTE
-    let  refCursos=firebase.database().ref(`/cursos/${carrera}`);
+    let  refCursos=firebase.database().ref('/cursos/'+carrera);
     let cursos=[];
     let t=this;
     refCursos.on('value', function(snapshot) {

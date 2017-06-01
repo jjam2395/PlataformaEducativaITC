@@ -1,14 +1,16 @@
 
-  <nav class="z-depth-2 blue-grey lighten-1">
+  <nav class="z-depth-2 blue-grey">
     <div class="">
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    <div class="nav-content hide-on-med-and-down ">
-          <ul class="tabs blue-grey lighten-1">
-            <li class="tab"><a class="white-text blue-grey lighten-1"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
-            <li class="tab"><a class="white-text blue-grey lighten-1" [routerLink]="['/registro']">Inscribete</a></li>
-            <li class="tab"><a class="white-text blue-grey lighten-1" [routerLink]="['/conocenos']">Conocenos</a></li>
+    <div class="nav-content hide-on-med-and-down">
+        <div class="container-menu">
+          <ul class="tabs blue-grey">
+            <li class="tab list-menu"><a class="white-text blue-grey"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
+            <li class="tab list-menu"><a class="white-text blue-grey" [routerLink]="['/registro']">Inscribete</a></li>
+            <li class="tab list-menu"><a class="white-text blue-grey" [routerLink]="['/conocenos']">Conocenos</a></li>
           </ul>
         </div>
+    </div>
     <ul class="side-nav" id="mobile-demo">
       <li> <a [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
       <li> <a [routerLink]="['/conocenos']">Conocenos</a></li>
