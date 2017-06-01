@@ -15,7 +15,7 @@ import { APP_ROUTING } from './app.routes';
 import { LoginService } from './services/login.service';
 import { CursosService } from './services/cursos.service';
 import { AuthGuardService } from "./services/auth-guard.service";
-import { CrudFirebaseService } from "./services/crud-firebase.service";
+import { UsuarioAlumnoService } from "./services/usuarioAlumno.service";
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -73,7 +73,7 @@ import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
               LoginService,
               CursosService,
               AuthGuardService,
-              CrudFirebaseService], 
+              UsuarioAlumnoService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

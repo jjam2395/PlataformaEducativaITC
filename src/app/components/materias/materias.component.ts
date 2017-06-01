@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CursosService } from "../../services/cursos.service";
 
 @Component({
   selector: 'app-materias',
@@ -7,14 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MateriasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _cs:CursosService ) {}
 
   ngOnInit() {
-    this.getCursos();
+    //obtener carrera del estudiante
+    //carcar los cursos de acuerdo a su carrera
+    this._cs.cargarCursos("SC");
   }
-
-  getCursos(){
-    
-  }
-
 }
