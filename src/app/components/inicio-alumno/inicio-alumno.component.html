@@ -7,7 +7,7 @@
 
 			<!-- VISTA GENERAL DE MATERIAS -->
 			<div class="row">	
-				<ul class="collapsible" data-collapsible="accordion">
+				<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
 					<li>
 					  <div class="collapsible-header">	
 					  	<div class="datos"></div>
@@ -15,7 +15,7 @@
 					  	<i class="material-icons">keyboard_arrow_down</i>
 					  </div>
 					  <div class="collapsible-body">
-					  	<ul class="collapsible popout" data-collapsible="accordion">
+					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion">
 						    <li *ngFor="let materia of materias">
 						      <div class="collapsible-header">
 						      	<div></div>
@@ -48,7 +48,7 @@
 
 			<!-- VISTA GENERAL DE ARTICULOS -->
 			<div class="row">
-				<ul class="collapsible" data-collapsible="accordion">
+				<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
 					<li>
 					  <div class="collapsible-header">	
 					  	<div class="titulos">Mis Articulos</div>
@@ -56,7 +56,7 @@
 					  	<a [routerLink]="['/home']"><i class="material-icons nuevo">add</i></a>
 					  </div>
 					  <div class="collapsible-body">
-					  	<ul class="collapsible popout" data-collapsible="accordion">
+					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion">
 						    <li *ngFor="let articulo of articulos">
 								<div class="collapsible-header header-elementos">
 									<div class="datos">
@@ -89,7 +89,7 @@
 
 			<!-- VISTA GENERAL DE PROYECTOS -->
 			<div class="row">
-				<ul class="collapsible" data-collapsible="accordion">
+				<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
 					<li>
 					  <div class="collapsible-header">	
 					  	<div class="titulos">Mis Proyectos</div>
@@ -98,7 +98,7 @@
 
 					  </div>
 					  <div class="collapsible-body">
-					  	<ul class="collapsible popout" data-collapsible="accordion">
+					  	<ul materialize="collapsible" xclass="collapsible popout" data-collapsible="accordion">
 						    <li *ngFor="let proyecto of proyectos">
 								<div class="collapsible-header header-elementos">
 									<div class="datos">

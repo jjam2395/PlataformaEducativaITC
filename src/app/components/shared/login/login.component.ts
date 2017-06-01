@@ -70,3 +70,7 @@ export class LoginComponent implements OnInit {
     this._ls.resultado=null;
   }
 }
+
+//inyecciones sql
+//romper proteccion de carpetas
+//reconfigurar el proxy

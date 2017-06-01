@@ -41,7 +41,7 @@
   </div> -->
 
   <div class="contenedor-formulario">
-    <form (ngSubmit)="guardar()" #forma="ngForm">
+    <form (ngSubmit)="guardar(); forma.resetForm()" #forma="ngForm" >
       <div class="input-field">
           <input [(ngModel)]="curso.nombre" name="nombre" id="nombreCurso" type="text" class="validate">
           <label for="nombreCurso">Nombre del curso:</label>
@@ -54,6 +54,19 @@
           <textarea [(ngModel)]="curso.descripcion" name="descripcion" id="dscCurso" class="materialize-textarea"></textarea>
           <label for="dscCurso">Descripcion del curso</label>
         </div>
+
+        <div class="input-field">
+          <select [(ngModel)]="curso.carrera" name="carrera" id="crCurso" class="validate" materialize="material_select"  [materializeParams]="[{belowOrigin: true}]">
+            <option value="" disabled selected>Carrera a la que pertenece</option>
+            <option value="SC">Sistemas Computacionales</option>
+            <option value="E">electrónica</option>
+            <option value="M">Mecatrónica</option>
+            <option value="GE">Gestión Empresarial</option>
+            <option value="C">Contaduria</option>
+          </select>
+          <label for="crCurso">Carrera</label>
+        </div>
+        
         <div class="input-field">
             <div class="chips instructores" name="instructores">
               Tag

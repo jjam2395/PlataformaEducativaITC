@@ -1,6 +1,5 @@
 
 jQuery(document).ready(function($){
-    $('.collapsible').collapsible();
 
     //SIDENAV (barra de navegacion izquierda del usuario)
     $(".button-collapse-sideNav").sideNav({
@@ -13,8 +12,6 @@ jQuery(document).ready(function($){
       menuWidth: 250,
       closeOnClick: true
     });
-
-
-
+    
     $('.modal').modal();
 });

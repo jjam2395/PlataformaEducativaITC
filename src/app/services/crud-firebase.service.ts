@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Router } from "@angular/router";
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
@@ -12,13 +11,15 @@ export class CrudFirebaseService {
    }
 
   //GUARDAR DATOS BASICOS DEL USUARIO
-  saveUser(result, nombre){
+  saveUser(uid, data){
+    //REFERENCIA A LA DATABASE
     let refUser=this.db.list('/usuarios/');
-    let data={
-      displayName: nombre,
-      email: result.email==null ? '' : result.email,
-      photoURL: result.photoURL==null ? '' : result.photoURL 
-    }
-    refUser.update(result.uid,data);
+    
+    //SE ACTUALIZA LA INFORMACION EN USUARIOS CON LA KEY UID
+    refUser.update(uid,data);
+  }
+
+  getMaterias(){
+    
   }
 }

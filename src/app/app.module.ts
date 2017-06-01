@@ -1,3 +1,4 @@
+import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,11 +28,14 @@ import { HomeComponent } from './components/home/home.component';
 import { DudasComponent } from './components/shared/dudas/dudas.component';
 import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { OfertaEducativaComponent } from './components/oferta-educativa/oferta-educativa.component';
-import { MateriaComponent } from './components/materia/materia.component';
+import { MateriasComponent } from './components/materias/materias.component';
 import { ModuloComponent } from './components/shared/modulo/modulo.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { MateriaDetalleComponent } from './components/materia-detalle/materia-detalle.component';
+
+import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
 
 
 @NgModule({
@@ -46,11 +50,13 @@ import { RegistroComponent } from './components/registro/registro.component';
     DudasComponent,
     ConocenosComponent,
     OfertaEducativaComponent,
-    MateriaComponent,
+    MateriasComponent,
     ModuloComponent,
     ArticuloComponent,
     CrearCursoComponent,
     RegistroComponent,
+    MateriaDetalleComponent,
+    NameCarreraPipe,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     APP_ROUTING,
     AngularFireModule.initializeApp(firebaseConf),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MaterializeModule
   ],
   providers: [ //AQUI SE DECLARAN LOS SERVICIOS
               LoginService,

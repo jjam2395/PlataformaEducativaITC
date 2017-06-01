@@ -26,19 +26,27 @@ export class LoginService {
   }
 
   //CREAR USUARIO CON CORREO Y CONTRASEÑA
-  registrar(email, password, nombre) {
+  registrar(formulario) {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = false;
     this.preloader = true;
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((result) => {
-      //SI TODO SE EJECUTA CORRECTAMENTE LOS MENSAJES DE ERROR SE PONENE EN FALSE Y SE MANDA EMAIL DE CONFIRMACION
+    this.afAuth.auth.createUserWithEmailAndPassword(formulario.email, formulario.password).then((result) => {
+      //FORMATO DE LA INFORMACION QUE SE GUARDARA 
+      let data={
+        displayName: formulario.nombre,
+        carrera: formulario.carrera,
+        email: result.email==null ? '' : result.email,
+        photoURL: result.photoURL==null ? '' : result.photoURL 
+      }
+      //SI TODO SE EJECUTA CORRECTAMENTE LOS MENSAJES DE ERROR Y PRELOADER SE PONE EN FALSE
       console.log(`Registro exitoso ${JSON.stringify(result)}`);
       this.error = null;
       this.resultado = "Registro exitoso"
       this.preloader = false;
+
       //SE ENVIA UN CORREO DE VERIFICACION A LA CUENTA Y SE GURDAN LOS DATOS BASICOS DEL USUARIO
       this.sendVerificationEmail();
-      this._cf.saveUser(result, nombre);
+      this._cf.saveUser(result.uid,data);
     }).catch((error) => {
       //SI OCURRE ALGUN ERROR SE GUARDA EL MENSAJE DE ERROR Y RESULTADO A NULL
       if (error.message == "The email address is already in use by another account.") {

@@ -18,6 +18,7 @@ export class CrearCursoComponent implements OnInit {
       nombre:"",
       objetivo:"",
       descripcion:"",
+      carrera:"",
       instructores:[],
       modulos:[],
     }
@@ -39,8 +40,6 @@ export class CrearCursoComponent implements OnInit {
     }
 
     console.log(this.curso);
-    this._cursosServices.nuevoCurso(this.curso)
-      .subscribe(data=>{
-      })
+    this._cursosServices.nuevoCurso(this.curso);
   }
 }

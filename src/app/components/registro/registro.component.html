@@ -9,14 +9,26 @@
         <span class="card-title center-align">Registrate</span>
 
         <div class="input-field">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="emailRegistro" type="email" placeholder="NoControl@itcuautla.edu.mx" formControlName="email">
-          <label for="emailRegistro">Correo institucional</label>
+          <input id="nombreRegistro" type="text" placeholder="Tu nombre" formControlName="nombre">
+          <label for="nombreRegistro">Nombre completo</label>
         </div>
 
         <div class="input-field">
-          <input id="nombreRegistro" type="text" placeholder="Tu nombre" formControlName="nombre">
-          <label for="nombreRegistro">Nombre completo</label>
+          <select formControlName="carrera" materialize="material_select">
+            <option value="" disabled selected>Elige tu carrera</option>
+            <option value="SC">Sistemas Computacionales</option>
+            <option value="E">electrónica</option>
+            <option value="M">Mecatrónica</option>
+            <option value="GE">Gestión Empresarial</option>
+            <option value="C">Contaduria</option>
+          </select>
+          <label>Carrera</label>
+        </div>
+
+        <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="emailRegistro" type="email" placeholder="NoControl@itcuautla.edu.mx" formControlName="email">
+          <label for="emailRegistro">Correo institucional</label>
         </div>
 
         <div class="input-field">
@@ -27,8 +39,16 @@
       </div>
 
       <div class="card-action right-align">
-        <button class="waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid || !forma.controls['nombre'].valid}"
-          type="submit"><i class="material-icons right">send</i>Ok</button>
+        <button 
+        class="waves-effect waves-light btn" 
+        [ngClass]="{'disabled': !forma.controls['email'].valid || 
+        forma.controls['email'].untouched ||
+        !forma.controls['password'].valid ||
+        !forma.controls['nombre'].valid}  ||
+        !forma.controls['carrera'].valid" 
+        type="submit">
+          <i class="material-icons right">send</i>Ok
+        </button>
         <label class="wrong left-align" *ngIf="!forma.controls['email'].valid && forma.value.email!=''"><p>Correo invalido</p></label>
         <label class="wrong left-align" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty && forma.value.password!=''"><p>La contraseña debe tener al menos 8 caracteres</p></label>
         <label class="wrong left-align" *ngIf="this._ls.error"> <p>{{this._ls.error}}</p></label>

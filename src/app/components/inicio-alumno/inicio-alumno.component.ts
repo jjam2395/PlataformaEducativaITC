@@ -72,7 +72,7 @@ export class InicioAlumnoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		$('.collapsible').collapsible();
+		// $('.collapsible').collapsible();
 		$(".button-collapse-sideNav").sideNav({
 	      menuWidth: 250,
 	      closeOnClick: true,
