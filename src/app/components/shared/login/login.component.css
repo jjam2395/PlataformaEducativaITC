@@ -31,7 +31,13 @@
 }
 
 input.ng-valid{
-  background: #607D8B;
+  background: #CEFFEE;
+  margin-top: 1vh;
+  height: 4vh;
+}
+
+input.ng-invalid.ng-dirty{
+  background: #FFD7C5;
   margin-top: 1vh;
   height: 4vh;
 }
