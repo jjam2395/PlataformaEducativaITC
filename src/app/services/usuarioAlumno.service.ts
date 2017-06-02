@@ -7,8 +7,11 @@ import * as firebase from 'firebase/app';
 export class UsuarioAlumnoService {
   uid:string; 
   car:any;
-  constructor(private db: AngularFireDatabase) { 
-    this.uid=JSON.parse(localStorage.getItem('user')).uid;
+  constructor(private db: AngularFireDatabase) {
+    if(localStorage.getItem('user')){
+      this.uid=JSON.parse(localStorage.getItem('user')).uid;
+    } 
+    
   }
 
   saveUser(uid, data){
