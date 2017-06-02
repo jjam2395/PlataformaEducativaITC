@@ -25,21 +25,24 @@ export class CursosService {
   }
 
   cargarCursos(carrera){
+    // REFERENCIA A LA BD CON LA CARRERA CORRESPONDIENTE
+    // let  refCursos=firebase.database().ref('/cursos/'+carrera);
+    this.cursos = this.db.list('/cursos/'+carrera,{ });
+    // console.log("cursos desde el servicio",cursos)
+    return this.cursos
 
-    //REFERENCIA A LA BD CON LA CARRERA CORRESPONDIENTE
-    let  refCursos=firebase.database().ref('/cursos/'+carrera);
-    let cursos=[];
-    let t=this;
-    refCursos.on('value', function(snapshot) {
-      //DEVUELVE EL NOMBRE DE LAS PROPIEDADES DEL OBJETO
-      // keys=Object.getOwnPropertyNames(snapshot.val()).sort()
-      // console.log(snapshot.val()[keys[0]]);
-      let objTemp=snapshot.val();
-      for (let obj in objTemp) {
-          cursos.push(objTemp[obj]);
-      }
-      t.cursos=cursos;
-      console.log(t.cursos);
-    });
+    // let cursos=[];
+    // let t=this;
+    // refCursos.on('value', function(snapshot) {
+    //   //DEVUELVE EL NOMBRE DE LAS PROPIEDADES DEL OBJETO
+    //   // keys=Object.getOwnPropertyNames(snapshot.val()).sort()
+    //   // console.log(snapshot.val()[keys[0]]);
+    //   let objTemp=snapshot.val();
+    //   for (let obj in objTemp) {
+    //       cursos.push(objTemp[obj]);
+    //   }
+    //   t.cursos=cursos;
+    //   console.log("cursos desde el servicio cursos",t.cursos);
+    // });
   }
 }

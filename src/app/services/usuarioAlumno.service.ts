@@ -19,21 +19,7 @@ export class UsuarioAlumnoService {
   }
 
   getDatoUser(dato){
-    // let t=this
-    // var carrera = firebase.database().ref('usuarios/' + this.uid + "/"+dato);
-    // carrera.on('value', function(snapshot) {
-    //   // updateStarCount(postElement, snapshot.val());
-    //   t.car= snapshot.val();
-    // });
-
-    // console.log("carrera desde compon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ente",this.car);
-    let carrera
-    carrera = this.db.list('/usuarios/'+this.uid,{
-      // query:{
-      //   orderByKey:true
-      // }
-    });
-
+    let carrera = this.db.object('/usuarios/'+this.uid+"/"+dato,{ });
     return carrera;
   }
 
