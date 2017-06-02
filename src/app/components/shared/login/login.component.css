@@ -80,3 +80,7 @@ input.ng-invalid.ng-dirty{
 .log-icon:hover{
   cursor:pointer;
 }
+
+.text-card{
+  padding-bottom: 2em;
+}

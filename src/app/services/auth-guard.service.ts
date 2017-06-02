@@ -20,8 +20,8 @@ export class AuthGuardService implements CanActivate{
       }else{
         console.log("bloqueado por el guard")
         this.router.navigate(['/home']);
+        alert("No tienes los permisos necesarios o necesitas autentificarte para entrar a esta sección");
         return false;
       }
-        
     }
 }
