@@ -1,13 +1,7 @@
 .container-center{
-    display: flex;
-    justify-content: center;
-    align-content: center;
     margin-top: 5vh;
 }
 
-.card{
-    width: 30vw;
-}
 
 .card-title{
     padding-bottom: 3vh;

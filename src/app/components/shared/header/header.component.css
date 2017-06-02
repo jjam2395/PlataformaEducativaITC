@@ -1,6 +1,8 @@
 .header-main{
-  height: 35vh;
+  height: 18vh;
   width: 100%;
+  margin:0;
+  padding-top: 1.2em;
 }
 
 .titulo-container{
@@ -19,51 +21,6 @@
 }
 
 
-/* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-
-
- }
-
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-
-  .header-main{
-    height: 25vh;
-    margin-bottom: 7vh;
-  }
-
-  .titulo-container{
-    margin-top: 5vh;
-  }
-
- }
-
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-
-  .titulo-encabezado{
-    font-size: 1.6rem;
-    text-align: left;
-  }
-
-  .header-main{
-    height: 25vh;
-    margin-bottom: 0em;
-  }
- }
-
-/* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-
-  .titulo-encabezado{
-    font-size: 2rem;
-    text-align: left;
-  }
-
-  .header-main{
-    height: 25vh;
-  }
-
-
- }
+.row{
+  margin:0;
+}

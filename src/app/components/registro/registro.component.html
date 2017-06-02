@@ -1,8 +1,8 @@
 <app-navbar-home></app-navbar-home>
 
 <!--mientras no exista un mensaje con el resultado-->
-<div class="container-center" *ngIf="this._ls.resultado==null && !this._ls.preloader">
-  <div class="card">
+<div class="container-center center-align row" *ngIf="this._ls.resultado==null && !this._ls.preloader">
+  <div class="card col s12 m6 push-m3 l4 push-l4">
     <form [formGroup]="forma" (ngSubmit)="registrar()" novalidate="novalidate">
       <div class="card-content black-text">
 
@@ -39,13 +39,13 @@
       </div>
 
       <div class="card-action right-align">
-        <button 
-        class="waves-effect waves-light btn" 
-        [ngClass]="{'disabled': !forma.controls['email'].valid || 
+        <button
+        class="waves-effect waves-light btn"
+        [ngClass]="{'disabled': !forma.controls['email'].valid ||
         forma.controls['email'].untouched ||
         !forma.controls['password'].valid ||
         !forma.controls['nombre'].valid}  ||
-        !forma.controls['carrera'].valid" 
+        !forma.controls['carrera'].valid"
         type="submit">
           <i class="material-icons right">send</i>Ok
         </button>
@@ -53,7 +53,7 @@
         <label class="wrong left-align" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty && forma.value.password!=''"><p>La contraseña debe tener al menos 8 caracteres</p></label>
         <label class="wrong left-align" *ngIf="this._ls.error"> <p>{{this._ls.error}}</p></label>
       </div>
-      
+
     </form>
   </div>
 </div>
@@ -70,7 +70,7 @@
 </ng-container>
 
 <!--PRELOADER-->
-<div *ngIf="this._ls.preloader" class="container-center"> 
+<div *ngIf="this._ls.preloader" class="container-center">
   <div class="preloader-wrapper big active">
       <div class="spinner-layer spinner-blue-only">
         <div class="circle-clipper left">

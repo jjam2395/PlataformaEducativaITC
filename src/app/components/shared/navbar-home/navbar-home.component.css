@@ -10,6 +10,7 @@ a.border-tabs{
 
 a.border-tabs:hover{
   color:#fff;
+  cursor: pointer;
 }
 
 a.border-tabs.active{

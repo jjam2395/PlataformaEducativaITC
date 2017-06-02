@@ -1,11 +1,14 @@
-<div class="col m12 l6 login-container" *ngIf="!this._ls.preloader">
+<div class="col m2 login-container hide-on-med-and-down" *ngIf="!this._ls.preloader">
   <div class="row">
     <!--APARECERA CUANDO EL USUARIO ESTE LOGEADO-->
-    <button class="waves-effect waves-light btn right-align" (click)="logout()" *ngIf="this.logeado==true">logout</button>
+    <a class="right-align log-link1" (click)="logout()" *ngIf="this.logeado==true"><i class="material-icons log-icon">exit_to_app</i></a>
   </div>
   <!--APARECERA CUANDO EL USUARIO NO ESTE LOGEADO-->
   <ng-container  *ngIf="this.logeado==false">
-    <a class="waves-effect waves-light btn" href="#modalLogin" (click)="limpiar()">login</a>
+    <div class="valign-wrapper log-cont">
+      <a class="right-align log-link" href="#modalLogin" (click)="limpiar()"><i class="material-icons log-icon">input</i>
+      </a>
+    </div>
   </ng-container>
 </div>
 

@@ -1,14 +1,14 @@
 
   <nav class="z-depth-2 blue-grey">
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <a materialize="sideNav" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="side-nav" id="mobile-demo">
       <li> <a [routerLink]="['/oferta-educativa']">Oferta Educativa</a></li>
       <li> <a [routerLink]="['/conocenos']">Conocenos</a></li>
     </ul>
     <div class="nav-content hide-on-med-and-down ">
         <div class="row list-items center-align">
-          <div class="col l4 list-item active">
-            <a class=" border-tabs active"  [routerLink]="['/oferta-educativa']">Oferta Educativa</a>
+          <div class="col l4 list-item ">
+            <a class=" border-tabs "  [routerLink]="['/oferta-educativa']">Oferta Educativa</a>
           </div>
           <div class="col l4 list-item">
             <a class=" border-tabs" [routerLink]="['/registro']">Inscribete</a>
