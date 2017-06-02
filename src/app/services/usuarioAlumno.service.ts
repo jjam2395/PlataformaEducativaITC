@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class UsuarioAlumnoService {
   uid:string; 
-
+  car:any;
   constructor(private db: AngularFireDatabase) { 
     this.uid=JSON.parse(localStorage.getItem('user')).uid;
   }
@@ -19,9 +19,22 @@ export class UsuarioAlumnoService {
   }
 
   getDatoUser(dato){
-    console.log(dato);
-    const queryList = this.db.list(`/usuarios/${this.uid}/dato`);
-    return queryList;
+    // let t=this
+    // var carrera = firebase.database().ref('usuarios/' + this.uid + "/"+dato);
+    // carrera.on('value', function(snapshot) {
+    //   // updateStarCount(postElement, snapshot.val());
+    //   t.car= snapshot.val();
+    // });
+
+    // console.log("carrera desde compon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ente",this.car);
+    let carrera
+    carrera = this.db.list('/usuarios/'+this.uid,{
+      // query:{
+      //   orderByKey:true
+      // }
+    });
+
+    return carrera;
   }
 
   
