@@ -11,13 +11,15 @@ declare var $:any;
 })
 export class RegistroComponent implements OnInit {
   forma:FormGroup; //Registro
+  tipoUser=null; //TIPO DE USUARIO PARA DECIDIR SI CREAR 
 
   constructor(private _ls: LoginService, private router:Router) {
+    this.tipoUser=localStorage.getItem('tipoUser');
     $(document).ready(function() {
       $('select').material_select();
     });
      this.forma = new FormGroup({
-        'email': new FormControl('',[Validators.required, Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")]),
+        'email': new FormControl('',[Validators.required, Validators.pattern(".+@itcuautla\.edu\.mx")]),
         'nombre': new FormControl('',Validators.required),
         'carrera': new FormControl('',Validators.required),
         'password': new FormControl('',[Validators.required, Validators.minLength(8)])

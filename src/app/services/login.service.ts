@@ -64,7 +64,9 @@ export class LoginService {
     this.preloader = true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
       //SI EL CORREO AH SIDO VERIFICADO
-      if (result.emailVerified == true) { 
+      if (result.emailVerified == true) {
+        //SI YA ESTA REGISTRADO Y A VERIFICADO SU CORREO VERIFICAR QUE EXISTA EN EL REGISTRO QUE DICE
+         
         console.log("Logeo exitoso", result);
         //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
         localStorage.setItem('user', JSON.stringify(result)); 
