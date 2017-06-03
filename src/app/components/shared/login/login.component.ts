@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
 
   login(){
+<<<<<<< HEAD
     // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
   if(this.forma.valid){
     this._ls.login(this.forma.value.email,this.forma.value.password, this.forma.value.tipoUser);  
@@ -48,17 +49,29 @@ export class LoginComponent implements OnInit {
         if(result.emailVerified==true){
           console.log(result)
           console.log("redirigiendo a al inicio del alumno");
+=======
+    console.log("desde el componente de login", this.forma.value);
+  //   // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
+  // if(this.forma.valid){
+  //   this._ls.login(this.forma.value.email,this.forma.value.password);  
+  //   //SUSCRIBIRSE AL BOSERVABLE DE USER 
+  //   this._ls.user.subscribe((result)=>{
+  //     if(result){
+  //       if(result.emailVerified==true){
+  //         console.log(result)
+  //         console.log("redirigiendo a al inicio del alumno");
+>>>>>>> 560f2c0f2c53b532e3b92cec0e4ae5c45ce8f230
          
-        }else{
-          console.log("primero verifica tu email");
-        }
-      }else{
-        console.log("redirigiendo al home")
-      }   
-    });  
-  }else{
-    console.error("el formato de los datos no es correcto");
-  }
+  //       }else{
+  //         console.log("primero verifica tu email");
+  //       }
+  //     }else{
+  //       console.log("redirigiendo al home")
+  //     }   
+  //   });  
+  // }else{
+  //   console.error("el formato de los datos no es correcto");
+  // }
   }
 
   logout(){
