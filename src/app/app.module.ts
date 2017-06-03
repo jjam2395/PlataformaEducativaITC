@@ -36,6 +36,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { MateriaDetalleComponent } from './components/materia-detalle/materia-detalle.component';
 
 import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
     RegistroComponent,
     MateriaDetalleComponent,
     NameCarreraPipe,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

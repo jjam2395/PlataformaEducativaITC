@@ -58,7 +58,7 @@ export class LoginService {
   }
 
   // AUTENTICACION CON CORREO Y CONTRASEÑA
-  login(email, password): any {
+  login(email, password, tipoUser): any {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = false;
     this.preloader = true;
@@ -68,8 +68,14 @@ export class LoginService {
         console.log("Logeo exitoso", result);
         //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
         localStorage.setItem('user', JSON.stringify(result)); 
+        localStorage.setItem('tipoUser', tipoUser );
         //REDIRECCIONAR AL INICIO DEL ALUMNO
-        this.router.navigate(['/inicio-alumno']);
+        if(tipoUser=="alumnos"){
+          this.router.navigate(['/inicio-alumno']);
+        }else if(tipoUser=="administradores"){
+          this.router.navigate(['/admin']);
+        }
+        
     } else {
         this.error = "Necesitas validar tu correo electrónico"
       }
@@ -92,6 +98,7 @@ export class LoginService {
     this.afAuth.auth.signOut().then((result) =>{
       console.log("Sign-out successful.");
       localStorage.removeItem('user');
+      localStorage.removeItem('tipoUser');
       this.preloader = false;
     }).catch(error=> {
       console.log(`An error happened. ${error}`);
