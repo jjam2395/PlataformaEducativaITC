@@ -46,6 +46,18 @@
                     <button class=" modal-close waves-effect waves-light btn" [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
             type="submit"><i class="material-icons right">send</i>Ok</button>
                 </div>
+                <p>
+                  <input name="tipoUser" type="radio" id="alumno" value="alumno" formControlName="tipoUser" />
+                  <label for="alumno">Alumno</label>
+                </p>
+                <p>
+                  <input name="tipoUser" type="radio" id="maestro" value="maestro" formControlName="tipoUser"/>
+                  <label for="maestro">Maestro</label>
+                </p>
+                <p>
+                  <input name="tipoUser" type="radio" id="administrador" value="administrador" formControlName="tipoUser"/>
+                  <label for="administrador">Administrador</label>
+                </p>
               </form>
     </div>
 

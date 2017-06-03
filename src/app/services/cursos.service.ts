@@ -21,8 +21,8 @@ export class CursosService {
       instructores:curso.instructores,
       modulos:curso.modulos,
     }
-    refCurso.push(data);
-    return refCurso;
+    let key=refCurso.push(data).key;
+    return key;
   }
 
   cargarCursos(carrera){

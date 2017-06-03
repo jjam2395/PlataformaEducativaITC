@@ -13,7 +13,9 @@ declare var $:any;
 export class CrearCursoComponent implements OnInit {
   curso;
   data;
+  newCurosKey;
   constructor(private _cursosServices: CursosService) {
+    this.newCurosKey=null;
     this.curso={
       nombre:"",
       objetivo:"",
@@ -39,8 +41,6 @@ export class CrearCursoComponent implements OnInit {
       this.curso.modulos.push(data[i].tag);
     }
 
-    this._cursosServices.nuevoCurso(this.curso).subscribe((result)=>{
-      console.log("curso creado desde el componente",result);
-    });
+    this.newCurosKey= this._cursosServices.nuevoCurso(this.curso);
   }
 }
