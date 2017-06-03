@@ -30,6 +30,7 @@ export class CursosService {
     this.cursos = this.db.list('/cursos/'+carrera,{ });
     // console.log("cursos desde el servicio",cursos)
     return this.cursos
+    
 
     // let cursos=[];
     // let t=this;
