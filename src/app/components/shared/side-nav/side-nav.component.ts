@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,12 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class SideNavComponent implements OnInit {
 	nameUser: String;
 	materias: Array<String>;
-  constructor() { 
-  	this.nameUser="Rodrigo Reyes Cazares";
+  constructor(private _ls: LoginService,  private router:Router) {
+  	this.nameUser="localStorage.user.displayName";
   	this.materias=["Base de datos","Dispositivos Moviles","Inteligencia Artificial"];
   }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this._ls.logout();
+    this.router.navigate(['/home']);
   }
 
 }
