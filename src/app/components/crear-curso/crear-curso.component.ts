@@ -39,7 +39,8 @@ export class CrearCursoComponent implements OnInit {
       this.curso.modulos.push(data[i].tag);
     }
 
-    console.log(this.curso);
-    this._cursosServices.nuevoCurso(this.curso);
+    this._cursosServices.nuevoCurso(this.curso).subscribe((result)=>{
+      console.log("curso creado desde el componente",result);
+    });
   }
 }
