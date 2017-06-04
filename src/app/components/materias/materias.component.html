@@ -1,5 +1,6 @@
 <app-side-nav></app-side-nav>
 
+<!--CARD-->
 <div class="micontainer">
   <div class="row" *ngIf="displayMateriaDetalle==false; else showDetalle" >
       <div class="col s12">
@@ -10,7 +11,7 @@
               <div class="card-content white-text">
                   <span class="card-title">{{curso.nombre}}</span>
                   <p>{{curso.descripcion}}</p>
-                  <p>Instructores: {{curso.instructores}}</p>
+                  <!--<p>Instructores: {{curso.instructores}}</p>-->
               </div>
               <div class="card-action">
                   <a (click)="verMateria(curso)">Ver mas..</a>
@@ -19,6 +20,7 @@
       </div>
   </div>
 </div>
+
 <ng-template #showDetalle>
 <a (click)="regresar()">Regresar</a>
     <div class="micontainer">

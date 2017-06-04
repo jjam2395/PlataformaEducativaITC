@@ -26,10 +26,12 @@ export class CursosService {
   }
 
   cargarCursos(carrera){
+    console.error("entro a la funcion de cargar cursos");
     // REFERENCIA A LA BD CON LA CARRERA CORRESPONDIENTE
+    // console.log("carrera desde cargar cursos service")
     // let  refCursos=firebase.database().ref('/cursos/'+carrera);
     this.cursos = this.db.list('/cursos/'+carrera,{ });
-    // console.log("cursos desde el servicio",cursos)
+    console.log("cursos desde el servicio",this.cursos)
     return this.cursos
     
 

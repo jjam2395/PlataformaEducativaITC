@@ -37,8 +37,10 @@ export class MateriasComponent implements OnInit {
       if(val.$value){
         //SE MANDA A LLAMAR AL METODO DE CARGAR CURSOS
         this._cs.cargarCursos(val.$value).subscribe((res=>{
+          
           this.cursos=res;
           console.log(res);
+          // console.log("resuldato de los cursos",res); 
         }));
       }
     }) ;

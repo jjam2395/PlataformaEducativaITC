@@ -19,16 +19,16 @@ export class UsuarioAlumnoService {
   saveUser(uid, data,tipoUserCrear){
     //REFERENCIA A LA DATABASE
     console.log("tipo de usuario desde el servicioooo",tipoUserCrear)
-    console.log("datos desde el servicio",data)
-    console.log("uid desde el servicio", uid)
     let refUser=this.db.list('/usuarios/'+tipoUserCrear+'/');
     // SE ACTUALIZA LA INFORMACION EN USUARIOS CON LA KEY UID
     refUser.update(uid,data);
   }
 
   getDatoUser(dato){
-    console.error("getDatoUser no funcina bien")
+    console.log("dato desde el servicio",dato)
+    console.log("usuario desde el servicio", this.uid)
     let carrera = this.db.object('/usuarios/alumnos'+this.uid+"/"+dato,{ });
+    console.log("carrera obtenida desde el servicio",carrera)
     return carrera;
   }
 
