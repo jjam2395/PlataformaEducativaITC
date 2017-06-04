@@ -24,7 +24,7 @@
           </select>
           <label for="crCurso">Carrera</label>
         </div>
-        
+
         <div class="input-field">
             <div class="chips instructores" name="instructores">
               Tag
@@ -48,3 +48,77 @@
   <div *ngIf="statement">
 
   </div>
+
+<!-- ------------------------------------------- -------------------     ------ -->
+
+<div class="micontainer">
+
+
+
+    <form  (ngSubmit)="responderDuda()" novalidate="novalidate">
+      <h5>Modulo n: "Titulo del modulo"</h5>
+        <div class="row">
+          <div class="input-field col s12 m9">
+            <textarea id="objetivoModulo" class="materialize-textarea"></textarea>
+            <label for="objetivoModulo">Objetivo del modulo</label>
+          </div>
+          <div class="input-field col s12">
+            <div class="row ">
+              <h5 class="col s2 left-align subtemas">Subtemas</h5>
+              <a class="pointer col s1 tooltipped"
+                data-position="bottom"
+                data-delay="50"
+                data-tooltip="Añadir subtema">
+                <i class="material-icons">exposure_plus_1</i></a>
+            </div>
+          </div>
+            <div class="input-field col s12 m6">
+              <input class="validate" >
+              <label for="titulo">Titulo del subtema</label>
+            </div>
+
+            <div class="col s4 row ">
+              <div class="col s3">
+              <a class="pointer tooltipped"
+                data-position="bottom"
+                data-delay="50"
+                data-tooltip="Subir lección">
+                  <i class="material-icons">chrome_reader_mode</i>
+              </a>
+              </div>
+              <div class="col s3">
+              <a class="pointer tooltipped"
+                data-position="bottom"
+                data-delay="50"
+                data-tooltip="Subir Actividad">
+                  <i class="material-icons">event_note</i>
+              </a>
+              </div>
+            </div>
+            <div class="col s8">
+              <ul class="collection">
+                <li class="collection-item dismissable">
+                  <div class="valign-wrapper">
+                    <i class="material-icons icon-collection">play_circle_outline</i>
+                    <span>Leccion 1.mp4</span>
+                  </div>
+                </li>
+                <li class="collection-item dismissable">
+                  <div class="valign-wrapper">
+                    <i class="material-icons icon-collection">picture_as_pdf</i>
+                    <span>Leccion 2.pdf</span>
+                  </div>
+                </li>
+                <li class="collection-item dismissable">
+                  <div class="valign-wrapper">
+                    <i class="material-icons icon-collection">picture_as_pdf</i>
+                    <span>Actividad 1.pdf</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+      </form>
+
+</div>
