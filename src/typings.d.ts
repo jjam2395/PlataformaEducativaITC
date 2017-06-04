@@ -5,3 +5,4 @@ declare var require: any;
 //   id: string;
 // }
 declare var module: any;
+

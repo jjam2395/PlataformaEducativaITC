@@ -3,19 +3,46 @@
 <!--mientras no exista un mensaje con el resultado-->
 <div class="container-center center-align row" *ngIf="this._ls.resultado==null && !this._ls.preloader">
   <div class="card col s12 m6 push-m3 l4 push-l4">
+    <!--BOTONES PARA EL TIPO DE USUARIO A CREAR-->
+    <!--SOLO SE MOSTRARAN SI EL USUARIO LOGEADO ES ADMINISTRADOR-->
+    <ng-container *ngIf="tipoUserLogeado=='administradores'">
+      <button class="btn" (click)="seleccionUser('alumnos')">Alumnos</button>
+      <button class="btn" (click)="seleccionUser('maestros')">Maestros</button>
+      <button class="btn" (click)="seleccionUser('administradores')">Administradores</button>
+    </ng-container>
+    
+    
     <form [formGroup]="forma" (ngSubmit)="registrar()" novalidate="novalidate">
       <div class="card-content black-text">
 
-        <span class="card-title center-align">Registrate</span>
+        <!--MENSAJE SUPERIOR DE LA CARD-->
+        <ng-container *ngIf="tipoUserLogeado=='administradores'; else showRegistrate">
+          <span class="card-title center-align">Registro de {{btnUser}}</span>
+        </ng-container>
+        <ng-template #showRegistrate>
+          <span class="card-title center-align">Registrate</span>
+        </ng-template>
 
+        <!--<div class="input-field" *ngIf="tipoUserLogeado=='administradores'">
+          <select formControlName="tipoUserCrear" name="tipoUserCrear" id="tipoUserCrear" materialize="material_select">
+            <option value="alumnos">Alumno</option>
+            <option value="maestros">Maestro</option>
+            <option value="administradores">Administrador</option>
+          </select>
+          <label for="tipoUserCrear">Tipo de usuario</label>
+        </div>-->
+        
+        <!--INPUT DE NOMBRE-->
         <div class="input-field">
           <input id="nombreRegistro" type="text" placeholder="Tu nombre" formControlName="nombre">
           <label for="nombreRegistro">Nombre completo</label>
         </div>
 
-        <div class="input-field">
+        <!--SELECT DE CARRERAS-->
+        <!--SOLO SE MOSTRARA SI VA A REGISTRAR A UN ALUMNO-->
+        <div class="input-field" *ngIf="btnUser=='alumnos'">
           <select formControlName="carrera" materialize="material_select">
-            <option value="" disabled selected>Elige tu carrera</option>
+            <option value="" disabled selected></option>
             <option value="SC">Sistemas Computacionales</option>
             <option value="E">electrónica</option>
             <option value="M">Mecatrónica</option>
@@ -25,12 +52,14 @@
           <label>Carrera</label>
         </div>
 
+        <!--INPUT DEL CORREO INSTITUCIONAL-->
         <div class="input-field">
           <i class="material-icons prefix">account_circle</i>
-          <input id="emailRegistro" type="email" placeholder="NoControl@itcuautla.edu.mx" formControlName="email">
+          <input id="emailRegistro" type="email" placeholder="@itcuautla.edu.mx" formControlName="email">
           <label for="emailRegistro">Correo institucional</label>
         </div>
 
+        <!--INPUT DE LA CONTRASEÑAS-->
         <div class="input-field">
           <input id="passwordRegistro" type="password" formControlName="password">
           <label for="passwordRegistro">Contraseña</label>
@@ -38,6 +67,7 @@
 
       </div>
 
+      <!--FOOTER DE LA CARD-->
       <div class="card-action right-align">
         <button
         class="waves-effect waves-light btn"
@@ -45,7 +75,8 @@
         forma.controls['email'].untouched ||
         !forma.controls['password'].valid ||
         !forma.controls['nombre'].valid}  ||
-        !forma.controls['carrera'].valid"
+        !forma.controls['carrera'].valid  ||
+        !forma.controls['tipoUserCrear'].valid"
         type="submit">
           <i class="material-icons right">send</i>Ok
         </button>
@@ -83,5 +114,3 @@
       </div>
   </div>
 </div>
-
-<app-dudas></app-dudas>
