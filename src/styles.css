@@ -30,6 +30,9 @@ main {
   cursor: pointer;
 }
 
+.no-mb{
+  margin:0;
+}
 .dark-primary-color    { background: #455A64; }
 .default-primary-color { background: #607D8B; }
 .light-primary-color   { background: #CFD8DC; }
