@@ -1,18 +1,21 @@
+<app-side-nav></app-side-nav>
+
 <div class="micontainer">
 	<div class=row>
 		<div class="col s1">
-			<app-side-nav class="col s1"></app-side-nav>
+
 		</div>
 		<div class="col s11">
 
 			<!-- VISTA GENERAL DE MATERIAS -->
-			<div class="row">	
+			<div class="row">
 				<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
 					<li>
-					  <div class="collapsible-header">	
+					  <div class="collapsible-header">
 					  	<div class="datos"></div>
 					  	<div class="titulos">Mis Materias</div>
 					  	<i class="material-icons">keyboard_arrow_down</i>
+							<a [routerLink]="['/materias']"><i class="material-icons nuevo">add</i></a>
 					  </div>
 					  <div class="collapsible-body">
 					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion">
@@ -43,14 +46,14 @@
 					  	</ul>
 					  </div>
 					</li>
-				</ul>		
+				</ul>
 			</div>
 
 			<!-- VISTA GENERAL DE ARTICULOS -->
 			<div class="row">
 				<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
 					<li>
-					  <div class="collapsible-header">	
+					  <div class="collapsible-header">
 					  	<div class="titulos">Mis Articulos</div>
 					  	<i class="material-icons">keyboard_arrow_down</i>
 					  	<a [routerLink]="['/home']"><i class="material-icons nuevo">add</i></a>
@@ -68,7 +71,7 @@
 										<i class="material-icons">comment</i>
 										<a href="">{{articulo.estrellas}} Estrellas</a>
 										<i class="material-icons">star_rate</i>
-									</div>									
+									</div>
 								</div>
 								<div class="collapsible-body">
 									<div class="datos-articulo">
@@ -91,7 +94,7 @@
 			<div class="row">
 				<ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
 					<li>
-					  <div class="collapsible-header">	
+					  <div class="collapsible-header">
 					  	<div class="titulos">Mis Proyectos</div>
 					  	<i class="material-icons">keyboard_arrow_down</i>
 					  	<a [routerLink]="['/home']"><i class="material-icons nuevo">add</i></a>
@@ -110,7 +113,7 @@
 										<i class="material-icons">comment</i>
 										<a href="">{{proyecto.estrellas}} Estrellas</a>
 										<i class="material-icons">star_rate</i>
-									</div>									
+									</div>
 								</div>
 								<div class="collapsible-body">
 									<div class="datos-articulo">
@@ -126,13 +129,8 @@
 					  	</ul>
 					  </div>
 					</li>
-				</ul>	
+				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-	
-
-	
-
-

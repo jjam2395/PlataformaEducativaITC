@@ -5,13 +5,16 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class UsuarioAlumnoService {
-  uid:string; 
+  uid:string;
   car:any;
+  user:any;
   constructor(private db: AngularFireDatabase) {
     if(localStorage.getItem('user')){
       this.uid=JSON.parse(localStorage.getItem('user')).uid;
-    } 
-    
+      
+
+    }
+
   }
 
   saveUser(uid, data,tipoUserCrear){
@@ -27,6 +30,6 @@ export class UsuarioAlumnoService {
     return carrera;
   }
 
-  
+
 
 }
