@@ -14,9 +14,10 @@ export class UsuarioAlumnoService {
     
   }
 
-  saveUser(uid, data){
+  saveUser(uid, data,tipoUserCrear){
     //REFERENCIA A LA DATABASE
-    let refUser=this.db.list('/usuarios/');
+    console.log("tipo de usuario desde el servicio",tipoUserCrear)
+    let refUser=this.db.list('/usuarios/'+tipoUserCrear+"/");
     //SE ACTUALIZA LA INFORMACION EN USUARIOS CON LA KEY UID
     refUser.update(uid,data);
   }

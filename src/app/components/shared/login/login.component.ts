@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       this.forma = new FormGroup({
         'email': new FormControl('',[Validators.required, Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")]),
         'password': new FormControl('',[Validators.required, Validators.minLength(8)]),
-        'tipoUser': new FormControl('',[Validators.required]),
+        'tipoUserLogeado': new FormControl('',[Validators.required]),
       });
 
       this._ls.user.subscribe(result=>{
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   login(){
     // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
   if(this.forma.valid){
-    this._ls.login(this.forma.value.email,this.forma.value.password, this.forma.value.tipoUser);  
+    this._ls.login(this.forma.value.email,this.forma.value.password, this.forma.value.tipoUserLogeado);  
     //SUSCRIBIRSE AL OBSERVABLE DE USER 
     this._ls.user.subscribe((result)=>{
       if(result){

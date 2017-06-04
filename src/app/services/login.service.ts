@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public _cf:UsuarioAlumnoService) {
+    public _ua:UsuarioAlumnoService) {
     this.user = afAuth.authState;
     this.error = null; //MOSTRAR MENSAJES DE ERROR
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
@@ -32,12 +32,21 @@ export class LoginService {
     this.preloader = true;
     this.afAuth.auth.createUserWithEmailAndPassword(formulario.email, formulario.password).then((result) => {
       //FORMATO DE LA INFORMACION QUE SE GUARDARA 
-      let data={
-        displayName: formulario.nombre,
-        carrera: formulario.carrera,
-        email: result.email==null ? '' : result.email,
-        photoURL: result.photoURL==null ? '' : result.photoURL 
-      }
+      let data;
+      if(formulario.tipoUserCrear=="alumnos"){
+          data={
+          displayName: formulario.nombre,
+          carrera: formulario.carrera,
+          email: result.email==null ? '' : result.email,
+          photoURL: result.photoURL==null ? '' : result.photoURL 
+        }
+      }else if(formulario.tipoUserCrear!="alumnos"){
+          data={  
+          displayName: formulario.nombre,
+          email: result.email==null ? '' : result.email,
+          photoURL: result.photoURL==null ? '' : result.photoURL 
+        }
+      }      
       //SI TODO SE EJECUTA CORRECTAMENTE LOS MENSAJES DE ERROR Y PRELOADER SE PONE EN FALSE
       console.log(`Registro exitoso ${JSON.stringify(result)}`);
       this.error = null;
@@ -46,7 +55,7 @@ export class LoginService {
 
       //SE ENVIA UN CORREO DE VERIFICACION A LA CUENTA Y SE GURDAN LOS DATOS BASICOS DEL USUARIO
       this.sendVerificationEmail();
-      this._cf.saveUser(result.uid,data);
+      this._ua.saveUser(result.uid,data,formulario.tipoUserCrear);
     }).catch((error) => {
       //SI OCURRE ALGUN ERROR SE GUARDA EL MENSAJE DE ERROR Y RESULTADO A NULL
       if (error.message == "The email address is already in use by another account.") {
@@ -58,24 +67,26 @@ export class LoginService {
   }
 
   // AUTENTICACION CON CORREO Y CONTRASEÑA
-  login(email, password, tipoUser): any {
+  login(email, password, tipoUserLogeado): any {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = false;
     this.preloader = true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
       //SI EL CORREO AH SIDO VERIFICADO
       if (result.emailVerified == true) {
-        //SI YA ESTA REGISTRADO Y A VERIFICADO SU CORREO VERIFICAR QUE EXISTA EN EL REGISTRO QUE DICE
-         
+        //VERIFICAR QUE EXISTA EN EL REGISTRO QUE DICE
+
         console.log("Logeo exitoso", result);
         //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
         localStorage.setItem('user', JSON.stringify(result)); 
-        localStorage.setItem('tipoUser', tipoUser );
+        localStorage.setItem('tipoUserLogeado', tipoUserLogeado );
         //REDIRECCIONAR AL INICIO DEL ALUMNO
-        if(tipoUser=="alumnos"){
+        if(tipoUserLogeado=="alumnos"){
           this.router.navigate(['/inicio-alumno']);
-        }else if(tipoUser=="administradores"){
-          this.router.navigate(['/admin']);
+        }else if(tipoUserLogeado=="administradores"){
+          this.router.navigate(['/registro']);
+        }else if(tipoUserLogeado=="maestros"){
+          console.log("se ha logeado un maestro");
         }
         
     } else {
@@ -100,7 +111,7 @@ export class LoginService {
     this.afAuth.auth.signOut().then((result) =>{
       console.log("Sign-out successful.");
       localStorage.removeItem('user');
-      localStorage.removeItem('tipoUser');
+      localStorage.removeItem('tipoUserLogeado');
       this.preloader = false;
     }).catch(error=> {
       console.log(`An error happened. ${error}`);
