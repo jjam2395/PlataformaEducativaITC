@@ -27,8 +27,8 @@ export class UsuarioAlumnoService {
   getDatoUser(dato){
     console.log("dato desde el servicio",dato)
     console.log("usuario desde el servicio", this.uid)
-    let carrera = this.db.object('/usuarios/alumnos'+this.uid+"/"+dato,{ });
-    console.log("carrera obtenida desde el servicio",carrera)
+    let carrera = this.db.object('/usuarios/alumnos/'+this.uid+'/'+dato,{ });
+    console.log("carrera obtenida desde el servicio",carrera);
     return carrera;
   }
 

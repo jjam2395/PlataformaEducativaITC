@@ -34,10 +34,10 @@ export class MateriasComponent implements OnInit {
     //obtener carrera del estudiante  
     //SE OBTIENE LA CARRERA ACTUAL DEL USUARIO
     this._ua.getDatoUser("carrera").subscribe((val)=>{
+       console.log("valor de la carrera del alumno",val);
       if(val.$value){
         //SE MANDA A LLAMAR AL METODO DE CARGAR CURSOS
         this._cs.cargarCursos(val.$value).subscribe((res=>{
-          
           this.cursos=res;
           console.log(res);
           // console.log("resuldato de los cursos",res); 
@@ -49,10 +49,19 @@ export class MateriasComponent implements OnInit {
   verMateria(curso){
     this.displayMateriaDetalle=true;
     this.cursoToDisplay=curso;
+    console.log("datos del curso seleccionado", this.cursoToDisplay)
   }
 
   regresar(){
     this.displayMateriaDetalle=false;
+  }
+
+  registrarme(){
+    //guardar el uid del alumno en el curso
+    let uid=JSON.parse(localStorage.getItem('user')).uid;
+    //obtner el uid del curso
+    console.log("curso seleccionado",this.cursoToDisplay);
+    //guardar el uid del curso en el alumno
   }
 
   showDescripcion(){
