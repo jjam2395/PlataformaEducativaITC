@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConf } from '../environments/firebase.conf';
 
+
 //RUTAS
 import { APP_ROUTING } from './app.routes';
 
@@ -16,6 +17,7 @@ import { LoginService } from './services/login.service';
 import { CursosService } from './services/cursos.service';
 import { AuthGuardService } from "./services/auth-guard.service";
 import { UsuarioAlumnoService } from "./services/usuarioAlumno.service";
+import { DudasService} from './services/dudas.service';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -37,6 +39,7 @@ import { MateriaDetalleComponent } from './components/materia-detalle/materia-de
 
 import { NameCarreraPipe } from './customPipes/name-carrera.pipe';
 import { AdminComponent } from './components/admin/admin.component';
+import { DudasResponderComponent } from './components/dudas-responder/dudas-responder.component';
 
 
 @NgModule({
@@ -59,6 +62,7 @@ import { AdminComponent } from './components/admin/admin.component';
     MateriaDetalleComponent,
     NameCarreraPipe,
     AdminComponent,
+    DudasResponderComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,9 @@ import { AdminComponent } from './components/admin/admin.component';
               LoginService,
               CursosService,
               AuthGuardService,
-              UsuarioAlumnoService],
+              UsuarioAlumnoService,
+              DudasService
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

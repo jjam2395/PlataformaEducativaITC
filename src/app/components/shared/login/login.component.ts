@@ -33,16 +33,15 @@ export class LoginComponent implements OnInit {
         }
       })
    }
-  
+
   ngOnInit() {
   }
-
 
   login(){
     // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
   if(this.forma.valid){
-    this._ls.login(this.forma.value.email,this.forma.value.password, this.forma.value.tipoUser);  
-    //SUSCRIBIRSE AL OBSERVABLE DE USER 
+    this._ls.login(this.forma.value.email,this.forma.value.password, this.forma.value.tipoUser);
+    //SUSCRIBIRSE AL OBSERVABLE DE USER
     this._ls.user.subscribe((result)=>{
       if(result){
         if(result.emailVerified==true){
@@ -53,10 +52,12 @@ export class LoginComponent implements OnInit {
         }
       }else{
         console.log("redirigiendo al home")
-      }   
-    });  
+
+      }
+    });
   }else{
-    console.error("el formato de los datos no es correcto");
+    console.error("El formato de los datos no es correcto");
+    alert("El correo electrónico no esta asociada a ninguna cuenta, debes registrarte primero");
   }
   }
 
