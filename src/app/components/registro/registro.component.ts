@@ -27,7 +27,6 @@ export class RegistroComponent implements OnInit {
         'email': new FormControl('',[Validators.required, Validators.pattern(".+@itcuautla\.edu\.mx")]),
         'nombre': new FormControl('',Validators.required),
         'carrera': new FormControl('',Validators.required),
-        'tipoUserCrear': new FormControl('alumnos',Validators.required),
         'password': new FormControl('',[Validators.required, Validators.minLength(8)])
       });
 
@@ -47,9 +46,9 @@ export class RegistroComponent implements OnInit {
 
   registrar(){
     //ENVIAMOS TODA LA INGORMACION CONTENIDA EN EL FORMULARIO AL SERVICIO DE LOGIN
-    // this._ls.registrar(this.forma.value);
-    console.log("valor del formulario desde el componente",this.forma.value)
-    this.forma.reset({email:'',nombre: '',carrera:'',tipoUserCrear:'alumnos',password:''});
+    this._ls.registrar(this.forma.value,this.btnUser);
+    // console.log("desde el registro componente",this.forma.value, this.btnUser)
+    this.forma.reset({email:'',nombre: '',carrera:'',password:''});
   }
 
   seleccionUser(userSelect){
@@ -57,4 +56,9 @@ export class RegistroComponent implements OnInit {
     this.btnUser=userSelect;
   }
 
+  continuar(){
+    this._ls.error = ''; //MOSTRAR MENSAJES DE ERROR
+    this._ls.resultado = ''; //MOSTRAR MENSAJES EXITOSOS
+    this._ls.preloader = false;
+  }
 }

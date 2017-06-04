@@ -8,7 +8,7 @@ import {ArticuloComponent} from './components/articulo/articulo.component';
 import {CrearCursoComponent} from './components/crear-curso/crear-curso.component';
 import { RegistroComponent } from "./components/registro/registro.component";
 import { MateriaDetalleComponent } from "./components/materia-detalle/materia-detalle.component";
-import { AdminComponent } from "./components/admin/admin.component";
+import { InicioMaestroComponent } from "./components/inicio-maestro/inicio-maestro.component";
 
 import { AuthGuardService } from "./services/auth-guard.service";
 
@@ -22,7 +22,7 @@ const APP_ROUTES: Routes = [
 	{path:'crear-curso', component: CrearCursoComponent},
 	{path:'registro', component: RegistroComponent},
 	{path:'detalle/:id', component: MateriaDetalleComponent},
-	{path:'admin', component: AdminComponent},
+	{path:'inicio-maestro', component: InicioMaestroComponent},
 	{path:'**', pathMatch: 'full', redirectTo:'home'}
 ];
 

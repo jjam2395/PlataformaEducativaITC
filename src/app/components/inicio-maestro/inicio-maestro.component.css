@@ -1,0 +1,75 @@
+.micontainer{
+	margin: 0 10vw;
+}
+
+app-header{
+	margin-left: 440px;
+	border:2px solid red;
+}
+
+.titulos{
+	font-size: 1.3em;
+}
+
+.collapsible-header{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+
+}
+
+.header-elementos{
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-elementos .datos{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.header-elementos .informacion{
+	display: flex;
+	justify-content: flex-end;
+}
+
+a:hover{
+	color:#28E041;
+}
+
+.nuevo:hover{
+	color:#28E041;
+}
+
+.nuevo{
+	font-size: 30px;
+}
+
+.collapsible-body{
+	display: flex;
+	flex-direction: column;
+	padding:1vh;
+}
+
+.datos-materia{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.datos-materia p{
+	margin-right: 1em;
+	margin-left: 1em;
+}
+
+.progress{
+	width: 70vw;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.datos-articulo{
+	display: flex;
+	justify-content: flex-start;
+	margin:1vh 5vw;
+}

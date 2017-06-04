@@ -11,23 +11,30 @@ export class UsuarioAlumnoService {
   constructor(private db: AngularFireDatabase) {
     if(localStorage.getItem('user')){
       this.uid=JSON.parse(localStorage.getItem('user')).uid;
-      
-
+      console.log("uid del usuario logeado ",this.uid)
     }
 
   }
 
   saveUser(uid, data,tipoUserCrear){
     //REFERENCIA A LA DATABASE
-    console.log("tipo de usuario desde el servicio",tipoUserCrear)
-    let refUser=this.db.list('/usuarios/'+tipoUserCrear+"/");
-    //SE ACTUALIZA LA INFORMACION EN USUARIOS CON LA KEY UID
+    console.log("tipo de usuario desde el servicioooo",tipoUserCrear)
+    console.log("datos desde el servicio",data)
+    console.log("uid desde el servicio", uid)
+    let refUser=this.db.list('/usuarios/'+tipoUserCrear+'/');
+    // SE ACTUALIZA LA INFORMACION EN USUARIOS CON LA KEY UID
     refUser.update(uid,data);
   }
 
   getDatoUser(dato){
-    let carrera = this.db.object('/usuarios/'+this.uid+"/"+dato,{ });
+    console.error("getDatoUser no funcina bien")
+    let carrera = this.db.object('/usuarios/alumnos'+this.uid+"/"+dato,{ });
     return carrera;
+  }
+
+  getUser(tipoUser, uid){
+    let user = this.db.object('/usuarios/'+tipoUser+'/'+uid,{});
+    return user;
   }
 
 

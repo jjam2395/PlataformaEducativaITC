@@ -13,34 +13,38 @@ export class LoginService {
   banderaEmail: boolean = false;
   error: string;
   resultado: any;
-  preloader: boolean;
+  preloader: boolean; 
 
   constructor(private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public router: Router,
     public _ua:UsuarioAlumnoService) {
     this.user = afAuth.authState;
-    this.error = null; //MOSTRAR MENSAJES DE ERROR
+    this.error = ''; //MOSTRAR MENSAJES DE ERROR
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = false; //INDICAR SI SE DEBE MOSTRAR EL PRELOADER O NO
   }
 
   //CREAR USUARIO CON CORREO Y CONTRASEÑA
-  registrar(formulario) {
+  registrar(formulario, tipoUserCrear) {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
-    this.preloader = false;
     this.preloader = true;
+    console.log("entro a la funcino de registrar")
+    console.log("formulario desde el servicio", formulario);
+    console.log("tipo user desde el registro", tipoUserCrear);
     this.afAuth.auth.createUserWithEmailAndPassword(formulario.email, formulario.password).then((result) => {
+      console.log("dentro de la creacion del usuario")
       //FORMATO DE LA INFORMACION QUE SE GUARDARA 
+      console.log("resultado del registro desde el componente",result)
       let data;
-      if(formulario.tipoUserCrear=="alumnos"){
+      if(tipoUserCrear=="alumnos"){
           data={
           displayName: formulario.nombre,
           carrera: formulario.carrera,
           email: result.email==null ? '' : result.email,
           photoURL: result.photoURL==null ? '' : result.photoURL 
         }
-      }else if(formulario.tipoUserCrear!="alumnos"){
+      }else if(tipoUserCrear!="alumnos"){
           data={  
           displayName: formulario.nombre,
           email: result.email==null ? '' : result.email,
@@ -49,46 +53,58 @@ export class LoginService {
       }      
       //SI TODO SE EJECUTA CORRECTAMENTE LOS MENSAJES DE ERROR Y PRELOADER SE PONE EN FALSE
       console.log(`Registro exitoso ${JSON.stringify(result)}`);
-      this.error = null;
+      this.error = '';
       this.resultado = "Registro exitoso"
       this.preloader = false;
 
       //SE ENVIA UN CORREO DE VERIFICACION A LA CUENTA Y SE GURDAN LOS DATOS BASICOS DEL USUARIO
       this.sendVerificationEmail();
-      this._ua.saveUser(result.uid,data,formulario.tipoUserCrear);
+      this._ua.saveUser(result.uid,data,tipoUserCrear);
     }).catch((error) => {
       //SI OCURRE ALGUN ERROR SE GUARDA EL MENSAJE DE ERROR Y RESULTADO A NULL
       if (error.message == "The email address is already in use by another account.") {
         this.error = "La dirección de email ya se encuentra en uso."
         this.resultado = null
         this.preloader = false;
+      }else if(error.message=="The email address is badly formatted."){
+        this.error="Escribe el correo en vez copiar y pegar, porfavor."
+        this.resultado = null;
+        this.preloader = false;
       }
+      console.error("error en la creacion del usuario",error);
     })
   }
 
   // AUTENTICACION CON CORREO Y CONTRASEÑA
   login(email, password, tipoUserLogeado): any {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
-    this.preloader = false;
     this.preloader = true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
       //SI EL CORREO AH SIDO VERIFICADO
       if (result.emailVerified == true) {
         //VERIFICAR QUE EXISTA EN EL REGISTRO QUE DICE
-
-        console.log("Logeo exitoso", result);
-        //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
-        localStorage.setItem('user', JSON.stringify(result)); 
-        localStorage.setItem('tipoUserLogeado', tipoUserLogeado );
-        //REDIRECCIONAR AL INICIO DEL ALUMNO
-        if(tipoUserLogeado=="alumnos"){
-          this.router.navigate(['/inicio-alumno']);
-        }else if(tipoUserLogeado=="administradores"){
-          this.router.navigate(['/registro']);
-        }else if(tipoUserLogeado=="maestros"){
-          console.log("se ha logeado un maestro");
-        }
-        
+        this._ua.getUser(tipoUserLogeado, result.uid).subscribe(user=>{
+          console.log("resultado de la verificacion desde el componente",user);
+          if(!user.$value){
+            console.log("los datos son correctos")
+            console.log("Logeo exitoso", result);
+            //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
+            localStorage.setItem('user', JSON.stringify(result)); 
+            localStorage.setItem('tipoUserLogeado', tipoUserLogeado );
+            //REDIRECCIONAR AL INICIO DEL ALUMNO
+            if(tipoUserLogeado=="alumnos"){
+              this.router.navigate(['/inicio-alumno']);
+            }else if(tipoUserLogeado=="administradores"){
+              this.router.navigate(['/registro']);
+            }else if(tipoUserLogeado=="maestros"){
+              this.router.navigate(['/inicio-maestro']);
+            }
+          }else if(user.$value==null){
+            //EL USUARIO NO EXISTE EN EL REGISTRO QUE DICE
+            console.error("los datos no son correctos");
+          }
+        })
+          
     } else {
         this.error = "Necesitas validar tu correo electrónico"
       }

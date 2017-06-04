@@ -94,8 +94,14 @@
   <div class="correcto container-center center-align">
     <div>
       <p > ¡{{this._ls.resultado}}!</p>
-      <p> Antes de iniciar sesión verifica tu correo electrónico </p>
-      <button class="waves-effect waves-light btn" routerLink='/home'>Continuar</button>
+      <ng-container *ngIf="btnUser=='user'">
+        <p> Antes de iniciar sesión verifica tu correo electrónico </p>
+        <button class="waves-effect waves-light btn" routerLink='/home'>Continuar</button>
+      </ng-container>
+      <ng-container>  
+        <button class="waves-effect waves-light btn" (click)="continuar()">Continuar</button>
+      </ng-container>
+      
     </div>
   </div>
 </ng-container>

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     }
     //REGLAS DE VALIDACION PARA EL FORMULARIO DE LOGIN
       this.forma = new FormGroup({
-        'email': new FormControl('',[Validators.required, Validators.pattern("[0-9]{8}@itcuautla\.edu\.mx")]),
+        'email': new FormControl('',[Validators.required, Validators.pattern(".+@itcuautla\.edu\.mx")]),
         'password': new FormControl('',[Validators.required, Validators.minLength(8)]),
         'tipoUserLogeado': new FormControl('',[Validators.required]),
       });
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   limpiar(){
-    this._ls.error=null;
+    this._ls.error='';
     this._ls.resultado=null;
   }
 }

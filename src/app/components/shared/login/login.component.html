@@ -43,8 +43,11 @@
                 </div>
                 <div class="input-field col s3">
                   <button
-                    class=" modal-close waves-effect waves-light btn"
-                    [ngClass]="{'disabled': !forma.controls['email'].valid || forma.controls['email'].untouched || !forma.controls['password'].valid}"
+                    class="waves-effect waves-light btn"
+                    [ngClass]="{'disabled': !forma.controls['email'].valid ||
+                                          forma.controls['email'].untouched ||
+                                          !forma.controls['password'].valid, 
+                                'modal-close':this._ls.error==''}"
                     type="submit">
                       <i class="material-icons right">send</i>Ok
                   </button>
