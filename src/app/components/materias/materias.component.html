@@ -6,7 +6,7 @@
       <div class="col s12">
         <h4>Cursos disponibles para tu carrera</h4>
       </div>
-      <div class="card-container col s12 m6 l6" *ngFor="let curso of this._cs.cursos | async">
+      <div class="card-container col s12 m5" *ngFor="let curso of this._cs.cursos | async">
           <div class="card blue-grey darken-1">
               <div class="card-content white-text">
                   <span class="card-title">{{curso.nombre}}</span>
@@ -14,7 +14,7 @@
                   <!--<p>Instructores: {{curso.instructores}}</p>-->
               </div>
               <div class="card-action">
-                <div class="row">
+                <div class="row no-mb">
                   <div class="col s12 right-align">
                     <a class="pointer" (click)="verMateria(curso)">Ver mas..</a>
                   </div>
@@ -29,7 +29,6 @@
 <!--DETALLE DE MATERIA-->
 <ng-template #showDetalle>
 
-
     <div class="micontainer">
         <div class="row">
             <div class="col s12 menu-materia-container center  light-primary-color">
@@ -38,18 +37,18 @@
                   <a class="pointer" (click)="regresar()"><i class="material-icons">arrow_back</i></a>
                 </div>
 
-                <div class="col s1 offset-s9">
+                <div class="col m1 s1 offset-s6 offset-m9">
                   Registrate
                 </div>
-                <div class="col s1 ">
+                <div class="col m1 s1 push-s2 ">
                   <a class="pointer" (click)="registrarme()"><i class="material-icons">group_add</i></a>
                 </div>
               </div>
-                <h4>{{cursoToDisplay.nombre}}</h4>
+                <p class="flow-text">{{cursoToDisplay.nombre}}</p>
             </div>
             <div class="nav-content col s12 center dark-primary-color">
                 <ul class="tabs tabs-transparent">
-                    <li class="tab pointer"><a  (click)="showDescripcion()">Descripción</a></li>
+                    <li class="tab pointer"><a class="item-menu" (click)="showDescripcion()">Descripción</a></li>
                     <li class="tab pointer"><a (click)="showObjetivo()">Objetivo</a></li>
                     <li class="tab pointer"><a (click)="showModulos()" >Modulos</a></li>
                     <li class="tab pointer"><a (click)="showInstructor()">Instructor</a></li>
@@ -66,7 +65,19 @@
             <p class="flow-text materia-content">{{cursoToDisplay.objetivo}}</p>
         </div>
         <div id="modulos" class="col s12" *ngIf="displayModulos==true">
-            <app-modulo></app-modulo>
+          <ul class="collapsible" materialize="collapsible" data-collapsible="accordion">
+
+            <li *ngFor="let modulo of cursoToDisplay.modulos; let i=index;" >
+              <div class="collapsible-header"><span class="badge"></span>{{i}}.1- {{modulo}}</div>
+              <div class="collapsible-body"><p>Objetivo: el objetivo del modulo sera escrito en esta parte</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">subdirectory_arrow_right</i> </div>
+              <div class="collapsible-body">
+              </div>
+            </li>
+
+          </ul>
         </div>
         <div id="instructor" class="col s12 materia-content" *ngIf="displayInstructor==true">
             <div class="row">
@@ -85,7 +96,15 @@
             </div>
         </div>
         <div id="calificacion" class="col s12" *ngIf="displayCalificaciones==true">
-        <app-modulo></app-modulo>
+
+          <ul class="collapsible" materialize="collapsible" data-collapsible="accordion">
+
+            <li *ngFor="let modulo of cursoToDisplay.modulos; let i=index;" >
+              <div class="collapsible-header"><span class="badge"></span>{{i}}.1- {{modulo}}</div>
+              <div class="collapsible-body"><p>Objetivo: el objetivo del modulo sera escrito en esta parte</p></div>
+            </li>
+          </ul>
+
         </div>
     </div>
 </ng-template>
