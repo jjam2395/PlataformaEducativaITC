@@ -2,6 +2,7 @@
 .menu-materia-container{
   height: 25vh;
   margin: 0 10vw;
+  margin-top: 10vh;
 }
 
 .container-video{
@@ -9,9 +10,17 @@
 }
 
 .micontainer{
-  margin: 0 8vw;
+  margin: 0 4vw;
+  margin-bottom: 10vh;
 }
 
-.tabs-materia-container{
-  background-color: #888;
+
+
+.materia-content{
+  padding: .5em 2em;
+  border-left: 5px #009688 solid;
+}
+
+.icon-materia{
+  margin-top: .5em;
 }
