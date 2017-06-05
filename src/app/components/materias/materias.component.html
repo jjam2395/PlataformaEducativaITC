@@ -4,9 +4,9 @@
 <div class="micontainer">
   <div class="row" *ngIf="displayMateriaDetalle==false; else showDetalle" >
       <div class="col s12">
-        <h3>Oferta educativa para tu carrera</h3>
+        <h4>Cursos disponibles para tu carrera</h4>
       </div>
-      <div class="card-container col s12 m6 l4" *ngFor="let curso of this._cs.cursos | async">
+      <div class="card-container col s12 m6 l6" *ngFor="let curso of this._cs.cursos | async">
           <div class="card blue-grey darken-1">
               <div class="card-content white-text">
                   <span class="card-title">{{curso.nombre}}</span>
@@ -14,7 +14,12 @@
                   <!--<p>Instructores: {{curso.instructores}}</p>-->
               </div>
               <div class="card-action">
-                  <a (click)="verMateria(curso)">Ver mas..</a>
+                <div class="row">
+                  <div class="col s12 right-align">
+                    <a class="pointer" (click)="verMateria(curso)">Ver mas..</a>
+                  </div>
+                </div>
+
               </div>
           </div>
       </div>
@@ -23,46 +28,59 @@
 
 <!--DETALLE DE MATERIA-->
 <ng-template #showDetalle>
-<a (click)="regresar()">Regresar</a>
-<a (click)="registrarme()">Registrarme</a>
+
+
     <div class="micontainer">
         <div class="row">
-            <div class="col s12 menu-materia-container center  purple lighten-4">
-                <h3>{{cursoToDisplay.nombre}}</h3>
+            <div class="col s12 menu-materia-container center  light-primary-color">
+              <div class="row icon-materia">
+                <div class="col s1 ">
+                  <a class="pointer" (click)="regresar()"><i class="material-icons">arrow_back</i></a>
+                </div>
+
+                <div class="col s1 offset-s9">
+                  Registrate
+                </div>
+                <div class="col s1 ">
+                  <a class="pointer" (click)="registrarme()"><i class="material-icons">group_add</i></a>
+                </div>
+              </div>
+                <h4>{{cursoToDisplay.nombre}}</h4>
             </div>
-            <div class="nav-content col s12 center tabs-materia-container">
+            <div class="nav-content col s12 center dark-primary-color">
                 <ul class="tabs tabs-transparent">
-                    <li class="tab"><a (click)="showDescripcion()">Descripción</a></li>
-                    <li class="tab"><a (click)="showObjetivo()">Objetivo</a></li>
-                    <li class="tab"><a (click)="showModulos()"class="active" >Modulos</a></li>
-                    <li class="tab"><a (click)="showInstructor()">Instructor</a></li>
-                    <li class="tab"><a (click)="showCalificaciones()">Calificaciones</a></li>
+                    <li class="tab pointer"><a  (click)="showDescripcion()">Descripción</a></li>
+                    <li class="tab pointer"><a (click)="showObjetivo()">Objetivo</a></li>
+                    <li class="tab pointer"><a (click)="showModulos()" >Modulos</a></li>
+                    <li class="tab pointer"><a (click)="showInstructor()">Instructor</a></li>
+                    <li class="tab pointer"><a (click)="showCalificaciones()">Calificaciones</a></li>
                 </ul>
             </div>
         </div>
 
         <div id="descripcion" class="col s12" *ngIf="displayDescripcion==true">
-            {{cursoToDisplay.descripcion}}
+          <p class="flow-text materia-content">{{cursoToDisplay.descripcion}}</p>
+
         </div>
         <div id="objetivo" class="col s12" *ngIf="displayObjetivo==true">
-            Objetivo de la materia
-            {{cursoToDisplay.objetivo}}
+            <p class="flow-text materia-content">{{cursoToDisplay.objetivo}}</p>
         </div>
         <div id="modulos" class="col s12" *ngIf="displayModulos==true">
             <app-modulo></app-modulo>
         </div>
-        <div id="instructor" class="col s12" *ngIf="displayInstructor==true">
+        <div id="instructor" class="col s12 materia-content" *ngIf="displayInstructor==true">
             <div class="row">
-            <div class="col s12 m2 center">
-                <img class="responsive-img circle" src="/assets/img/fotoPerfil1.PNG" alt="foto del instructor">
+            <div class="col s12 m3 center">
+                <img class="responsive-img circle" src="/assets/img/user.png" alt="foto del instructor">
             </div>
-            <div class="col s12 m10 row">
+            <div class="col s12 m8  row ">
                 <!--hacer una consulta al perfil del <maestro></maestro>-->
-                <h4 class="col s12">Nombre del Instructor</h4>
-                <h5 class="col s12">Titulo/Carrera del instructor</h5>
-                <h5 class="col s12 center-align">Biografia</h5>
-                <h5 class="col s12 ">
-                </h5>
+                <h4 class="col s12">{{cursoToDisplay.instructores}}</h4>
+                <h5 class="col s12">Ing. en Sistemas Computacionales</h5>
+                <h5 class="col s12 ">Biografia:</h5>
+                <h6 class="col s12 ">
+                  Aun no se ha guardado una biografia.
+                </h6>
             </div>
             </div>
         </div>
