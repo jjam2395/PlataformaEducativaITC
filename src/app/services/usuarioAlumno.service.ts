@@ -25,16 +25,31 @@ export class UsuarioAlumnoService {
   }
 
   getDatoUser(dato){
-    console.log("dato desde el servicio",dato)
-    console.log("usuario desde el servicio", this.uid)
+    // console.log("dato desde el servicio",dato)
+    // console.log("usuario desde el servicio", this.uid)
     let carrera = this.db.object('/usuarios/alumnos/'+this.uid+'/'+dato,{ });
-    console.log("carrera obtenida desde el servicio",carrera);
     return carrera;
   }
 
   getUser(tipoUser, uid){
     let user = this.db.object('/usuarios/'+tipoUser+'/'+uid,{});
     return user;
+  }
+
+  registrarCurso(keyCurso){
+    let refUser=this.db.list('/usuarios/alumnos/'+this.uid+'/cursos/');
+    refUser.update(keyCurso,{keyCurso});
+
+    //OBTENER LA CARRERA PARA GUARDAR EL UID DEL USUARIO CON CARRERA/KEYCURSO
+    let carrera;
+    this.getDatoUser("carrera").subscribe(res=>{
+      carrera=res.$value;
+      //guardarlo en cursos
+      let refCurso=this.db.list('/cursos/'+carrera+'/'+keyCurso+'/');
+       refCurso.update(keyCurso,{keyCurso});
+    })
+        // let refCurso=this.db.list('cursos/');
+    //guardarlo en cursos
   }
 
 

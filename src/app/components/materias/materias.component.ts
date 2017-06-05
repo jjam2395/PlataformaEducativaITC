@@ -11,7 +11,7 @@ import { UsuarioAlumnoService } from "../../services/usuarioAlumno.service";
 export class MateriasComponent implements OnInit {
   cursos
   displayMateriaDetalle:boolean; //Para saber cuando el usuario presiona en ver un curso
-  cursoToDisplay:object;
+  cursoToDisplay;
 
   displayDescripcion:boolean;
   displayObjetivo:boolean;
@@ -49,7 +49,7 @@ export class MateriasComponent implements OnInit {
   verMateria(curso){
     this.displayMateriaDetalle=true;
     this.cursoToDisplay=curso;
-    console.log("datos del curso seleccionado", this.cursoToDisplay)
+    console.log("datos del curso seleccionado", this.cursoToDisplay);
   }
 
   regresar(){
@@ -57,10 +57,11 @@ export class MateriasComponent implements OnInit {
   }
 
   registrarme(){
-    //guardar el uid del alumno en el curso
-    let uid=JSON.parse(localStorage.getItem('user')).uid;
-    //obtner el uid del curso
-    console.log("curso seleccionado",this.cursoToDisplay);
+    let keyCurso= this.cursoToDisplay.$key;
+    this._ua.registrarCurso(keyCurso);
+
+
+
     //guardar el uid del curso en el alumno
   }
 
