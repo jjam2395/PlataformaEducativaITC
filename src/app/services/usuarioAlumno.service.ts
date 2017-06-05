@@ -37,19 +37,18 @@ export class UsuarioAlumnoService {
   }
 
   registrarCurso(keyCurso){
+    let uid=this.uid
     let refUser=this.db.list('/usuarios/alumnos/'+this.uid+'/cursos/');
     refUser.update(keyCurso,{keyCurso});
 
-    //OBTENER LA CARRERA PARA GUARDAR EL UID DEL USUARIO CON CARRERA/KEYCURSO
+    //OBTENER LA CARRERA PARA GUARDAR EL UID DEL USUARIO CON CARRERA/KEYCURSO/alumnos/uidAlumno
     let carrera;
     this.getDatoUser("carrera").subscribe(res=>{
       carrera=res.$value;
       //guardarlo en cursos
-      let refCurso=this.db.list('/cursos/'+carrera+'/'+keyCurso+'/');
-       refCurso.update(keyCurso,{keyCurso});
+      let refCurso=this.db.list('/cursos/'+carrera+'/'+keyCurso+'/alumnos/');
+       refCurso.update(uid,{uid});
     })
-        // let refCurso=this.db.list('cursos/');
-    //guardarlo en cursos
   }
 
 
