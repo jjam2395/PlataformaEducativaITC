@@ -13,15 +13,15 @@ export class CursosService {
   constructor( private db:AngularFireDatabase) { }
 
   nuevoCurso(curso){
+    // console.log("curso desde el srvicio",curso)
     let refCurso=this.db.list('/cursos/'+curso.carrera);
     let data={
       nombre:curso.nombre,
       objetivo:curso.objetivo,
       descripcion:curso.descripcion,
-      instructores:curso.instructores,
-      modulos:curso.modulos,
     }
     let key=refCurso.push(data).key;
+    // console.log("key desde el servicio de curso",key)
     return key;
   }
 
