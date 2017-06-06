@@ -43,8 +43,6 @@ export class CursosService {
 
   subirArchivo(file:File,curso,modulo:string, newCursoKey:string, titulo:string){
     //SE LE CAMBIA EL NOMBRE AL ARCHIVO CON EL QUE INGRESO EL USUARIO
-    console.log(file);
-    console.log("carrera desde el servicio: ",curso.carrera);
     let t=this;
     //REFERENCIA AL STORAGE
     let storageRef = firebase.storage().ref('cursos/'+curso.carrera+'/'+newCursoKey+'/modulos/'+modulo+'/'+titulo+'/');
@@ -58,17 +56,18 @@ export class CursosService {
             console.log("estado de la subida",this.estadoSubida);
         },()=>{
           console.log("El archivo se ha subido con exito");
-            /*// firebase.database().ref('Documentos/'+this.props.user.displayName).push({
+            // firebase.database().ref('Documentos/'+this.props.user.displayName).push({
             //     titulo :file.name,
             //     downloadURL: task.snapshot.downloadURL
             // });
-            t.estadoSubida="Se ha completado la subida del archivo";
-            console.log("archivo subido");
-            let urlVideo=task.snapshot.downloadURL;
-            //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS
-            //REFERENCIA: CURSOS/CARRERA/KEYCURSO/MODULOS/NOMBREMODULO/VIDEOS||ACTIVIDADES
-            let refvideo=this.db.list('/cursos/'+carrera+'/'+newCursoKey+'/modulos/');
-            refvideo.push({urlVideo});*/
+            // t.estadoSubida="Se ha completado la subida del archivo";
+            // console.log("archivo subido");
+            // //URL DEL VIDEO
+            // let urlVideo=task.snapshot.downloadURL;
+            // //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS
+            // //REFERENCIA: CURSOS/CARRERA/KEYCURSO/MODULOS/NOMBREMODULO/VIDEOS||ACTIVIDADES
+            // let refvideo=this.db.list('/cursos/'+carrera+'/'+newCursoKey+'/modulos/');
+            // refvideo.push({urlVideo});
         })
   }
 }
