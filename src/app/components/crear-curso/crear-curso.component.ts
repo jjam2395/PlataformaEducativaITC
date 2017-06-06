@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
-import * as firebase from 'firebase/app';
-
 declare var $:any;
 
 @Component({
@@ -16,8 +14,8 @@ export class CrearCursoComponent implements OnInit {
   showModulos;
   moduloActual;
   file: File;
-  newCursoKey;
-  estadoSubida; //PARA SABER EL POCENTAJE QUE SE HA SUBIDO
+  newCursoKey; //KEY DEL CURSO QUE FUE CREADO
+  carrera;
 
   constructor(private _cursosServices: CursosService) {
     this.newCursoKey=null;
@@ -44,6 +42,8 @@ export class CrearCursoComponent implements OnInit {
       this.curso.modulos.push(nombreModulo);
     }
 
+    this.carrera=this.curso.carrera;
+
     //CREACION DEL CURSO SIN MODULOS, PARA OBTENER UN UID
     this.newCursoKey= this._cursosServices.nuevoCurso(this.curso);
     console.log("llave del curso creado",this.newCursoKey);
@@ -58,34 +58,13 @@ export class CrearCursoComponent implements OnInit {
   }
 
   
-  onChange(event) {
+  onChangeVideos(event) {
     // console.log(event);
     let file = event.target.files[0];
     console.log(file);
 
     //REFERENCIA AL STORAGE
-    let storageRef = firebase.storage().ref(
-        'cursos/'+ this.curso.carrera+'/'+this.newCursoKey+'/'
-    );
-
-    console.log("datos de la referencia",this.curso.carrera,this.newCursoKey)
-
-    let task = storageRef.put(file);
-
-    task.on(firebase.storage.TaskEvent.STATE_CHANGED, (snapshot)=>{
-            let porcentaje = (snapshot.bytesTransferred / snapshot.totalBytes)*100
-            // this.estadoSubida={uploadValue:porcentaje}
-        },(error)=>{
-            this.estadoSubida={meessage: `ha ocurrido un error ${error.message}`};
-        },()=>{ 
-            // firebase.database().ref('Documentos/'+this.props.user.displayName).push({
-            //     titulo :file.name,
-            //     downloadURL: task.snapshot.downloadURL
-            // });
-            this.estadoSubida({
-                message:"Archivo subido"
-            })
-        })
+    this._cursosServices.subirArchivo(file, this.carrera, this.newCursoKey);
 
 
     // var files = event.srcElement.files;

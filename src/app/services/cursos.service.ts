@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 import {Curso} from '../interfaces/curso.interface';
 
@@ -10,6 +10,8 @@ import {Curso} from '../interfaces/curso.interface';
 export class CursosService {
   // refCursos: FirebaseListObservable<any[]>
   cursos;
+  estadoSubida;
+  // urlVideo;
   constructor( private db:AngularFireDatabase) { }
 
   nuevoCurso(curso){
@@ -48,5 +50,31 @@ export class CursosService {
     //   t.cursos=cursos;
     //   console.log("cursos desde el servicio cursos",t.cursos);
     // });
+  }
+
+  subirArchivo(file,carrera, newCursoKey){
+    console.log("carrera desde el servicio",carrera);
+    let storageRef = firebase.storage().ref('cursos/'+carrera+'/videos/'+file.name+'/');
+    let t=this;
+    let task = storageRef.put(file);
+    task.on(firebase.storage.TaskEvent.STATE_CHANGED, (snapshot)=>{
+             t.estadoSubida = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+            // console.log(this.estadoSubida);
+            // this.estadoSubida={uploadValue:porcentaje}
+        },(error)=>{
+            t.estadoSubida=`ha ocurrido un error ${error.message}`;
+            console.log("estado de la subida",this.estadoSubida);
+        },()=>{ 
+            // firebase.database().ref('Documentos/'+this.props.user.displayName).push({
+            //     titulo :file.name,
+            //     downloadURL: task.snapshot.downloadURL
+            // });
+            t.estadoSubida="Se ha completado la subida del archivo";
+            console.log("archivo subido");
+            let urlVideo=task.snapshot.downloadURL;
+            //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS 
+            let refvideo=this.db.list('/cursos/'+carrera+'/'+newCursoKey+'/modulos/videos/');
+            refvideo.update(urlVideo,{urlVideo});
+        })
   }
 }

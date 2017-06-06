@@ -65,21 +65,24 @@
                 <i class="material-icons">exposure_plus_1</i></a>
             </div>
           </div>
-            <div class="input-field col s12 m6">
+            <!--<div class="input-field col s12 m6">
               <input class="validate" >
               <label for="titulo">Titulo del subtema</label>
-            </div>
+            </div>-->
 
             <!--INPUT PARA SUBIR LOS ARCHIVOS-->
             <div class="col s4 row ">
               <div class="file-field input-field">
                 <div class="btn">
-                  <span>File</span>
-                  <input type="file" (change)="onChange($event)">
+                  <span>Subir videos</span>
+                  <input type="file" (change)="onChangeVideos($event)">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
                 </div>
+                <p>
+                  subiendo: {{this._cursosServices.estadoSubida}}
+                <p>
               </div>
               <!--<div class="col s3">
               <a class="pointer tooltipped"
