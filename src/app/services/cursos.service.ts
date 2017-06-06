@@ -41,20 +41,24 @@ export class CursosService {
     return this.cursos
   }
 
-  subirArchivo(file,carrera, newCursoKey, titulo){
+  subirArchivo(file:File,curso,modulo:string, newCursoKey:string, titulo:string){
     //SE LE CAMBIA EL NOMBRE AL ARCHIVO CON EL QUE INGRESO EL USUARIO
-    file.nombre=titulo;
     console.log(file);
-    let storageRef = firebase.storage().ref('cursos/'+carrera+'/'+newCursoKey+'/videos/'+file.nombre+'/');
+    console.log("carrera desde el servicio: ",curso.carrera);
     let t=this;
+    //REFERENCIA AL STORAGE
+    let storageRef = firebase.storage().ref('cursos/'+curso.carrera+'/'+newCursoKey+'/modulos/'+modulo+'/'+titulo+'/');
+    //SE ASIGNA LA TAREA DE SUBIR EL ARCHIVO
     let task = storageRef.put(file);
+    //SE CREA UN SOCKET SOBRE LA TAREA
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, (snapshot)=>{
              t.estadoSubida = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
         },(error)=>{
             t.estadoSubida=`ha ocurrido un error ${error.message}`;
             console.log("estado de la subida",this.estadoSubida);
         },()=>{
-            // firebase.database().ref('Documentos/'+this.props.user.displayName).push({
+          console.log("El archivo se ha subido con exito");
+            /*// firebase.database().ref('Documentos/'+this.props.user.displayName).push({
             //     titulo :file.name,
             //     downloadURL: task.snapshot.downloadURL
             // });
@@ -64,7 +68,7 @@ export class CursosService {
             //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS
             //REFERENCIA: CURSOS/CARRERA/KEYCURSO/MODULOS/NOMBREMODULO/VIDEOS||ACTIVIDADES
             let refvideo=this.db.list('/cursos/'+carrera+'/'+newCursoKey+'/modulos/');
-            refvideo.push({urlVideo});
+            refvideo.push({urlVideo});*/
         })
   }
 }

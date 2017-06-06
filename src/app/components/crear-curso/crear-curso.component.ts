@@ -69,6 +69,6 @@ export class CrearCursoComponent implements OnInit {
 
   subirArchivo(){
     //SE MANDA EL VIDEO SELECCIONADO POR EL USUARIO, DATOS GRL DEL CURSO, KEY DEL CURSO, TITULO DLE VIDEO
-     this._cursosServices.subirArchivo(this.file, this.cursoActual, this.newCursoKey, this.tituloVideo);
+     this._cursosServices.subirArchivo(this.file, this.cursoActual,this.moduloActual, this.newCursoKey, this.tituloVideo);
   }
 }
