@@ -43,8 +43,6 @@ export class CursosService {
 
   subirArchivo(file:File,curso,modulo:string, newCursoKey:string, titulo:string){
     //SE LE CAMBIA EL NOMBRE AL ARCHIVO CON EL QUE INGRESO EL USUARIO
-    console.log(file);
-    console.log("carrera desde el servicio: ",curso.carrera);
     let t=this;
     //REFERENCIA AL STORAGE
     let storageRef = firebase.storage().ref('cursos/'+curso.carrera+'/'+newCursoKey+'/modulos/'+modulo+'/'+titulo+'/');

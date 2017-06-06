@@ -44,7 +44,7 @@ export class CrearCursoComponent implements OnInit {
     }
 
     //SE GUARDAN LOS DATOS GENERALES DEL CURSO, (AL TERMINAR LA FUNCINO THIS.CURSO SE RESETEA)
-    this.cursoActual=this.curso;
+    this.cursoActual=JSON.parse(JSON.stringify(this.curso));
 
     //CREACION DEL CURSO SIN MODULOS, PARA OBTENER UN UID
     this.newCursoKey= this._cursosServices.nuevoCurso(this.curso);
@@ -68,7 +68,7 @@ export class CrearCursoComponent implements OnInit {
   }
 
   subirArchivo(){
-    //SE MANDA EL VIDEO SELECCIONADO POR EL USUARIO, DATOS GRL DEL CURSO, KEY DEL CURSO, TITULO DLE VIDEO
-     this._cursosServices.subirArchivo(this.file, this.cursoActual,this.moduloActual, this.newCursoKey, this.tituloVideo);
+    // SE MANDA EL VIDEO SELECCIONADO POR EL USUARIO, DATOS GRL DEL CURSO, KEY DEL CURSO, TITULO DLE VIDEO
+    this._cursosServices.subirArchivo(this.file, this.cursoActual,this.moduloActual, this.newCursoKey, this.tituloVideo);
   }
 }
