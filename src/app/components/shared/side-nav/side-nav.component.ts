@@ -13,6 +13,8 @@ export class SideNavComponent implements OnInit {
   constructor(private _ls: LoginService,  private router:Router) {
   	this.nameUser="localStorage.user.displayName";
   	this.materias=["Base de datos","Dispositivos Moviles","Inteligencia Artificial"];
+
+      
   }
 
   ngOnInit() {
