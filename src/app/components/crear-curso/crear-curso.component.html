@@ -69,14 +69,14 @@
           <!--INPUT DEL NOMBRE DEL VIDEO-->
           <div class="input-field col s12 m6">
             <input class="validate" id="titulo"  [(ngModel)]="tituloVideo" name="tituloVideo">
-            <label for="titulo">Titulo del subtema</label>
+            <label for="titulo">Titulo de la leccion</label>
           </div>
 
             <!--INPUT PARA SUBIR LOS ARCHIVOS-->
             <div class="col s4 row ">
               <div class="file-field input-field">
                 <div class="btn">
-                  <span>Subir video</span>
+                  <span>Seleccionar video</span>
                   <input type="file" (change)="onChangeVideos($event)">
                 </div>
                 <div class="file-path-wrapper">
@@ -86,6 +86,7 @@
                   subiendo: {{this._cursosServices.estadoSubida}}
                 <p>
               </div>
+              <button class="btn" (click)="subirArchivo()">Subir archivo</button>
               <!--<div class="col s3">
               <a class="pointer tooltipped"
                 data-position="bottom"

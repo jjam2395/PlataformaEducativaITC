@@ -11,12 +11,12 @@ declare var $:any;
 })
 export class CrearCursoComponent implements OnInit {
   curso; //objeto con los datos generales del curso
-  showModulos;
-  moduloActual;
-  file: File;
+  showModulos:boolean;
+  moduloActual; //NOMBRE DEL MODULO ACTUAL
+  file: File; //VIDEO SELECCIONADO POR EL USUARIO
   newCursoKey; //KEY DEL CURSO QUE FUE CREADO
-  carrera;
-  tituloVideo;
+  cursoActual:{}; //OBJETO CON LOS DATOS GENERALES DEL CURSO ACTUAL
+  tituloVideo; //TITULO DEL VIDEO 
 
   constructor(private _cursosServices: CursosService) {
     this.newCursoKey=null;
@@ -43,8 +43,8 @@ export class CrearCursoComponent implements OnInit {
       this.curso.modulos.push(nombreModulo);
     }
 
-
-    this.carrera=this.curso.carrera;
+    //SE GUARDAN LOS DATOS GENERALES DEL CURSO, (AL TERMINAR LA FUNCINO THIS.CURSO SE RESETEA)
+    this.cursoActual=this.curso;
 
     //CREACION DEL CURSO SIN MODULOS, PARA OBTENER UN UID
     this.newCursoKey= this._cursosServices.nuevoCurso(this.curso);
@@ -61,17 +61,14 @@ export class CrearCursoComponent implements OnInit {
   }
 
   
-  //SE MANDA A LLAMAR CADA VEZ QUE SE CARGA ALGO EN EL FIE
+  //SE MANDA A LLAMAR CADA VEZ QUE SE CARGA ALGO EN EL FILE
   onChangeVideos(event) {
-    // console.log(event);
-    let file = event.target.files[0];
+    //SE GUARDA EL ARCHIVO QUE SELECCIONO EL USUARIO
+    this.file = event.target.files[0];
+  }
 
-    //SE MANDA EL ARCHIVO, LA CARRERA Y LA LLAVE DEL CURSO PARA GUARDARLO
-    this._cursosServices.subirArchivo(file, this.carrera, this.newCursoKey, this.tituloVideo);
-
-
-
-    // var files = event.srcElement.files;
-    // console.log(files);
+  subirArchivo(){
+    //SE MANDA EL VIDEO SELECCIONADO POR EL USUARIO, DATOS GRL DEL CURSO, KEY DEL CURSO, TITULO DLE VIDEO
+     this._cursosServices.subirArchivo(this.file, this.cursoActual, this.newCursoKey, this.tituloVideo);
   }
 }
