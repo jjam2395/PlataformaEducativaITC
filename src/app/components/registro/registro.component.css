@@ -7,11 +7,22 @@
     padding-bottom: 3vh;
 }
 
-.wrong{
-    color: red;
-}
 
 .correcto{
     color: green;
     font-size: 3em;
+}
+.wrong{
+  padding: 1em 0 1em 1.5em;
+    color: #792013;
+    background-color: #ff9090;
+}
+
+.icon-dialog{
+  color: #792013;
+  margin-right: 1em;
+}
+
+.alert-container{
+  margin-top: 1em;
 }

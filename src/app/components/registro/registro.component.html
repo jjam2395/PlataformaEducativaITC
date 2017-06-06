@@ -10,8 +10,8 @@
       <button class="btn" (click)="seleccionUser('maestros')">Maestros</button>
       <button class="btn" (click)="seleccionUser('administradores')">Administradores</button>
     </ng-container>
-    
-    
+
+
     <form [formGroup]="forma" (ngSubmit)="registrar()" novalidate="novalidate">
       <div class="card-content black-text">
 
@@ -22,7 +22,7 @@
         <ng-template #showRegistrate>
           <span class="card-title center-align">Registrate</span>
         </ng-template>
-        
+
         <!--INPUT DE NOMBRE-->
         <div class="input-field">
           <input id="nombreRegistro" type="text" placeholder="Tu nombre" formControlName="nombre">
@@ -71,9 +71,20 @@
         type="submit">
           <i class="material-icons right">send</i>Ok
         </button>
-        <label class="wrong left-align" *ngIf="!forma.controls['email'].valid && forma.value.email!=''"><p>Correo invalido</p></label>
-        <label class="wrong left-align" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty && forma.value.password!=''"><p>La contraseña debe tener al menos 8 caracteres</p></label>
-        <label class="wrong left-align" *ngIf="this._ls.error"> <p>{{this._ls.error}}</p></label>
+        <div class="row alert-container">
+          <label class="wrong left-align col s12" *ngIf="!forma.controls['email'].valid && forma.value.email!=''">
+            <i class="material-icons red-text tiny icon-dialog">error_outline</i>
+            <span>Correo invalido</span>
+          </label>
+          <label class="wrong left-align col s12" *ngIf="!forma.controls['password'].valid && forma.controls['password'].dirty && forma.value.password!=''">
+            <i class="material-icons red-text tiny icon-dialog">error_outline</i>
+            <span>La contraseña debe tener al menos 8 caracteres</span>
+          </label>
+          <label class="wrong left-align col s12" *ngIf="this._ls.error">
+            <i class="material-icons red-text tiny icon-dialog">error_outline</i>
+            <span>{{this._ls.error}}</span>
+          </label>
+        </div>
       </div>
 
     </form>
@@ -89,10 +100,10 @@
         <p> Antes de iniciar sesión verifica tu correo electrónico </p>
         <button class="waves-effect waves-light btn" routerLink='/home'>Continuar</button>
       </ng-container>
-      <ng-container *ngIf="tipoUserLogeado=='administradores'">  
+      <ng-container *ngIf="tipoUserLogeado=='administradores'">
         <button class="waves-effect waves-light btn" (click)="continuar()">Continuar</button>
       </ng-container>
-      
+
     </div>
   </div>
 </ng-container>
