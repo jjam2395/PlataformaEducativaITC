@@ -52,15 +52,15 @@ export class CursosService {
     // });
   }
 
-  subirArchivo(file,carrera, newCursoKey){
-    console.log("carrera desde el servicio",carrera);
-    let storageRef = firebase.storage().ref('cursos/'+carrera+'/videos/'+file.name+'/');
+  subirArchivo(file,carrera, newCursoKey, titulo){
+    //SE LE CAMBIA EL NOMBRE AL ARCHIVO CON EL QUE INGRESO EL USUARIO
+    file.nombre=titulo;
+    console.log(file);
+    let storageRef = firebase.storage().ref('cursos/'+carrera+'/'+newCursoKey+'/videos/'+file.nombre+'/');
     let t=this;
     let task = storageRef.put(file);
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, (snapshot)=>{
              t.estadoSubida = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-            // console.log(this.estadoSubida);
-            // this.estadoSubida={uploadValue:porcentaje}
         },(error)=>{
             t.estadoSubida=`ha ocurrido un error ${error.message}`;
             console.log("estado de la subida",this.estadoSubida);
@@ -74,7 +74,7 @@ export class CursosService {
             let urlVideo=task.snapshot.downloadURL;
             //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS 
             let refvideo=this.db.list('/cursos/'+carrera+'/'+newCursoKey+'/modulos/videos/');
-            refvideo.update(urlVideo,{urlVideo});
+            refvideo.push({urlVideo});
         })
   }
 }

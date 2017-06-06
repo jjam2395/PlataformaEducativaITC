@@ -65,16 +65,18 @@
                 <i class="material-icons">exposure_plus_1</i></a>
             </div>
           </div>
-            <!--<div class="input-field col s12 m6">
-              <input class="validate" >
-              <label for="titulo">Titulo del subtema</label>
-            </div>-->
+
+          <!--INPUT DEL NOMBRE DEL VIDEO-->
+          <div class="input-field col s12 m6">
+            <input class="validate" id="titulo"  [(ngModel)]="tituloVideo" name="tituloVideo">
+            <label for="titulo">Titulo del subtema</label>
+          </div>
 
             <!--INPUT PARA SUBIR LOS ARCHIVOS-->
             <div class="col s4 row ">
               <div class="file-field input-field">
                 <div class="btn">
-                  <span>Subir videos</span>
+                  <span>Subir video</span>
                   <input type="file" (change)="onChangeVideos($event)">
                 </div>
                 <div class="file-path-wrapper">

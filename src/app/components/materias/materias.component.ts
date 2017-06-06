@@ -9,9 +9,9 @@ import { UsuarioAlumnoService } from "../../services/usuarioAlumno.service";
   styleUrls: ['./materias.component.css']
 })
 export class MateriasComponent implements OnInit {
-  cursos
+  cursos 
   displayMateriaDetalle:boolean; //Para saber cuando el usuario presiona en ver un curso
-  cursoToDisplay;
+  cursoToDisplay; //CURSO SELECCIONADO PARA MOSTRAR SU DETALLE
 
   displayDescripcion:boolean;
   displayObjetivo:boolean;
@@ -38,9 +38,9 @@ export class MateriasComponent implements OnInit {
       if(val.$value){
         //SE MANDA A LLAMAR AL METODO DE CARGAR CURSOS
         this._cs.cargarCursos(val.$value).subscribe((res=>{
+          console.log("Cargando los cursos de la carrera: "+val);
+          console.log("Cursos: "+res);
           this.cursos=res;
-          console.log(res);
-          // console.log("resuldato de los cursos",res); 
         }));
       }
     }) ;

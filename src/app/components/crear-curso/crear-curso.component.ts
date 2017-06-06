@@ -16,6 +16,7 @@ export class CrearCursoComponent implements OnInit {
   file: File;
   newCursoKey; //KEY DEL CURSO QUE FUE CREADO
   carrera;
+  tituloVideo;
 
   constructor(private _cursosServices: CursosService) {
     this.newCursoKey=null;
@@ -42,6 +43,7 @@ export class CrearCursoComponent implements OnInit {
       this.curso.modulos.push(nombreModulo);
     }
 
+
     this.carrera=this.curso.carrera;
 
     //CREACION DEL CURSO SIN MODULOS, PARA OBTENER UN UID
@@ -53,18 +55,20 @@ export class CrearCursoComponent implements OnInit {
     this.showModulos=true;
   }
 
+  //SELECCION DEL MODULO A MOSTRAR DESDE EL BOTON DROPDOWN EN LA VISTA DE SUBIR ARCHIVOS
   seleccionarModulo(modulo){
     this.moduloActual=modulo;
   }
 
   
+  //SE MANDA A LLAMAR CADA VEZ QUE SE CARGA ALGO EN EL FIE
   onChangeVideos(event) {
     // console.log(event);
     let file = event.target.files[0];
-    console.log(file);
 
-    //REFERENCIA AL STORAGE
-    this._cursosServices.subirArchivo(file, this.carrera, this.newCursoKey);
+    //SE MANDA EL ARCHIVO, LA CARRERA Y LA LLAVE DEL CURSO PARA GUARDARLO
+    this._cursosServices.subirArchivo(file, this.carrera, this.newCursoKey, this.tituloVideo);
+
 
 
     // var files = event.srcElement.files;
