@@ -60,14 +60,14 @@ export class CursosService {
             //     titulo :file.name,
             //     downloadURL: task.snapshot.downloadURL
             // });
-            // t.estadoSubida="Se ha completado la subida del archivo";
-            // console.log("archivo subido");
-            // //URL DEL VIDEO
-            // let urlVideo=task.snapshot.downloadURL;
-            // //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS
-            // //REFERENCIA: CURSOS/CARRERA/KEYCURSO/MODULOS/NOMBREMODULO/VIDEOS||ACTIVIDADES
-            // let refvideo=this.db.list('/cursos/'+carrera+'/'+newCursoKey+'/modulos/');
-            // refvideo.push({urlVideo});
+            t.estadoSubida="Se ha completado la subida del archivo";
+            console.log("archivo subido");
+            //URL DEL VIDEO
+            let urlVideo=task.snapshot.downloadURL;
+            //GUARDAR LA URL DEL VIDEO EN LA BASE DE DATOS
+            //REFERENCIA: CURSOS/CARRERA/KEYCURSO/MODULOS/NOMBREMODULO/VIDEOS||ACTIVIDADES
+            let refvideo=this.db.list('/cursos/'+curso.carrera+'/'+newCursoKey+'/modulos/'+modulo+'/');
+            refvideo.push({urlVideo});
         })
   }
 }
