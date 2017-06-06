@@ -22,10 +22,7 @@ export class SideNavComponent implements OnInit {
       console.log("Usuario Cargado..");
       console.log("emm:",(user.cursos));
       this.nameUser=user.displayName;
-    })
-;
-
-
+    });
   }
 
   ngOnInit() {
