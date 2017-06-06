@@ -4,20 +4,28 @@
 <div class="home-container">
 <div class="container">
 <div class="z-depth-2 row destacados-home">
-  <div class="imagen-home-container center-align col s12 l4 blue-grey lighten-1">
-    <img src="/assets/img/Articulos-Informativos.png" alt="">
+  <div class="imagen-home-container center-align col s12 l4 blue-grey lighten-1 row">
+    <div class="col s12">
+      <img class="responsive-img img-cardj" src="/assets/img/Articulos-Informativos.png" alt="">
+    </div>
   </div>
-  <div class="col s12 l8 row text-card">
-    <div class="col s12 row valign-wrapper">
-      <h4 class="col s8">Sigue Aprendiendo</h4>
-      <i class="material-icons  col s1">share</i>
-      <i class="material-icons  col s1">open_in_new</i>
+  <div class="col s12 l8 row no-mb">
+    <div class="col s12 row valign-wrapper no-mb  titulo-card">
+      <h4 class="col s8 no-mbj">Sigue Aprendiendo</h4>
+      <i class="material-icons  col s2">share</i>
+      <a materialize="tooltip"
+        class="col s2 tooltiped pointer"
+        data-position="bottom"
+        data-delay="50"
+        data-tooltip="Ver articulos"
+        [routerLink]="['/articulos']"><i class="material-icons col s1">open_in_new</i>
+      </a>
     </div>
     <div class="col s12 ">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-       dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-       non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p class="text-cardj">La plataforma de educación en linea del instituto tecnológico de cuautla busca brindar a los alumnos
+      un ambiente de trabajo en el cual pueda desarrollar y reforzar sus conocimientos, mira los articulos publicados por
+      nuestros alumnos.
+      </p>
     </div>
   </div>
 </div>
