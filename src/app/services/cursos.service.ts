@@ -12,14 +12,18 @@ export class CursosService {
   curso;
   cursos;
   estadoSubida;
+  uidMaestro; //UID DEL MAESTRO QUE ESTA LOGEADO
   // urlVideo;
-  constructor( private db:AngularFireDatabase) { }
+  constructor( private db:AngularFireDatabase) {
+    this.uidMaestro=JSON.parse(localStorage.getItem('user')).uid;
+   }
 
   nuevoCurso(curso){
     // console.log("curso desde el srvicio",curso)
     let refCurso=this.db.list('/cursos/'+curso.carrera);
     let data={
       nombre:curso.nombre,
+      maestro:this.uidMaestro,
       objetivo:curso.objetivo,
       descripcion:curso.descripcion,
     }
