@@ -14,11 +14,13 @@ export class LoginService {
   error: string;
   resultado: any;
   preloader: boolean; 
+  userLogeado:boolean=false;
 
   constructor(private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public router: Router,
     public _ua:UsuarioAlumnoService) {
+    this.userLogeado=false;
     this.user = afAuth.authState;
     this.error = ''; //MOSTRAR MENSAJES DE ERROR
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
@@ -85,12 +87,13 @@ export class LoginService {
       if (result.emailVerified == true) {
         console.log("el email esta verificado")
         //VERIFICAR QUE EL REGISTRO EXISTA EN EL TIPO DE USER QUE DICE
-        this._ua.comprobarRegistro(tipoUserLogeado, result.uid).subscribe(user=>{
-          console.log("resultado del tipo usuario",user);
-          if(user.length>0){
+        this._ua.comprobarRegistro(tipoUserLogeado, result.uid).subscribe(comp=>{
+          console.log("resultado del tipo usuario",comp);
+          if(comp.length>0){
             console.log("los datos son correctos")
-            console.log("Logeo exitoso", user);
+            console.log("Logeo exitoso", comp);
             //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
+            this.userLogeado=true;
             localStorage.setItem('user', JSON.stringify(result)); 
             localStorage.setItem('tipoUserLogeado', tipoUserLogeado );
             //REDIRECCIONAR AL INICIO DEL ALUMNO
@@ -104,14 +107,16 @@ export class LoginService {
               console.log("redirigiendo a inicio-maestro")
               this.router.navigate(['/inicio-maestro']);
             }
-          }else if(user.length==0){
+          }else if(comp.length==0){
             //EL USUARIO NO EXISTE EN EL REGISTRO QUE DICE
             console.error("los datos no son correctos");
+            this.userLogeado=false;
           }
         })
           
     } else {
         this.error = "Necesitas validar tu correo electrónico"
+        this.userLogeado=false;
       }
       this.preloader = false;
     }).catch((error) => {
@@ -124,6 +129,7 @@ export class LoginService {
         this.error = error.message;
       }
       this.preloader = false;
+      this.userLogeado=false;
     });
   }
 
@@ -133,6 +139,7 @@ export class LoginService {
       console.log("Sign-out successful.");
       localStorage.removeItem('user');
       localStorage.removeItem('tipoUserLogeado');
+      this.userLogeado=false;
       this.preloader = false;
     }).catch(error=> {
       console.log(`An error happened. ${error}`);

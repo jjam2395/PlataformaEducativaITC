@@ -27,10 +27,14 @@ export class LoginComponent implements OnInit {
 
       //SE SUBSCRIBE AL USER EL CUAL ES UN OBSERVADOR DEL ESTADO DEL LOGEO
       this._ls.user.subscribe(result=>{
+        console.log("desde el constructor", result);
+        console.log("desde constructor resultado de local",localStorage.getItem('user'))
         if(localStorage.getItem('user')){
+          console.log("existe usuario logeado")
           this.logeado=true;
         }else{
           this.logeado=false;
+          console.log("no existe usuario logeado")
         }
       })
    }

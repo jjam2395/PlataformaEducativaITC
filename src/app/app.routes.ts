@@ -20,10 +20,10 @@ const APP_ROUTES: Routes = [
 	{path:'oferta-educativa',component: OfertaEducativaComponent},
 	{path:'materias',component: MateriasComponent, canActivate: [AuthGuardService]},
 	{path:'articulo',component: ArticuloComponent},
-	{path:'crear-curso', component: CrearCursoComponent},
+	{path:'crear-curso', component: CrearCursoComponent, canActivate: [AuthGuardService]},
 	{path:'registro', component: RegistroComponent},
 	{path:'detalle/:id', component: MateriaDetalleComponent},
-	{path:'inicio-maestro', component: InicioMaestroComponent},
+	{path:'inicio-maestro', component: InicioMaestroComponent, canActivate: [AuthGuardService]},
 	{path:'responderdudas', component: DudasResponderComponent},
 	{path:'**', pathMatch: 'full', redirectTo:'home'}
 ];
