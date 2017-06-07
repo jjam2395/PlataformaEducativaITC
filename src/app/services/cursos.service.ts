@@ -60,10 +60,7 @@ export class CursosService {
             console.log("estado de la subida",this.estadoSubida);
         },()=>{
           console.log("El archivo se ha subido con exito");
-            // firebase.database().ref('Documentos/'+this.props.user.displayName).push({
-            //     titulo :file.name,
-            //     downloadURL: task.snapshot.downloadURL
-            // });
+
             t.estadoSubida="Se ha completado la subida del archivo";
             console.log("archivo subido");
             //URL DEL VIDEO

@@ -36,6 +36,11 @@ export class UsuarioAlumnoService {
     return user;
   }
 
+  comprobarRegistro(tipoUser, uid){
+    let user = this.db.list('/usuarios/'+tipoUser+'/'+uid,{});
+    return user;
+  }
+
   registrarCurso(keyCurso){
     let uid=this.uid
     let refUser=this.db.list('/usuarios/alumnos/'+this.uid+'/cursos/');

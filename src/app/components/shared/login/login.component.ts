@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
         'tipoUserLogeado': new FormControl('',[Validators.required]),
       });
 
+      //SE SUBSCRIBE AL USER EL CUAL ES UN OBSERVADOR DEL ESTADO DEL LOGEO
       this._ls.user.subscribe(result=>{
         if(localStorage.getItem('user')){
           this.logeado=true;
@@ -39,11 +40,12 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    // SE LLAMA A LA FUNCION DE LOGIN EN EL SERVICIO
+  //SI EL FORMULARIO ES VALIDO
   if(this.forma.valid){
     this._ls.login(this.forma.value.email,this.forma.value.password, this.forma.value.tipoUserLogeado);  
+    console.log("el formulario es valido");
     //SUSCRIBIRSE AL OBSERVABLE DE USER 
-    this._ls.user.subscribe((result)=>{
+    /*this._ls.user.subscribe((result)=>{
       if(result){
         if(result.emailVerified==true){
           console.log(result)
@@ -54,9 +56,9 @@ export class LoginComponent implements OnInit {
       }else{
         console.log("redirigiendo al home")
       }   
-    });  
+    });  */
   }else{
-    console.error("el formato de los datos no es correcto");
+    console.error("el formulario no es valido");
   }
   }
 

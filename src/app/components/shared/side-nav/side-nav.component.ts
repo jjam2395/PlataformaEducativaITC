@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
-import {UsuarioAlumnoService} from '../../../services/usuarioAlumno.service';
-import {CursosService} from '../../../services/cursos.service';
+import { UsuarioAlumnoService } from '../../../services/usuarioAlumno.service';
+import { CursosService } from '../../../services/cursos.service';
 import { Router } from '@angular/router';
 
 

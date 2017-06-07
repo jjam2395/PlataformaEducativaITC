@@ -29,7 +29,7 @@ export class LoginService {
   registrar(formulario, tipoUserCrear) {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = true;
-    console.log("entro a la funcino de registrar")
+    console.log("entro a la funcion de registrar")
     console.log("formulario desde el servicio", formulario);
     console.log("tipo user desde el registro", tipoUserCrear);
     this.afAuth.auth.createUserWithEmailAndPassword(formulario.email, formulario.password).then((result) => {
@@ -80,26 +80,31 @@ export class LoginService {
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS
     this.preloader = true;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result) => {
+      console.log("el usuario existe")
       //SI EL CORREO AH SIDO VERIFICADO
       if (result.emailVerified == true) {
-        //VERIFICAR QUE EXISTA EN EL REGISTRO QUE DICE
-        this._ua.getUser(tipoUserLogeado, result.uid).subscribe(user=>{
-          console.log("resultado de la verificacion desde el componente",user);
-          if(!user.$value){
+        console.log("el email esta verificado")
+        //VERIFICAR QUE EL REGISTRO EXISTA EN EL TIPO DE USER QUE DICE
+        this._ua.comprobarRegistro(tipoUserLogeado, result.uid).subscribe(user=>{
+          console.log("resultado del tipo usuario",user);
+          if(user.length>0){
             console.log("los datos son correctos")
-            console.log("Logeo exitoso", result);
+            console.log("Logeo exitoso", user);
             //GUARDAMOS EL OBJETO DE USER EN LOCAL STORAGE PARA SU COMPROBACION EN EL GUARD Y QUE NO SE PIERDA AL RECARGAR
             localStorage.setItem('user', JSON.stringify(result)); 
             localStorage.setItem('tipoUserLogeado', tipoUserLogeado );
             //REDIRECCIONAR AL INICIO DEL ALUMNO
             if(tipoUserLogeado=="alumnos"){
+              console.log("redirigiendo a inicio-alumno")
               this.router.navigate(['/inicio-alumno']);
             }else if(tipoUserLogeado=="administradores"){
+              console.log("redirigiendo al registro")
               this.router.navigate(['/registro']);
             }else if(tipoUserLogeado=="maestros"){
+              console.log("redirigiendo a inicio-maestro")
               this.router.navigate(['/inicio-maestro']);
             }
-          }else if(user.$value==null){
+          }else if(user.length==0){
             //EL USUARIO NO EXISTE EN EL REGISTRO QUE DICE
             console.error("los datos no son correctos");
           }
