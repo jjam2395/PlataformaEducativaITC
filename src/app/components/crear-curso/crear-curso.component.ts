@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
+import { UserMaestroService } from "../../services/user-maestro.service";
 declare var $:any;
 
 @Component({
@@ -18,7 +19,8 @@ export class CrearCursoComponent implements OnInit {
   cursoActual:{}; //OBJETO CON LOS DATOS GENERALES DEL CURSO ACTUAL
   tituloVideo; //TITULO DEL VIDEO 
 
-  constructor(private _cursosServices: CursosService) {
+  constructor(private _cursosServices: CursosService,
+  private _userMaestroService: UserMaestroService) {
     this.newCursoKey=null;
     this.showModulos=false;
     this.curso={
@@ -48,6 +50,9 @@ export class CrearCursoComponent implements OnInit {
 
     //CREACION DEL CURSO SIN MODULOS, PARA OBTENER UN UID
     this.newCursoKey= this._cursosServices.nuevoCurso(this.curso);
+
+    //SE GUARDA EL UID DEL CURSO EN EL PERFIL DEL MAESTRO
+    this._userMaestroService.guardarCurso(this.newCursoKey, this.cursoActual);
     console.log("llave del curso creado",this.newCursoKey);
 
     //SETEAR EL MODULO DE INICIO Y MOSTRAR SU VISTA

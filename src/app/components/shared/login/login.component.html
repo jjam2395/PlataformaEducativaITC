@@ -1,9 +1,11 @@
 <div class="col m2 login-container hide-on-med-and-down" *ngIf="!this._ls.preloader">
   <div class="row">
     <!--APARECERA CUANDO EL USUARIO ESTE LOGEADO-->
+    <!--COMPRUEBA DESDE EL COMPONENTE Y DESDE EL SERVICIO-->
     <a class="right-align log-link1" (click)="logout()" *ngIf="this._ls.userLogeado==true"><i class="material-icons log-icon">exit_to_app</i></a>
   </div>
   <!--APARECERA CUANDO EL USUARIO NO ESTE LOGEADO-->
+  <!--COMPRUEBA DESDE EL COMPONENTE Y DESDE EL SERVICIO-->
   <ng-container  *ngIf="this._ls.userLogeado==false">
     <div class="valign-wrapper log-cont">
       <a class="right-align log-link" href="#modalLogin" (click)="limpiar()"><i class="material-icons log-icon">input</i>

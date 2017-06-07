@@ -20,7 +20,11 @@ export class LoginService {
     public afAuth: AngularFireAuth,
     public router: Router,
     public _ua:UsuarioAlumnoService) {
-    this.userLogeado=false;
+    if(localStorage.getItem('user')){
+        this.userLogeado=true;
+      }else{
+        this.userLogeado=false;
+      }
     this.user = afAuth.authState;
     this.error = ''; //MOSTRAR MENSAJES DE ERROR
     this.resultado = null; //MOSTRAR MENSAJES EXITOSOS

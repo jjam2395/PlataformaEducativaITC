@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
           console.log("existe usuario logeado")
           this.logeado=true;
         }else{
-          this.logeado=false;
+          this.logeado=false; 
           console.log("no existe usuario logeado")
         }
       })

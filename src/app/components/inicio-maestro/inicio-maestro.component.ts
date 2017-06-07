@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserMaestroService } from "../../services/user-maestro.service";
+import { CursosService } from "../../services/cursos.service";
 
 @Component({
   selector: 'app-inicio-maestro',
@@ -6,66 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio-maestro.component.css']
 })
 export class InicioMaestroComponent implements OnInit {
-  materias:Array<object>;
+	uidCursos:Array<string>; //KEY DE LOS CURSOS QUE HA CREADO
 	articulos:Array<object>;
 	proyectos:Array<object>;
 
-  constructor() { 
-    this.materias=[
-			{
-				nombreMateria: "Bases de datos",
-				progreso: "90%",
-				calificacion: "40%",
-				nuevos: "4"
-			},
-			{
-				nombreMateria: "Administracion de redes",
-				progreso: "50%",
-				calificacion: "70%",
-				nuevos: "12"
-			},
-			{
-				nombreMateria: "Dispositivos Moviles",
-				progreso: "90%",
-				calificacion: "90%",
-				nuevos: "3"	
-			}];
+	constructor(private _userMaestroService: UserMaestroService,
+	) { 
+	}
 
-		this.articulos=[
-			{
-				nombreArticulo: "¡Quieres apreder a programar?",
-				estrellas: "4",
-				comentarios: "2"
-			},
-			{
-				nombreArticulo: "NinjaMock: una herramienta util",
-				estrellas: "78",
-				comentarios: "32"
-			},
-			{
-				nombreArticulo: "Box model",
-				estrellas: "13",
-				comentarios: "21"
-			}];
+	ngOnInit() {
+		this._userMaestroService.getCursos().subscribe(cursos=>{
+			//RECORREMOS LOS CURSOS QUE HAYA CREADO Y GUARDAMOS SUS UIDS EN UN ARRAY
+			for (let curso of cursos){
+				this.uidCursos=curso.uidCurso;
+			}
 
-		this.proyectos=[
-			{
-				nombreProyecto: "Chat con firebase",
-				estrellas: "89",
-				comentarios: "12"
-			},
-			{
-				nombreProyecto: "Administracion Restaurante",
-				estrellas: "9",
-				comentarios: "5"
-			},
-			{
-				nombreProyecto: "Red social",
-				estrellas: "19",
-				comentarios: "21"
-			}];}
-
-  ngOnInit() {
-  }
+			//OBTENER El NOMBRE DE LOS CURSOS
+			
+		});
+	}
 
 }

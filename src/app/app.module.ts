@@ -18,6 +18,7 @@ import { CursosService } from './services/cursos.service';
 import { AuthGuardService } from "./services/auth-guard.service";
 import { UsuarioAlumnoService } from "./services/usuarioAlumno.service";
 import { DudasService} from './services/dudas.service';
+import { UserMaestroService } from "./services/user-maestro.service";
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -79,7 +80,8 @@ import { DudasResponderComponent } from './components/dudas-responder/dudas-resp
               CursosService,
               AuthGuardService,
               UsuarioAlumnoService,
-              DudasService
+              DudasService,
+              UserMaestroService
               ],
   bootstrap: [AppComponent]
 })
