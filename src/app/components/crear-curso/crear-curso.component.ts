@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
@@ -11,7 +11,7 @@ declare var $:any;
   templateUrl: './crear-curso.component.html',
   styleUrls: ['./crear-curso.component.css']
 })
-export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
+export class CrearCursoComponent implements OnInit {
   curso; //objeto con los datos generales del curso
   showModulos:boolean; //MOSTRAR SECCION PARA SUBIR MATERIAL A LOS MODULOS
   moduloActual; //NOMBRE DEL MODULO ACTUAL
@@ -20,8 +20,8 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
   cursoActual:{}; //OBJETO CON LOS DATOS GENERALES DEL CURSO ACTUAL
   tituloVideo; //TITULO DEL VIDEO 
   // -----------------------------------------
-  @Input() tempCurso=null;
-  videosSubidos;
+  // @Input() tempCurso=null;
+  // videosSubidos;
 
 
   constructor(private _cursosServices: CursosService,
@@ -42,24 +42,24 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
     $('.chips').material_chip();  
   }
 
-  ngAfterViewInit(){
-    console.log("parametros desde el padre",this.tempCurso)
-    if(this.tempCurso){
-      console.log("me pasaron parametros");
-    }
-    // if(this.tempCurso!=null){
-    //   console.log("Me han pasado parametros desde un componente padre");
-    //   // (uidCurso, nombre, carrera)
-    //   this.showModulos=true;
-    //   //REALIZAR UNA CONSULTA PARA OBTENER LOS MODULOS
-    // }
-  }
+  // ngAfterViewInit(){
+  //   console.log("parametros desde el padre",this.tempCurso)
+  //   if(this.tempCurso){
+  //     console.log("me pasaron parametros");
+  //   }
+  //   // if(this.tempCurso!=null){
+  //   //   console.log("Me han pasado parametros desde un componente padre");
+  //   //   // (uidCurso, nombre, carrera)
+  //   //   this.showModulos=true;
+  //   //   //REALIZAR UNA CONSULTA PARA OBTENER LOS MODULOS
+  //   // }
+  // }
 
-  ngOnChanges(){
-    if(this.tempCurso!=null){
-      this.cargarNombreModulos();
-    }
-  }
+  // ngOnChanges(){
+  //   if(this.tempCurso!=null){
+  //     this.cargarNombreModulos();
+  //   }
+  // }
 
   guardar(){
     //SE RECOGEN LOS NOMBRES DE LOS MODULOS Y SE METEN EN EL ARREGLO CONTENIDO EN EL OBJETO CURSO
@@ -88,9 +88,9 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
   seleccionarModulo(modulo){
     //SE ESTABLECE EL NOMBRE DEL MODULO ACTUAL
     this.moduloActual=modulo;
-    this.videosSubidos=null;
+    // this.videosSubidos=null;
     //SE CARGAN LOS VIDEOS DEL MODULO ACTUAL
-    this.cargarVideos();
+    // this.cargarVideos();
     
   }
 
@@ -106,34 +106,34 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
     this._cursosServices.subirArchivo(this.file, this.cursoActual,this.moduloActual, this.newCursoKey, this.tituloVideo);
   }
 
-  cargarNombreModulos(){
-    this.curso.modulos=[] 
-    //MOSTRAMOS LA VISTA DE MODULOS
-    this.showModulos=true;
-    this._cursosServices.gedDato(this.tempCurso.carrera,this.tempCurso.uidCurso,"modulos").subscribe(res=>{
-      if(res.videos!=null){
-        console.log("no esta vacio")
-        //ARRAY CON LOS NOMBRES DE LOS MODULOS
-        this.curso.modulos =  Object.getOwnPropertyNames(res.videos)
-        this.moduloActual=this.curso.modulos[0];   
-        console.log("resultado de la consulta de los modulos",res.videos) 
+  // cargarNombreModulos(){
+  //   this.curso.modulos=[] 
+  //   //MOSTRAMOS LA VISTA DE MODULOS
+  //   this.showModulos=true;
+  //   this._cursosServices.gedDato(this.tempCurso.carrera,this.tempCurso.uidCurso,"modulos").subscribe(res=>{
+  //     if(res.videos!=null){
+  //       console.log("no esta vacio")
+  //       //ARRAY CON LOS NOMBRES DE LOS MODULOS
+  //       this.curso.modulos =  Object.getOwnPropertyNames(res.videos)
+  //       this.moduloActual=this.curso.modulos[0];   
+  //       console.log("resultado de la consulta de los modulos",res.videos) 
 
-        // CARGAR LOS VIDEOS DE CADA MODULO
-        this.cargarVideos();
-      }else{
-        console.log( "resultado",res);
-      }
-      // 
-    });
-  }
+  //       // CARGAR LOS VIDEOS DE CADA MODULO
+  //       this.cargarVideos();
+  //     }else{
+  //       console.log( "resultado",res);
+  //     }
+  //     // 
+  //   });
+  // }
 
   //CARGA LOS VIDEOS SUBIDOS EN UN ARREGLO DE OBJETOS
-  cargarVideos(){
-    console.log("este es el modulo actual",this.moduloActual);
-    this._cursosServices.getVideos(this.tempCurso.carrera, this.tempCurso.uidCurso, this.moduloActual ).subscribe(res=>{
-      console.log("resultado de la consulta de videos",res);
-      this.videosSubidos=res;
-      console.log("videos subidos", this.videosSubidos)
-    })
-  }
+  // cargarVideos(){
+  //   console.log("este es el modulo actual",this.moduloActual);
+  //   this._cursosServices.getVideos(this.tempCurso.carrera, this.tempCurso.uidCurso, this.moduloActual ).subscribe(res=>{
+  //     console.log("resultado de la consulta de videos",res);
+  //     this.videosSubidos=res;
+  //     console.log("videos subidos", this.videosSubidos)
+  //   })
+  // }
 }
