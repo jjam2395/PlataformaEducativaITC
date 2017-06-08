@@ -82,32 +82,36 @@
                 <p>
                   progreso: {{this._cursosServices.estadoSubida}}
                 <p>
-              </div>
+              </div>}
               <button class="btn" (click)="subirArchivo()">Subir archivo</button>
             </div>
-            <!--LISTADO DE LO QUE HA SUBIDO-->
-            <!--<div class="col s8 l6 row">
-              <ul class="collection">
-                <li class="collection-item dismissable">
-                  <div class="valign-wrapper">
-                    <i class="material-icons icon-collection">play_circle_outline</i>
-                    <span>Leccion 1.mp4</span>
-                  </div>
-                </li>
-                <li class="collection-item dismissable">
-                  <div class="valign-wrapper">
-                    <i class="material-icons icon-collection">picture_as_pdf</i>
-                    <span>Leccion 2.pdf</span>
-                  </div>
-                </li>
-                <li class="collection-item dismissable">
-                  <div class="valign-wrapper">
-                    <i class="material-icons icon-collection">picture_as_pdf</i>
-                    <span>Actividad 1.pdf</span>
-                  </div>
-                </li>
-              </ul>
-            </div>-->
         </div>
       </form>
 </div>
+
+      <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+					<li>
+					  <div class="collapsible-header">
+					  	<div class="titulos">Lecciones</div>
+					  </div>
+					  <div class="collapsible-body">
+              
+					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion" *ngFor="let video of videosSubidos">
+						    <li>
+						      <div class="collapsible-header">
+						      	nombre del video
+						      </div>
+						      <div class="collapsible-body">
+                    {{video.urlVideo}}
+                     <!--<video width="320" height="240" autoplay>
+                      <source src="" type="video/mp4">
+                      <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                    </video> -->
+						      </div>
+						    </li>
+					  	</ul>
+
+					  </div>
+					</li>
+				</ul>

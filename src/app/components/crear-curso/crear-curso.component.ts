@@ -88,8 +88,10 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
   seleccionarModulo(modulo){
     //SE ESTABLECE EL NOMBRE DEL MODULO ACTUAL
     this.moduloActual=modulo;
+    this.videosSubidos=null;
     //SE CARGAN LOS VIDEOS DEL MODULO ACTUAL
     this.cargarVideos();
+    
   }
 
   
@@ -131,6 +133,7 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
     this._cursosServices.getVideos(this.tempCurso.carrera, this.tempCurso.uidCurso, this.moduloActual ).subscribe(res=>{
       console.log("resultado de la consulta de videos",res);
       this.videosSubidos=res;
+      console.log("videos subidos", this.videosSubidos)
     })
   }
 }
