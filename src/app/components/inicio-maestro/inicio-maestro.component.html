@@ -19,10 +19,10 @@
 					  <div class="collapsible-body">
 					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion">
 						    <li *ngFor="let curso of cursos">
-						      <div class="collapsible-header">
+						      <div class="collapsible-header" (click)="verCurso(curso)">
 						      	<div></div>
 						      	<i class="material-icons" >subdirectory_arrow_right</i>
-						      	<a class="waves-effect waves-light" (click)="verCurso(curso)">{{curso.nombre}}</a>
+						      	<a class="waves-effect waves-light">{{curso.nombre}}</a>
 						      	<!--<span class="new badge">{{}}</span>-->
 						      </div>
 						      <div class="collapsible-body">

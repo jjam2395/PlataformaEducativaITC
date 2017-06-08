@@ -20,7 +20,7 @@ const APP_ROUTES: Routes = [
 	{path:'oferta-educativa',component: OfertaEducativaComponent},
 	{path:'materias',component: MateriasComponent, canActivate: [AuthGuardService]},
 	{path:'articulo',component: ArticuloComponent},
-	{path:'crear-curso/:curso?', component: CrearCursoComponent, canActivate: [AuthGuardService]},
+	{path:'crear-curso', component: CrearCursoComponent, canActivate: [AuthGuardService]},
 	{path:'registro', component: RegistroComponent},
 	{path:'detalle/:id', component: MateriaDetalleComponent},
 	{path:'inicio-maestro', component: InicioMaestroComponent, canActivate: [AuthGuardService]},

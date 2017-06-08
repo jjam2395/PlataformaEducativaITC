@@ -12,6 +12,7 @@ export class InicioMaestroComponent implements OnInit {
 	cursos=[]; //KEY DE LOS CURSOS QUE HA CREADO
 	articulos:Array<object>;
 	proyectos:Array<object>;
+	modulos;
 
 	// DATOS DEL CURSO SELECCIONADO PARA MOSTRAR Y SUBIR MATERIAL
 	showCrearCurso:boolean; //MOSTRAR SECCION DE CARGAR CURSO
@@ -24,7 +25,7 @@ export class InicioMaestroComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		//OBTENEMOS LOS CURSOS QUE HA CREADO
+		//OBTENEMOS LOS CURSOS QUE HA CREADO DEL PERFIL DEL MAESTRO
 		this._userMaestroService.getCursos().subscribe(cursos=>{
 			//OBTENEMOS LOS NOMBRES DE LOS CURSOS QUE HA CREADO
 			let cont = 1;
@@ -46,6 +47,8 @@ export class InicioMaestroComponent implements OnInit {
 			}
 			
 		});
+
+		// this._cursosService.getDato()
 	}
 
 	verCurso(curso){

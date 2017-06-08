@@ -50,6 +50,10 @@ export class CursosService {
     return resultado;
   }
 
+  getVideos(carrera, key, nombreModulo){
+    let resultado =this.db.list('cursos/'+carrera+'/'+key+'/modulos/videos/'+nombreModulo,{})
+    return resultado;
+  }
   subirArchivo(file:File,curso,modulo:string, newCursoKey:string, titulo:string){
     //SE LE CAMBIA EL NOMBRE AL ARCHIVO CON EL QUE INGRESO EL USUARIO
     let t=this;

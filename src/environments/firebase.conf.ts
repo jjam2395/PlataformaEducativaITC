@@ -5,5 +5,4 @@ export const firebaseConf = {
     projectId: "plataformaeducativaitc",
     storageBucket: "plataformaeducativaitc.appspot.com",
     messagingSenderId: "373427870965"
-
 }

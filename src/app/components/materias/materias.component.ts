@@ -59,10 +59,6 @@ export class MateriasComponent implements OnInit {
   registrarme(){
     let keyCurso= this.cursoToDisplay.$key;
     this._ua.registrarCurso(keyCurso);
-
-
-
-    //guardar el uid del curso en el alumno
   }
 
   showDescripcion(){

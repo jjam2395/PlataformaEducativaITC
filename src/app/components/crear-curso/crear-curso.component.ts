@@ -21,6 +21,7 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
   tituloVideo; //TITULO DEL VIDEO 
   // -----------------------------------------
   @Input() tempCurso=null;
+  videosSubidos;
 
 
   constructor(private _cursosServices: CursosService,
@@ -55,8 +56,8 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
   }
 
   ngOnChanges(){
-    if(this.tempCurso){
-      this.cambiarVista();
+    if(this.tempCurso!=null){
+      this.cargarNombreModulos();
     }
   }
 
@@ -85,7 +86,10 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
 
   //SELECCION DEL MODULO A MOSTRAR DESDE EL BOTON DROPDOWN EN LA VISTA DE SUBIR ARCHIVOS
   seleccionarModulo(modulo){
+    //SE ESTABLECE EL NOMBRE DEL MODULO ACTUAL
     this.moduloActual=modulo;
+    //SE CARGAN LOS VIDEOS DEL MODULO ACTUAL
+    this.cargarVideos();
   }
 
   
@@ -100,7 +104,33 @@ export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
     this._cursosServices.subirArchivo(this.file, this.cursoActual,this.moduloActual, this.newCursoKey, this.tituloVideo);
   }
 
-  cambiarVista(){
+  cargarNombreModulos(){
+    this.curso.modulos=[] 
+    //MOSTRAMOS LA VISTA DE MODULOS
     this.showModulos=true;
+    this._cursosServices.gedDato(this.tempCurso.carrera,this.tempCurso.uidCurso,"modulos").subscribe(res=>{
+      if(res.videos!=null){
+        console.log("no esta vacio")
+        //ARRAY CON LOS NOMBRES DE LOS MODULOS
+        this.curso.modulos =  Object.getOwnPropertyNames(res.videos)
+        this.moduloActual=this.curso.modulos[0];   
+        console.log("resultado de la consulta de los modulos",res.videos) 
+
+        // CARGAR LOS VIDEOS DE CADA MODULO
+        this.cargarVideos();
+      }else{
+        console.log( "resultado",res);
+      }
+      // 
+    });
+  }
+
+  //CARGA LOS VIDEOS SUBIDOS EN UN ARREGLO DE OBJETOS
+  cargarVideos(){
+    console.log("este es el modulo actual",this.moduloActual);
+    this._cursosServices.getVideos(this.tempCurso.carrera, this.tempCurso.uidCurso, this.moduloActual ).subscribe(res=>{
+      console.log("resultado de la consulta de videos",res);
+      this.videosSubidos=res;
+    })
   }
 }
