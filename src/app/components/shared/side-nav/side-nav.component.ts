@@ -24,7 +24,6 @@ export class SideNavComponent implements OnInit {
     this._ua.getUser(localStorage.getItem('tipoUserLogeado'),userUid)
     .subscribe( (user)=>{
       console.log("Usuario Cargado..");
-      console.log("emm:",(user.cursos.$key));
       let i=0;
       for (let curso in user.cursos){
         console.log(curso);

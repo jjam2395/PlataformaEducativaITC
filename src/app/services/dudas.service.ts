@@ -25,6 +25,7 @@ responderDuda(key, respuesta){
 cargarDudas(){
   console.log("se esta cargando el srvicio de cargar dudas")
 this.dudas = this.db.list('/dudas/');
+
 return this.dudas;
 }
 

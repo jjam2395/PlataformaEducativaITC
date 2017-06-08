@@ -45,10 +45,10 @@
 <div class="micontainer" *ngIf="showModulos">
     <ul id="dropdown2" class="dropdown-content" >
       <li *ngFor="let modulo of curso.modulos"><a (click)="seleccionarModulo(modulo)">{{modulo}}</a></li>
-      
+
     </ul>
     <a class="btn dropdown-button" data-activates="dropdown2" materialize="dropdown">Modulos<i class="mdi-navigation-arrow-drop-down right"></i></a>
-   
+
     <form >
       <h5>Modulo: {{moduloActual}}</h5>
         <div class="row">
@@ -59,22 +59,18 @@
           <div class="input-field col s12">
             <div class="row ">
               <h5 class="col s2 left-align subtemas">Lecciones</h5>
-              <a class="pointer col s1 tooltipped"
-                data-position="bottom"
-                data-delay="50"
-                data-tooltip="Añadir subtema">
-                <i class="material-icons">exposure_plus_1</i></a>
+
             </div>
           </div>
 
           <!--INPUT DEL NOMBRE DEL VIDEO-->
-          <div class="input-field col s12 m6">
+          <div class="input-field col s12 l6">
             <input class="validate" id="titulo"  [(ngModel)]="tituloVideo" name="tituloVideo">
             <label for="titulo">Titulo de la leccion</label>
           </div>
 
             <!--INPUT PARA SUBIR LOS ARCHIVOS-->
-            <div class="col s4 row ">
+            <div class="col s12 l5  row ">
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Seleccionar video</span>
@@ -84,7 +80,7 @@
                   <input class="file-path validate" type="text">
                 </div>
                 <p>
-                  subiendo: {{this._cursosServices.estadoSubida}}
+                  progreso: {{this._cursosServices.estadoSubida}}
                 <p>
               </div>
               <button class="btn" (click)="subirArchivo()">Subir archivo</button>
@@ -106,7 +102,7 @@
               </div>-->
             </div>
             <!--LISTADO DE LO QUE HA SUBIDO-->
-            <div class="col s8">
+            <div class="col s8 l6 row">
               <ul class="collection">
                 <li class="collection-item dismissable">
                   <div class="valign-wrapper">
