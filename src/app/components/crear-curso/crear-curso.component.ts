@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
 import { UserMaestroService } from "../../services/user-maestro.service";
-import { ActivatedRoute, Params,Router } from '@angular/router';  
+import { ActivatedRoute,Router } from '@angular/router';  
 declare var $:any;
 
 @Component({
@@ -25,14 +25,13 @@ export class CrearCursoComponent implements OnInit {
 
 
   constructor(private _cursosServices: CursosService,
-  private _userMaestroService: UserMaestroService,
-  private route: ActivatedRoute) {
+  private _userMaestroService: UserMaestroService) {
     this.newCursoKey=null;
     this.showModulos=false;
     this.curso={
       nombre:"",
-      objetivo:"",
       descripcion:"",
+      objetivo:"",
       carrera:"",
       modulos:[],
     }
