@@ -18,28 +18,28 @@
 					  </div>
 					  <div class="collapsible-body">
 					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion">
-						    <li *ngFor="let materia of materias">
+						    <li *ngFor="let curso of cursos">
 						      <div class="collapsible-header">
 						      	<div></div>
-						      	<i class="material-icons">subdirectory_arrow_right</i>
-						      	<a class="waves-effect waves-light ">{{materia.nombreMateria}}</a>
-						      	<span class="new badge">{{materia.nuevos}}</span>
+						      	<i class="material-icons" >subdirectory_arrow_right</i>
+						      	<a class="waves-effect waves-light" (click)="verCurso(curso)">{{curso.nombre}}</a>
+						      	<!--<span class="new badge">{{}}</span>-->
 						      </div>
 						      <div class="collapsible-body">
-						      	<div class="datos-materia">
+						      	<!--<div class="datos-materia">
 						      		<p>Progreso</p>
 									<div class="progress">
 										<div class="determinate" [style.width]=materia.progreso></div>
 									</div>
 									<p>{{materia.progreso}}</p>
-						        </div>
-						      	<div class="datos-materia">
+						        </div>-->
+						      	<!--<div class="datos-materia">
 						      		<p>Calificación</p>
 									<div class="progress">
 										<div class="determinate" [style.width]=materia.calificacion></div>
 									</div>
 									<p>{{materia.calificacion}}</p>
-						      	</div>
+						      	</div>-->
 						      </div>
 						    </li>
 					  	</ul>
@@ -132,4 +132,11 @@
 			</div>-->
 		</div>
 	</div>
+
+	<ng-container *ngIf="showCrearCurso==true">
+		<app-crear-curso [tempCurso]="cursoDetalle"></app-crear-curso>
+	</ng-container>
 </div>
+
+
+

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
 import { UserMaestroService } from "../../services/user-maestro.service";
+import { ActivatedRoute, Params,Router } from '@angular/router';  
 declare var $:any;
 
 @Component({
@@ -10,17 +11,21 @@ declare var $:any;
   templateUrl: './crear-curso.component.html',
   styleUrls: ['./crear-curso.component.css']
 })
-export class CrearCursoComponent implements OnInit {
+export class CrearCursoComponent implements OnInit, AfterViewInit,OnChanges {
   curso; //objeto con los datos generales del curso
-  showModulos:boolean;
+  showModulos:boolean; //MOSTRAR SECCION PARA SUBIR MATERIAL A LOS MODULOS
   moduloActual; //NOMBRE DEL MODULO ACTUAL
   file: File; //VIDEO SELECCIONADO POR EL USUARIO
   newCursoKey; //KEY DEL CURSO QUE FUE CREADO
   cursoActual:{}; //OBJETO CON LOS DATOS GENERALES DEL CURSO ACTUAL
   tituloVideo; //TITULO DEL VIDEO 
+  // -----------------------------------------
+  @Input() tempCurso=null;
+
 
   constructor(private _cursosServices: CursosService,
-  private _userMaestroService: UserMaestroService) {
+  private _userMaestroService: UserMaestroService,
+  private route: ActivatedRoute) {
     this.newCursoKey=null;
     this.showModulos=false;
     this.curso={
@@ -33,11 +38,29 @@ export class CrearCursoComponent implements OnInit {
    }
 
   ngOnInit() {
-    $('.chips').material_chip();
+    $('.chips').material_chip();  
+  }
+
+  ngAfterViewInit(){
+    console.log("parametros desde el padre",this.tempCurso)
+    if(this.tempCurso){
+      console.log("me pasaron parametros");
+    }
+    // if(this.tempCurso!=null){
+    //   console.log("Me han pasado parametros desde un componente padre");
+    //   // (uidCurso, nombre, carrera)
+    //   this.showModulos=true;
+    //   //REALIZAR UNA CONSULTA PARA OBTENER LOS MODULOS
+    // }
+  }
+
+  ngOnChanges(){
+    if(this.tempCurso){
+      this.cambiarVista();
+    }
   }
 
   guardar(){
-
     //SE RECOGEN LOS NOMBRES DE LOS MODULOS Y SE METEN EN EL ARREGLO CONTENIDO EN EL OBJETO CURSO
     var data = $('.chips.modulos').material_chip('data');
     for(var i = 0;i<data.length;i++) {
@@ -75,5 +98,9 @@ export class CrearCursoComponent implements OnInit {
   subirArchivo(){
     // SE MANDA EL VIDEO SELECCIONADO POR EL USUARIO, DATOS GRL DEL CURSO, KEY DEL CURSO, TITULO DLE VIDEO
     this._cursosServices.subirArchivo(this.file, this.cursoActual,this.moduloActual, this.newCursoKey, this.tituloVideo);
+  }
+
+  cambiarVista(){
+    this.showModulos=true;
   }
 }
