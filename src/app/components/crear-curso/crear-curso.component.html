@@ -1,5 +1,11 @@
   <!--INFORMACION GENERAL DEL CURSO-->
-  <button class="btn" routerLink="/inicio-maestro">Regresar</button>
+<div class="micontainer">
+    <a materialize="tooltip" class="pointer tooltipped"
+    data-position="right"
+    data-delay="50"
+    data-tooltip="Regresar"
+    routerLink="/inicio-maestro" ><i class="material-icons">arrow_back</i></a>
+
   <div class="contenedor-formulario" *ngIf="!showModulos">
     <form (ngSubmit)="guardar(); forma.resetForm()" #forma="ngForm" >
       <div class="input-field">
@@ -35,19 +41,20 @@
             <label>Agrega modulos</label>
         </div>
         <div class="input-field">
-          <button type="submit" class="btn waves-effect"> Guardar</button>
+          <button type="submit" class="btn waves-effect "><i class="material-icons left">save</i> Guardar</button>
         </div>
     </form>
   </div>
 
+
 <!-- ------------------------------------------- -------------------     ------ -->
 <!--SUBIR ARCHIVOS A LOS MODULOS-->
-<div class="micontainer" *ngIf="showModulos">
+<div  *ngIf="showModulos">
     <ul id="dropdown2" class="dropdown-content" >
       <li *ngFor="let modulo of curso.modulos"><a (click)="seleccionarModulo(modulo)">{{modulo}}</a></li>
 
     </ul>
-    <a class="btn dropdown-button" data-activates="dropdown2" materialize="dropdown">Modulos<i class="mdi-navigation-arrow-drop-down right"></i></a>
+    <a class="btn dropdown-button m-bt" data-activates="dropdown2" materialize="dropdown">Modulos<i class="mdi-navigation-arrow-drop-down right"></i></a>
 
     <form >
       <h5>Modulo: {{moduloActual}}</h5>
@@ -110,4 +117,5 @@
             </div>-->
         </div>
       </form>
+</div>
 </div>

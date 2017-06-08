@@ -14,7 +14,12 @@
 					  	<div class="datos"></div>
 					  	<div class="titulos">Mis Materias</div>
 					  	<i class="material-icons">keyboard_arrow_down</i>
-							<a [routerLink]="['/crear-curso']"><i class="material-icons nuevo">add</i></a>
+							<a  materialize="tooltip" class="tooltipped"
+					    data-position="right"
+					    data-delay="50"
+					    data-tooltip="Crear Curso"
+							[routerLink]="['/crear-curso']">
+							<i class="material-icons nuevo">add</i></a>
 					  </div>
 					  <div class="collapsible-body">
 					  	<ul materialize="collapsible" class="collapsible popout" data-collapsible="accordion">
@@ -137,6 +142,3 @@
 		<app-crear-curso [tempCurso]="cursoDetalle"></app-crear-curso>
 	</ng-container>
 </div>
-
-
-
