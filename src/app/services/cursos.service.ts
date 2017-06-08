@@ -15,7 +15,7 @@ export class CursosService {
   uidMaestro; //UID DEL MAESTRO QUE ESTA LOGEADO
   // urlVideo;
   constructor( private db:AngularFireDatabase) {
-    this.uidMaestro=JSON.parse(localStorage.getItem('user')).uid;
+    //this.uidMaestro=JSON.parse(localStorage.getItem('user')).uid;
    }
 
   nuevoCurso(curso){
@@ -42,6 +42,11 @@ export class CursosService {
     this.curso = this.db.object('/cursos/'+carrera+'/'+keyCurso);
     console.log("sirvio el service");
     return this.curso;
+  }
+
+  cargarCursosGeneral(){
+    this.cursos = this.db.object('/cursos/')
+    return this.cursos;
   }
 
   cargarCursos(carrera){
