@@ -1,4 +1,4 @@
-import { Component, OnInit, Directive } from '@angular/core';
+  import { Component, OnInit, Directive } from '@angular/core';
 import { UserMaestroService } from "../../services/user-maestro.service";
 import { CursosService } from "../../services/cursos.service";
 import { Router } from '@angular/router'
@@ -22,7 +22,7 @@ export class InicioMaestroComponent implements OnInit {
 	constructor(private _userMaestroService: UserMaestroService,
 	private _cursosService: CursosService,
 	private router:Router) {
-		this.showActualizarCurso=false; 
+		this.showActualizarCurso=false;
 	}
 
 	ngOnInit() {
@@ -35,7 +35,7 @@ export class InicioMaestroComponent implements OnInit {
 				 this._cursosService.gedDato(curso.carrera,curso.uidCurso,"nombre").subscribe(res=>{
 					console.log("resultado de la consulta del nombre",res)
 					this.cursos.push({
-					uidCurso:curso.uidCurso, 
+					uidCurso:curso.uidCurso,
 					carrera:curso.carrera,
 					nombre:res.$value
 				 	})
@@ -46,7 +46,7 @@ export class InicioMaestroComponent implements OnInit {
 					cont++;
 				});
 			}
-			
+
 		});
 
 		// this._cursosService.getDato()
@@ -65,7 +65,7 @@ export class InicioMaestroComponent implements OnInit {
 			}
 		})
 
-		
+
 	}
 
 }

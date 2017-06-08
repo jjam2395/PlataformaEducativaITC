@@ -7,11 +7,12 @@ import {CursosService} from '../../services/cursos.service';
   styleUrls: ['./oferta-educativa.component.css']
 })
 export class OfertaEducativaComponent implements OnInit {
-
+cursos:Array<object>
   constructor(private _cs:CursosService) {
     this._cs.cargarCursosGeneral()
     .subscribe((cursos)=>{
       console.log("se cargaron los cursos en general",cursos);
+      this.cursos=cursos;
     })
 
   }

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Curso } from '../../interfaces/curso.interface';
 import { CursosService} from '../../services/cursos.service';
 import { UserMaestroService } from "../../services/user-maestro.service";
-import { ActivatedRoute,Router } from '@angular/router';  
+import { ActivatedRoute,Router } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -18,7 +18,7 @@ export class CrearCursoComponent implements OnInit {
   file: File; //VIDEO SELECCIONADO POR EL USUARIO
   newCursoKey; //KEY DEL CURSO QUE FUE CREADO
   cursoActual:{}; //OBJETO CON LOS DATOS GENERALES DEL CURSO ACTUAL
-  tituloVideo; //TITULO DEL VIDEO 
+  tituloVideo; //TITULO DEL VIDEO
   // -----------------------------------------
   // @Input() tempCurso=null;
   // videosSubidos;
@@ -38,7 +38,7 @@ export class CrearCursoComponent implements OnInit {
    }
 
   ngOnInit() {
-    $('.chips').material_chip();  
+    $('.chips').material_chip();
   }
 
   // ngAfterViewInit(){
@@ -75,7 +75,7 @@ export class CrearCursoComponent implements OnInit {
     this.newCursoKey= this._cursosServices.nuevoCurso(this.curso);
 
     //SE GUARDA EL UID DEL CURSO EN EL PERFIL DEL MAESTRO
-    this._userMaestroService.guardarCurso(this.newCursoKey, this.cursoActual);
+    //this._userMaestroService.guardarCurso(this.newCursoKey, this.cursoActual);
     console.log("llave del curso creado",this.newCursoKey);
 
     //SETEAR EL MODULO DE INICIO Y MOSTRAR SU VISTA
@@ -90,10 +90,10 @@ export class CrearCursoComponent implements OnInit {
     // this.videosSubidos=null;
     //SE CARGAN LOS VIDEOS DEL MODULO ACTUAL
     // this.cargarVideos();
-    
+
   }
 
-  
+
   //SE MANDA A LLAMAR CADA VEZ QUE SE CARGA ALGO EN EL FILE
   onChangeVideos(event) {
     //SE GUARDA EL ARCHIVO QUE SELECCIONO EL USUARIO
@@ -106,7 +106,7 @@ export class CrearCursoComponent implements OnInit {
   }
 
   // cargarNombreModulos(){
-  //   this.curso.modulos=[] 
+  //   this.curso.modulos=[]
   //   //MOSTRAMOS LA VISTA DE MODULOS
   //   this.showModulos=true;
   //   this._cursosServices.gedDato(this.tempCurso.carrera,this.tempCurso.uidCurso,"modulos").subscribe(res=>{
@@ -114,15 +114,15 @@ export class CrearCursoComponent implements OnInit {
   //       console.log("no esta vacio")
   //       //ARRAY CON LOS NOMBRES DE LOS MODULOS
   //       this.curso.modulos =  Object.getOwnPropertyNames(res.videos)
-  //       this.moduloActual=this.curso.modulos[0];   
-  //       console.log("resultado de la consulta de los modulos",res.videos) 
+  //       this.moduloActual=this.curso.modulos[0];
+  //       console.log("resultado de la consulta de los modulos",res.videos)
 
   //       // CARGAR LOS VIDEOS DE CADA MODULO
   //       this.cargarVideos();
   //     }else{
   //       console.log( "resultado",res);
   //     }
-  //     // 
+  //     //
   //   });
   // }
 
