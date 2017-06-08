@@ -26,20 +26,6 @@
 						      	<!--<span class="new badge">{{}}</span>-->
 						      </div>
 						      <div class="collapsible-body">
-						      	<!--<div class="datos-materia">
-						      		<p>Progreso</p>
-									<div class="progress">
-										<div class="determinate" [style.width]=materia.progreso></div>
-									</div>
-									<p>{{materia.progreso}}</p>
-						        </div>-->
-						      	<!--<div class="datos-materia">
-						      		<p>Calificación</p>
-									<div class="progress">
-										<div class="determinate" [style.width]=materia.calificacion></div>
-									</div>
-									<p>{{materia.calificacion}}</p>
-						      	</div>-->
 						      </div>
 						    </li>
 					  	</ul>
@@ -47,6 +33,12 @@
 					</li>
 				</ul>
 			</div>
+
+			<ng-container *ngIf="showActualizarCurso">
+				<ul id="dropdown2" class="dropdown-content" >
+					<!--<li *ngFor="let modulo of curso.modulos"><a (click)="seleccionarModulo(modulo)">{{modulo}}</a></li>-->
+				</ul>
+			</ng-container>
 
 			<!-- VISTA GENERAL DE ARTICULOS -->
 			<!--<div class="row">

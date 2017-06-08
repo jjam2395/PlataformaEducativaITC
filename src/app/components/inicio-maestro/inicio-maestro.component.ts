@@ -15,13 +15,14 @@ export class InicioMaestroComponent implements OnInit {
 	modulos;
 
 	// DATOS DEL CURSO SELECCIONADO PARA MOSTRAR Y SUBIR MATERIAL
-	showCrearCurso:boolean; //MOSTRAR SECCION DE CARGAR CURSO
+	showActualizarCurso:boolean; //MOSTRAR SECCION DE CARGAR CURSO
 	cursoDetalle; //DATOS DEL CURSO SELECCIONADO(uidCurso, carrera, nombre)
+	modulosDetalle=[];
 
 	constructor(private _userMaestroService: UserMaestroService,
 	private _cursosService: CursosService,
 	private router:Router) {
-		this.showCrearCurso=false; 
+		this.showActualizarCurso=false; 
 	}
 
 	ngOnInit() {
@@ -53,7 +54,18 @@ export class InicioMaestroComponent implements OnInit {
 
 	verCurso(curso){
 		this.cursoDetalle=curso;
-		this.showCrearCurso=true;
+		this.showActualizarCurso=true;
+		//OBTENER TODOS LOS DATOS DEL CURSO
+		this._cursosService.cargarCursoObject(this.cursoDetalle.carrera, this.cursoDetalle.uidCurso).subscribe(res=>{
+			console.log("curso cargado",res);
+			let tempNameModulos=Object.getOwnPropertyNames(res.modulos.videos);
+			for(let name of tempNameModulos){
+				console.log("nombre de modulo",name);
+				let keysVideos=Object(res.modulos.videos.name)
+			}
+		})
+
+		
 	}
 
 }

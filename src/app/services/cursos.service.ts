@@ -38,6 +38,12 @@ export class CursosService {
     return this.curso;
   }
 
+  cargarCursoObject(carrera,keyCurso){
+    this.curso = this.db.object('/cursos/'+carrera+'/'+keyCurso);
+    console.log("sirvio el service");
+    return this.curso;
+  }
+
   cargarCursos(carrera){
     // REFERENCIA A LA BD CON LA CARRERA CORRESPONDIENTE
     this.cursos = this.db.list('/cursos/'+carrera,{ });
